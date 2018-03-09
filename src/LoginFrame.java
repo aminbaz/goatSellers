@@ -1,6 +1,8 @@
 
 
 import javafx.application.Application;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -9,6 +11,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Reflection;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -17,15 +21,25 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
 public class LoginFrame extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {		
 		primaryStage.setTitle("Login");
 		
+		/*Image image = new Image("");
+		ImageView iv1 = new ImageView();
+		iv1.setImage(image);
+		iv1.setPreserveRatio(true);
+		iv1.setFitHeight(200);
+		iv1.setFitWidth(100);*/
+		
 		BorderPane bp = new BorderPane();
 		bp.setPadding(new Insets(10,50,50,50));
-
+		
+		//bp.setCenter(iv1);
+		
 		//Adding HBox
 		HBox hb = new HBox();
 		hb.setPadding(new Insets(20,20,20,30));
@@ -81,6 +95,14 @@ public class LoginFrame extends Application {
 		btnLogin.setId("btnLogin");
 		text.setId("text");
 
+		//Action for btnLogin
+		btnLogin.setOnAction(new EventHandler() {
+			@Override
+			public void handle(Event event) {
+
+				
+			}
+		});
 
 		//Adding BorderPane to the scene and loading CSS
 		Scene scene = new Scene(bp);
