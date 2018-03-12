@@ -1,7 +1,7 @@
 package presentation;
 
 
-import business_logic.LoginFacade;
+import business_logic.facades.LoginFacade;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
