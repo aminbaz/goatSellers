@@ -5,7 +5,11 @@ import java.util.Properties;
  
 public class PostgresJDBC {
 	
+	public Connection myconnect;
 	
+	public PostgresJDBC() {
+		getConnection();
+	}
 	
 	public void getConnection(){
 		
@@ -15,15 +19,12 @@ public class PostgresJDBC {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		 // create three connections to three different databases on localhost
-        Connection conn1 = null;
  
         try {
             // Connect method #1
             String dbURL1 = "jdbc:postgresql:java_project?user=postgres&password=postgres";
-            conn1 = DriverManager.getConnection(dbURL1);
-            if (conn1 != null) {
+            myconnect = DriverManager.getConnection(dbURL1);
+            if (myconnect != null) {
                 System.out.println("Connected to database #1");
             }
  
@@ -31,8 +32,8 @@ public class PostgresJDBC {
             ex.printStackTrace();
         } finally {
             try {
-                if (conn1 != null && !conn1.isClosed()) {
-                    conn1.close();
+                if (myconnect != null && myconnect.isClosed()) {
+                    myconnect.close();
                 }
             } catch (SQLException ex) {
                 ex.printStackTrace();
