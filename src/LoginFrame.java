@@ -24,6 +24,20 @@ import javafx.stage.Stage;
 
 public class LoginFrame extends Application {
 	
+	private LoginFacade myFacade;
+	
+	public LoginFrame() {
+		myFacade = new LoginFacade();
+	}
+	
+	public LoginFacade getMyFacade() {
+		return myFacade;
+	}
+
+	public void setMyFacade(LoginFacade myFacade) {
+		this.myFacade = myFacade;
+	}
+
 	@Override
 	public void start(Stage primaryStage) {		
 		primaryStage.setTitle("Login");
@@ -99,8 +113,7 @@ public class LoginFrame extends Application {
 		btnLogin.setOnAction(new EventHandler() {
 			@Override
 			public void handle(Event event) {
-
-				
+				System.out.println(myFacade.login(txtUserName.getText(), pf.getText()));
 			}
 		});
 
@@ -112,7 +125,4 @@ public class LoginFrame extends Application {
 
 	}
 
-	public static void main(String[] args) {
-		launch(args);
-	}
 }

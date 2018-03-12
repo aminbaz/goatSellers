@@ -1,11 +1,14 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.Properties;
  
 public class PostgresJDBC {
 	
-	public Connection myconnect;
+	private Connection myconnect;
 	
 	public PostgresJDBC() {
 		getConnection();
@@ -41,8 +44,25 @@ public class PostgresJDBC {
         }
 	}
 	
-	public static void main(String[] args) {
-		PostgresJDBC mypg = new PostgresJDBC();
-		mypg.getConnection();
+	public ResultSet makeQuery(String query) {
+		try {
+			Statement state = myconnect.createStatement();
+			ResultSet result = state.executeQuery(query);
+			return result;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	
+	public Connection getMyconnect() {
+		return myconnect;
+	}
+
+	public void setMyconnect(Connection myconnect) {
+		this.myconnect = myconnect;
 	}
 }
