@@ -67,16 +67,16 @@ public class LoginFrame extends Application {
 		gridPane.setVgap(5);
 		
 		//Implementing Nodes for GridPane
-		Label lblUserName = new Label("Username");
-		final TextField txtUserName = new TextField();
+		Label lblMail = new Label("Mail");
+		final TextField txtMail = new TextField();
 		Label lblPassword = new Label("Password");
 		final PasswordField pf = new PasswordField();
 		Button btnLogin = new Button("Login");
 		final Label lblMessage = new Label();
 
         //Adding Nodes to GridPane layout
-		gridPane.add(lblUserName, 0, 0);
-		gridPane.add(txtUserName, 1, 0);
+		gridPane.add(lblMail, 0, 0);
+		gridPane.add(txtMail, 1, 0);
 		gridPane.add(lblPassword, 0, 1);
 		gridPane.add(pf, 1, 1);
 		gridPane.add(btnLogin, 2, 1);
@@ -115,7 +115,7 @@ public class LoginFrame extends Application {
 		btnLogin.setOnAction(new EventHandler() {
 			@Override
 			public void handle(Event event) {
-				System.out.println(myFacade.login(txtUserName.getText(), pf.getText()));
+				System.out.println(myFacade.login(txtMail.getText(), pf.getText()));
 			}
 		});
 

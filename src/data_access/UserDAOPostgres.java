@@ -16,11 +16,11 @@ public class UserDAOPostgres extends UserDAO{
 	@Override
 	public User createUserById(String mail, String password) {
 		// TODO Auto-generated method stub
-		String query="SELECT * FROM public.\"User\" WHERE mail LIKE \'"+mail+"\' AND password LIKE \'"+password+"\'";
+		String query="SELECT id_user, mail, password FROM public.\"User\" WHERE mail LIKE \'"+mail+"\' AND password LIKE \'"+password+"\'";
 		ResultSet result=db.makeQuery(query);
 		try {
 			if(result.next()) {
-				User myUser = new User(result.getString("mail"), result.getString("password"));
+				User myUser = new User(result.getInt("id_user"), result.getString("mail"), result.getString("password"));
 				return myUser;
 			}
 		} catch (SQLException e) {
