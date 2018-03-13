@@ -107,7 +107,12 @@ CREATE TABLE public."Offer"
     date_offer date,
     status character varying(20),
     id_uptosale integer,
+    club integer,
     CONSTRAINT "Offer_pkey" PRIMARY KEY (id_offer),
+    CONSTRAINT fk_offer_club FOREIGN KEY (club)
+        REFERENCES public."Club" (id_club) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION,
     CONSTRAINT fk_offer_uptosale FOREIGN KEY (id_uptosale)
         REFERENCES public."UpToSale" (id_uptosale) MATCH SIMPLE
         ON UPDATE NO ACTION
