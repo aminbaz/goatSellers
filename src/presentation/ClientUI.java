@@ -60,4 +60,8 @@ public class ClientUI extends Application implements WindowManager{
 	public void updateStage(Scene scene) {
 		myStage.setScene(scene);
 	}
+	
+	public static void main (String[] args){
+		launch(args);
+	}
 }
