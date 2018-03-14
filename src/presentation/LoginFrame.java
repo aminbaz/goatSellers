@@ -24,12 +24,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 
-public class LoginFrame extends Application {
+public class LoginFrame extends Frame {
 	
 	private LoginFacade myFacade;
 	
-	public LoginFrame() {
-		myFacade = new LoginFacade();
+	public LoginFrame(WindowManager window) {
+		super(window);
+		this.myFacade = new LoginFacade();
 	}
 	
 	public LoginFacade getMyFacade() {
@@ -39,10 +40,9 @@ public class LoginFrame extends Application {
 	public void setMyFacade(LoginFacade myFacade) {
 		this.myFacade = myFacade;
 	}
-
+	
 	@Override
-	public void start(Stage primaryStage) {		
-		primaryStage.setTitle("Login");
+	public Scene initScene() {		
 		
 		/*Image image = new Image("");
 		ImageView iv1 = new ImageView();
@@ -54,6 +54,8 @@ public class LoginFrame extends Application {
 		BorderPane bp = new BorderPane();
 		bp.setPadding(new Insets(10,50,50,50));
 		
+		BorderPane bp2 = new BorderPane();
+		bp2.setPadding(new Insets(10,50,50,50));
 		//bp.setCenter(iv1);
 		
 		//Adding HBox
@@ -104,7 +106,6 @@ public class LoginFrame extends Application {
 		bp.setTop(hb);
 		bp.setCenter(gridPane); 
 		
-		
 		//Add ID's to Nodes
 		bp.setId("bp");
 		gridPane.setId("root");
@@ -115,15 +116,15 @@ public class LoginFrame extends Application {
 		btnLogin.setOnAction(new EventHandler() {
 			@Override
 			public void handle(Event event) {
-				System.out.println(myFacade.login(txtMail.getText(), pf.getText()));
+				if(myFacade.login(txtMail.getText(), pf.getText())) {
+					myWindow.handleMessageFromFrame("Login Club");
+				}
 			}
 		});
 
 		//Adding BorderPane to the scene and loading CSS
-		Scene scene = new Scene(bp);
-		primaryStage.setScene(scene);
-
-		primaryStage.show();
+		this.setScene(new Scene(bp));
+		return this.getScene();
 
 	}
 
