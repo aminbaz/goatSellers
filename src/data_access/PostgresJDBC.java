@@ -37,7 +37,7 @@ public class PostgresJDBC {
             String dbURL1 = "jdbc:postgresql:java_project?user=postgres&password=postgres";
             myconnect = DriverManager.getConnection(dbURL1);
             if (myconnect != null) {
-                System.out.println("Connected to database #1");
+                System.out.println("Connected to database");
             }
  
         } catch (SQLException ex) {

@@ -1,25 +1,26 @@
 package business_logic.facades;
+import business_logic.factories.UserDAOFactory;
 import business_logic.models.User;
-import data_access.UserDAOPostgres;
+import data_access.UserDAO;
 
 public class LoginFacade {
 
-	private UserDAOPostgres dao;
+	private UserDAO dao;
 	
 	public LoginFacade() {
-		dao = new UserDAOPostgres();
+		UserDAOFactory fact = new UserDAOFactory();
+		dao = fact.getUserDAO();
 	}
 
 	public User login(String mail, String password) {
 		return dao.createUserById(mail, password);
 	}
-	
 
-	public UserDAOPostgres getDao() {
+	public UserDAO getDao() {
 		return dao;
 	}
 
-	public void setDao(UserDAOPostgres dao) {
+	public void setDao(UserDAO dao) {
 		this.dao = dao;
 	}
 	
