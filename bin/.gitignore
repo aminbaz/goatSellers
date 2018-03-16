@@ -1,12 +1,2 @@
-/application/
-/LoginFrame.class
-/LoginFrame$1.class
-/LoginFacade.class
-/User.class
-/UserDAO.class
-/UserDAOPostgres.class
-/presentation/
 /business_logic/
-/infrastructure/
-/data_access/
-/facade/
+/presentation/

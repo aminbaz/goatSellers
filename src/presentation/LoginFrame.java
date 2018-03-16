@@ -116,9 +116,8 @@ public class LoginFrame extends Frame {
 		btnLogin.setOnAction(new EventHandler() {
 			@Override
 			public void handle(Event event) {
-				if(myFacade.login(txtMail.getText(), pf.getText())) {
-					myWindow.handleMessageFromFrame("Login Club");
-				}
+				myWindow.setUser(myFacade.login(txtMail.getText(), pf.getText()));
+				myWindow.handleMessageFromFrame("Login Club");
 			}
 		});
 

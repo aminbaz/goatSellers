@@ -4,30 +4,16 @@ import data_access.UserDAOPostgres;
 
 public class LoginFacade {
 
-	private User connectedUser;
 	private UserDAOPostgres dao;
 	
 	public LoginFacade() {
 		dao = new UserDAOPostgres();
 	}
 
-	public boolean login(String mail, String password) {
-		User user = dao.createUserById(mail, password);
-		if(user==null) {
-			return false;
-		}else {
-			connectedUser=user;
-			return true;
-		}
+	public User login(String mail, String password) {
+		return dao.createUserById(mail, password);
 	}
 	
-	public User getConnectedUser() {
-		return connectedUser;
-	}
-
-	public void setConnectedUser(User connectedUser) {
-		this.connectedUser = connectedUser;
-	}
 
 	public UserDAOPostgres getDao() {
 		return dao;
