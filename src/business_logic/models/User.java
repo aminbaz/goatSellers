@@ -1,22 +1,22 @@
 package business_logic.models;
 
 public class User {
-	private int id;
+	private int id_user;
 	private String mail;
 	private String password;
 
-	public User(int id, String mail, String password) {
-		this.id=id;
+	public User(int id_user, String mail, String password) {
+		this.id_user=id_user;
 		this.mail=mail;
 		this.password=password;
 	}
 	
 	public int getId() {
-		return id;
+		return id_user;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId(int id_user) {
+		this.id_user = id_user;
 	}
 
 	public String getMail() {
