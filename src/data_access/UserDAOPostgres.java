@@ -10,7 +10,7 @@ public class UserDAOPostgres extends UserDAO{
 	PostgresJDBC db;
 	
 	public UserDAOPostgres(){
-		db = new PostgresJDBC();
+		db = PostgresJDBC.getInstance();
 	}
 	
 	@Override

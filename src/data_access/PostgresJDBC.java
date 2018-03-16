@@ -10,9 +10,17 @@ import java.util.Properties;
 public class PostgresJDBC {
 	
 	private Connection myconnect;
+	private static PostgresJDBC db = null;
 	
-	public PostgresJDBC() {
+	private PostgresJDBC() {
 		getConnection();
+	}
+	
+	public static PostgresJDBC getInstance() {
+		if(db == null) {
+			db = new PostgresJDBC();
+		}
+		return db;
 	}
 	
 	public void getConnection(){
