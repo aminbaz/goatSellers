@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #D1D1D1;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -23,27 +23,33 @@
             <Label layoutX="76.0" layoutY="53.0" text="Welcome" AnchorPane.leftAnchor="76.0" AnchorPane.topAnchor="80.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="291.0" layoutY="19.0" text="Player on sale" AnchorPane.leftAnchor="290.0" AnchorPane.topAnchor="10.0">
+      <Label layoutX="291.0" layoutY="19.0" text="Player on sale" AnchorPane.leftAnchor="374.0" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Label layoutX="582.0" layoutY="18.0" text="Offer in progress" AnchorPane.leftAnchor="590.0" AnchorPane.topAnchor="10.0">
+      <Label layoutX="582.0" layoutY="18.0" text="Offer in progress" AnchorPane.leftAnchor="765.5" AnchorPane.topAnchor="10.0">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <Separator layoutX="502.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="7.0" AnchorPane.leftAnchor="500.0" />
-      <TableView fixedCellSize="5.0" layoutX="211.0" layoutY="51.0" prefHeight="533.0" prefWidth="280.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
+      <Separator layoutX="502.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="8.0" AnchorPane.leftAnchor="671.0" />
+      <TableView fixedCellSize="5.0" layoutX="211.0" layoutY="51.0" prefHeight="533.0" prefWidth="450.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="75.0" text="NameClub" />
+          <TableColumn prefWidth="75.0" text="FirstName" />
+          <TableColumn prefWidth="75.0" text="LastName" />
+            <TableColumn prefWidth="75.0" text="DateOfBirth" />
+            <TableColumn prefWidth="75.0" text="Price" />
+            <TableColumn prefWidth="75.0" text="Button" />
         </columns>
       </TableView>
-      <TableView layoutX="527.0" layoutY="56.0" prefHeight="533.0" prefWidth="280.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
+      <TableView layoutX="527.0" layoutY="56.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="C1" />
-            <TableColumn prefWidth="75.0" text="C2" />
+            <TableColumn prefWidth="75.0" text="FirstName" />
+            <TableColumn prefWidth="75.0" text="LastName" />
+            <TableColumn prefWidth="75.0" text="Price" />
+            <TableColumn prefWidth="75.0" text="Statut" />
          </columns>
       </TableView>
    </children>
