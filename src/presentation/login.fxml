@@ -10,7 +10,7 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.loginController">
    <children>
       <TextField fx:id="fieldMail" layoutX="312.0" layoutY="359.0" prefHeight="40.0" prefWidth="200.0" promptText="Email" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="350.0" />
-      <PasswordField fx:id="fieldPassword" fx:idlayoutX="305.0" layoutY="435.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="420.0" />
+      <PasswordField fx:id="fieldPassword" layoutX="305.0" layoutY="435.0" prefHeight="40.0" prefWidth="200.0" promptText="Password" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="420.0" />
       <Button layoutX="348.0" layoutY="498.0" mnemonicParsing="false" onAction="#handleLogin" prefHeight="30.0" prefWidth="120.0" text="Login" AnchorPane.leftAnchor="340.0" AnchorPane.topAnchor="500.0" />
       <ImageView id="logo" fitHeight="300.0" fitWidth="300.0" layoutX="260.0" layoutY="57.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="20.0">
          <image>
