@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class ClientUI extends Application{
@@ -21,6 +22,7 @@ public class ClientUI extends Application{
 		// TODO Auto-generated method stub
 		myStage=primaryStage;
 		primaryStage.setTitle("Goat Sellers");
+		//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/logo_goatSellers.png")));
 		
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(ClientUI.class.getResource("login.fxml"));

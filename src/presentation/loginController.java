@@ -1,7 +1,6 @@
 package presentation;
 
 import java.io.IOException;
-
 import business_logic.facades.LoginFacade;
 import business_logic.models.Authority;
 import business_logic.models.Club;
