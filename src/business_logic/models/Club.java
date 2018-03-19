@@ -6,12 +6,12 @@ public class Club extends User{
 	private String name;
 	private String logo;
 	
-	public Club(int id_user, String mail, String password){
-		super(id_user,mail,password);
+	public Club(int id_user, String mail, String password, int role){
+		super(id_user,mail,password,role);
 	}
 	
-	public Club(int id_user, String mail, String password, int id_club, String name, String logo){
-		super(id_user,mail,password);
+	public Club(int id_user, String mail, String password, int role, int id_club, String name, String logo){
+		super(id_user,mail,password,role);
 		this.id_club=id_club;
 		this.name=name;
 		this.logo=logo;

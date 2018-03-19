@@ -2,6 +2,10 @@ package presentation;
 
 
 import business_logic.facades.LoginFacade;
+import business_logic.models.Authority;
+import business_logic.models.Club;
+import business_logic.models.SuperAdmin;
+import business_logic.models.User;
 import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -116,9 +120,24 @@ public class LoginFrame extends Frame {
 		btnLogin.setOnAction(new EventHandler() {
 			@Override
 			public void handle(Event event) {
-				if(myFacade.login(txtMail.getText(), pf.getText())!=null) {
-					myWindow.setUser(myFacade.login(txtMail.getText(), pf.getText()));
-					myWindow.handleMessageFromFrame("Login Club");
+				User myUser=myFacade.login(txtMail.getText(), pf.getText());
+				if(myUser !=null) {
+					myWindow.setUser(myUser);
+					if(myUser instanceof Club) {
+						myWindow.handleMessageFromFrame("Login Club");
+						System.out.println("true club");
+					}else if(myUser instanceof Authority) {
+						myWindow.handleMessageFromFrame("Login Authority");
+						System.out.println("true authority");
+					}else if(myUser instanceof SuperAdmin) {
+						myWindow.handleMessageFromFrame("Login SuperAdmin");
+						System.out.println("true superadmin");
+					}else {
+						myWindow.handleMessageFromFrame("Login User");
+						System.out.println("true user");
+					}
+				}else {
+					System.out.println("false");
 				}
 			}
 		});

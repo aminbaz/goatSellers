@@ -4,13 +4,23 @@ public class User {
 	private int id_user;
 	private String mail;
 	private String password;
+	private int role;
 
-	public User(int id_user, String mail, String password) {
+	public User(int id_user, String mail, String password, int role) {
 		this.id_user=id_user;
 		this.mail=mail;
 		this.password=password;
+		this.role=role;
 	}
 	
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
+	}
+
 	public int getId() {
 		return id_user;
 	}

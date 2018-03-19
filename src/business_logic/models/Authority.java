@@ -5,12 +5,12 @@ public class Authority extends User{
 	int id_authority;
 	String name;
 	
-	public Authority(int id_user, String mail, String password) {
-		super(id_user,mail,password);
+	public Authority(int id_user, String mail, String password, int role) {
+		super(id_user,mail,password,role);
 	}
 	
-	public Authority(int id_user, String mail, String password, int id_authority, String name) {
-		super(id_user,mail,password);
+	public Authority(int id_user, String mail, String password, int role, int id_authority, String name) {
+		super(id_user,mail,password,role);
 		this.id_authority=id_authority;
 		this.name=name;
 	}
