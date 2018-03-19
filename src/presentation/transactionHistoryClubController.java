@@ -15,10 +15,25 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class transfertMarketNewsController {
-	
-	public transfertMarketNewsController() {
+public class transactionHistoryClubController {
+
+	public transactionHistoryClubController() {
 		//myFacade=new LoginFacade();
+	}
+	
+	@FXML protected void handleTransfert(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+		System.out.println("OK");
+        loader.setLocation(ClientUI.class.getResource("transfertMarketNews.fxml"));
+        Parent root=null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Scene scene = new Scene(root);
+        ClientUI.getMyStage().setScene(scene);
 	}
 	
 	@FXML protected void handleHome(ActionEvent event) {
@@ -36,18 +51,4 @@ public class transfertMarketNewsController {
         ClientUI.getMyStage().setScene(scene);
 	}
 	
-	@FXML protected void handleTransactionHistory(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ClientUI.class.getResource("transactionHistoryClub.fxml"));
-        Parent root=null;
-		try {
-			root = loader.load();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        Scene scene = new Scene(root);
-        ClientUI.getMyStage().setScene(scene);
-	}
-
 }
