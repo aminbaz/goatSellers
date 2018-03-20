@@ -55,4 +55,20 @@ public class ClubDAOPostgres extends ClubDAO{
 		return sales;
 	}
 	
+	@Override
+	public void addClub(String logo, String name, String city, String country, String championship){
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public void updateClub(String logo, String name, String city, String country, String championship) {
+		// TODO Auto-generated method stub
+	}
+	
+	@Override
+	public Club[] getAllClub() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
