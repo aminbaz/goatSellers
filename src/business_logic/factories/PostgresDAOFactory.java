@@ -1,5 +1,7 @@
 package business_logic.factories;
 
+import data_access.ClubDAO;
+import data_access.ClubDAOPostgres;
 import data_access.PlayerDAO;
 import data_access.PlayerDAOPostgres;
 import data_access.UserDAO;
@@ -21,11 +23,17 @@ public class PostgresDAOFactory extends DAOFactory{
 	@Override
 	public UserDAO getUserDAO() {
 		return new UserDAOPostgres();
-	}	
+	}
 	
 	@Override
 	public PlayerDAO getPlayerDAO() {
 		// TODO Auto-generated method stub
 		return new PlayerDAOPostgres();
+	}
+
+	@Override
+	public ClubDAO getClubDAO() {
+		// TODO Auto-generated method stub
+		return new ClubDAOPostgres();
 	}
 }
