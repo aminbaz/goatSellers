@@ -7,7 +7,7 @@ import data_access.UserDAOPostgres;
 
 public class PostgresDAOFactory extends DAOFactory{
 
-	public PostgresDAOFactory() {
+	private PostgresDAOFactory() {
 		super();
 	}
 
