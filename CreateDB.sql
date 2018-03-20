@@ -33,6 +33,7 @@ CREATE TABLE public."Club"
     name character varying(50),
     logo character varying(200),
     role integer,
+    blocked boolean,
     CONSTRAINT "Club_pkey" PRIMARY KEY (id_club),
     CONSTRAINT fk_club_role FOREIGN KEY (role)
         REFERENCES public."Role" (id_role) MATCH SIMPLE
