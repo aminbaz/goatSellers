@@ -32,8 +32,6 @@ public class ClientUI extends Application{
         primaryStage.show();
 	}
 	
-	
-	
 	public static User getMyUser() {
 		return myUser;
 	}

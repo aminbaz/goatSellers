@@ -15,9 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class transfertMarketNewsController {
+public class TransfertMarketNewsController {
 	
-	public transfertMarketNewsController() {
+	public TransfertMarketNewsController() {
 		//myFacade=new LoginFacade();
 	}
 	

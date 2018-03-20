@@ -15,13 +15,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class accueilClubController {
+public class TransactionHistoryClubController {
 
-	public accueilClubController() {
+	public TransactionHistoryClubController() {
 		//myFacade=new LoginFacade();
 	}
-	
-	@FXML private Button transfertButton;
 	
 	@FXML protected void handleTransfert(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
@@ -38,9 +36,10 @@ public class accueilClubController {
         ClientUI.getMyStage().setScene(scene);
 	}
 	
-	@FXML protected void handleTransactionHistory(ActionEvent event) {
+	@FXML protected void handleHome(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ClientUI.class.getResource("transactionHistoryClub.fxml"));
+		System.out.println("OK");
+        loader.setLocation(ClientUI.class.getResource("accueilClub.fxml"));
         Parent root=null;
 		try {
 			root = loader.load();
@@ -51,4 +50,5 @@ public class accueilClubController {
         Scene scene = new Scene(root);
         ClientUI.getMyStage().setScene(scene);
 	}
+	
 }
