@@ -25,16 +25,16 @@ INSERT INTO public."Role" VALUES(13,'Club');
 INSERT INTO public."Authority" VALUES(1,'Jean Dupont - Authority Agent',5);
 INSERT INTO public."Authority" VALUES(2,'Pierre Reynaud - Authority Agent',6);
 
-INSERT INTO public."Club" VALUES(1,'Real Madrid','realMadrid.png',1);
-INSERT INTO public."Club" VALUES(2,'Atletico de Madrid','atleticoMadrid.png',2);
-INSERT INTO public."Club" VALUES(3,'Bayern Munich','bayernMunich.png',3);
-INSERT INTO public."Club" VALUES(4,'FC Barcelone','barcelone.png',7);
-INSERT INTO public."Club" VALUES(5,'Juventus Turin','juventus.png',8);
-INSERT INTO public."Club" VALUES(6,'Seville FC','seville.png',9);
-INSERT INTO public."Club" VALUES(7,'Paris SG','paris.png',10);
-INSERT INTO public."Club" VALUES(8,'Manchester City','manchesterCity.png',11);
-INSERT INTO public."Club" VALUES(9,'Borussia Dortmund','borussiaDortmund.png',12);
-INSERT INTO public."Club" VALUES(10,'Arsenal FC','arsenal.png',13);
+INSERT INTO public."Club" VALUES(1,'Real Madrid','realMadrid.png',1,false);
+INSERT INTO public."Club" VALUES(2,'Atletico de Madrid','atleticoMadrid.png',2,false);
+INSERT INTO public."Club" VALUES(3,'Bayern Munich','bayernMunich.png',3,false);
+INSERT INTO public."Club" VALUES(4,'FC Barcelone','barcelone.png',7,false);
+INSERT INTO public."Club" VALUES(5,'Juventus Turin','juventus.png',8,false);
+INSERT INTO public."Club" VALUES(6,'Seville FC','seville.png',9,false);
+INSERT INTO public."Club" VALUES(7,'Paris SG','paris.png',10,false);
+INSERT INTO public."Club" VALUES(8,'Manchester City','manchesterCity.png',11,false);
+INSERT INTO public."Club" VALUES(9,'Borussia Dortmund','borussiaDortmund.png',12,false);
+INSERT INTO public."Club" VALUES(10,'Arsenal FC','arsenal.png',13,false);
 
 INSERT INTO public."Player" VALUES(1,'Christiano','Ronaldo','1985/02/05','Striker','2020/06/01',1);
 INSERT INTO public."Player" VALUES(2,'Karim','Benzema','1987/12/19','Striker','2019/06/01',1);
