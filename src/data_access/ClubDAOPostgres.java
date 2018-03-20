@@ -4,6 +4,7 @@ import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import business_logic.models.Club;
 import business_logic.models.Sale;
 import business_logic.models.User;
 
