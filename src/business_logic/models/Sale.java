@@ -7,11 +7,11 @@ public class Sale {
 	private int id_sale;
 	private int amount;
 	private Date sale_date;
-	private int seller;
-	private int buyer;
-	private int player;
+	private Club seller;
+	private Club buyer;
+	private Player player;
 	
-	public Sale(int id_sale, int amount, Date sale_date, int seller, int buyer, int player) {
+	public Sale(int id_sale, int amount, Date sale_date, Club seller, Club buyer, Player player) {
 		super();
 		this.id_sale = id_sale;
 		this.amount = amount;
@@ -45,29 +45,30 @@ public class Sale {
 		this.sale_date = sale_date;
 	}
 
-	public int getSeller() {
+	public Club getSeller() {
 		return seller;
 	}
 
-	public void setSeller(int seller) {
+	public void setSeller(Club seller) {
 		this.seller = seller;
 	}
 
-	public int getBuyer() {
+	public Club getBuyer() {
 		return buyer;
 	}
 
-	public void setBuyer(int buyer) {
+	public void setBuyer(Club buyer) {
 		this.buyer = buyer;
 	}
 
-	public int getPlayer() {
+	public Player getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(int player) {
+	public void setPlayer(Player player) {
 		this.player = player;
 	}
+	
 	
 	
 }

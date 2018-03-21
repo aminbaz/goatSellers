@@ -1,5 +1,7 @@
 package data_access;
 
-public class PlayerDAO {
+import business_logic.models.Player;
+
+public abstract class PlayerDAO {
 
 }

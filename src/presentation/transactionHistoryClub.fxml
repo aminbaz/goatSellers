@@ -30,11 +30,11 @@
             <TableColumn prefWidth="100.0" text="SaleDate" />
         </columns>
       </TableView>
-      <TableView layoutX="700.0" layoutY="185.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="50.0">
+      <TableView fx:id="salesTable" layoutX="700.0" layoutY="185.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="50.0">
         <columns>
-          <TableColumn prefWidth="100.0" text="FirstName" />
-          <TableColumn prefWidth="100.0" text="LastName" />
-            <TableColumn prefWidth="100.0" text="SaleDate" />
+          <TableColumn fx:id="firstname" prefWidth="100.0" text="FirstName" />
+          <TableColumn fx:id="lastname" prefWidth="100.0" text="LastName" />
+            <TableColumn fx:id="saledate" prefWidth="100.0" text="SaleDate" />
         </columns>
       </TableView>
       <Separator layoutX="594.0" layoutY="101.0" orientation="VERTICAL" prefHeight="600.0" AnchorPane.leftAnchor="597.0" AnchorPane.topAnchor="0.0" />

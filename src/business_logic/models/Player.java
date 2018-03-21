@@ -12,7 +12,6 @@ public class Player {
 	private Date contract;
 	
 	public Player(int id_player, String firstname, String lastname, Date birthdate, String position, Date contract) {
-		super();
 		this.id_player = id_player;
 		this.firstname = firstname;
 		this.lastname = lastname;

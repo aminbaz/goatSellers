@@ -3,8 +3,11 @@ package data_access;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import business_logic.models.Club;
+import business_logic.models.Player;
 import business_logic.models.Sale;
 import business_logic.models.User;
 
@@ -25,7 +28,31 @@ public class ClubDAOPostgres extends ClubDAO{
 		ResultSet result=db.makeQuery(query);
 		try {
 			while(result.next()) {
-				Sale mySale = new Sale(result.getInt("id_sale"),result.getInt("amount_sale"),result.getDate("sale_date"),result.getInt("seller"),result.getInt("buyer"),result.getInt("player"));
+				Player myPlayer;
+				query="SELECT * FROM public.\"Player\" WHERE id_player="+result.getInt("player");
+				ResultSet player=db.makeQuery(query);
+				if(player.next()) {
+					myPlayer = new Player(player.getInt("id_player"),player.getString("firstname"),player.getString("lastname"),player.getDate("birthdate"),player.getString("position"),player.getDate("contract"));
+				}else {
+					myPlayer=null;
+				}
+				Club mySeller;
+				query="SELECT * FROM public.\"Club\" WHERE id_club="+result.getInt("seller");
+				ResultSet seller=db.makeQuery(query);
+				if(seller.next()) {
+					mySeller = new Club(seller.getInt("id_club"),seller.getString("name"),seller.getString("logo"),seller.getInt("role"));
+				}else {
+					mySeller=null;
+				}				
+				Club myBuyer;
+				query="SELECT * FROM public.\"Club\" WHERE id_club="+result.getInt("buyer");
+				ResultSet buyer=db.makeQuery(query);
+				if(buyer.next()) {
+					myBuyer = new Club(buyer.getInt("id_club"),buyer.getString("name"),buyer.getString("logo"),buyer.getInt("role"));
+				}else {
+					myBuyer=null;
+				}					
+				Sale mySale = new Sale(result.getInt("id_sale"),result.getInt("amount_sale"),result.getDate("sale_date"),mySeller,myBuyer,myPlayer);
 				purchases[cpt] = mySale;
 				cpt=cpt+1;
 			}
@@ -37,17 +64,41 @@ public class ClubDAOPostgres extends ClubDAO{
 	}
 
 	@Override
-	public Sale[] getAllSales(int id) {
-		Sale sales[] = null;
+	public ArrayList<Sale> getAllSales(int id) {
+		ArrayList<Sale> sales;
+		sales = new ArrayList<Sale>();
 		int cpt=0;
 		
 		String query="SELECT * FROM public.\"Sale\" WHERE seller="+id;
 		ResultSet result=db.makeQuery(query);
 		try {
 			while(result.next()) {
-				Sale mySale = new Sale(result.getInt("id_sale"),result.getInt("amount_sale"),result.getDate("sale_date"),result.getInt("seller"),result.getInt("buyer"),result.getInt("player"));
-				sales[cpt] = mySale;
-				cpt=cpt+1;
+				Player myPlayer;
+				query="SELECT * FROM public.\"Player\" WHERE id_player="+result.getInt("player");
+				ResultSet player=db.makeQuery(query);
+				if(player.next()) {
+					myPlayer = new Player(player.getInt("id_player"),player.getString("firstname"),player.getString("lastname"),player.getDate("birthdate"),player.getString("position"),player.getDate("contract"));
+				}else {
+					myPlayer=null;
+				}
+				Club mySeller;
+				query="SELECT * FROM public.\"Club\" WHERE id_club="+result.getInt("seller");
+				ResultSet seller=db.makeQuery(query);
+				if(seller.next()) {
+					mySeller = new Club(seller.getInt("id_club"),seller.getString("name"),seller.getString("logo"),seller.getInt("role"));
+				}else {
+					mySeller=null;
+				}				
+				Club myBuyer;
+				query="SELECT * FROM public.\"Club\" WHERE id_club="+result.getInt("buyer");
+				ResultSet buyer=db.makeQuery(query);
+				if(buyer.next()) {
+					myBuyer = new Club(buyer.getInt("id_club"),buyer.getString("name"),buyer.getString("logo"),buyer.getInt("role"));
+				}else {
+					myBuyer=null;
+				}					
+				Sale mySale = new Sale(result.getInt("id_sale"),result.getInt("amount_sale"),result.getDate("sale_date"),mySeller,myBuyer,myPlayer);
+				sales.add(mySale);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
