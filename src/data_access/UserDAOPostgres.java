@@ -62,7 +62,7 @@ public class UserDAOPostgres extends UserDAO{
 			}
 		}
 		if(find==false) {
-			query="SELECT r.id_role FROM public.\"Role\" r WHERE r.rolename LIKE \'SuperAdmin\' AND a.role="+user.getRole();
+			query="SELECT r.id_role FROM public.\"Role\" r WHERE r.rolename LIKE \'SuperAdmin\' AND r.id_role="+user.getRole();
 			result=db.makeQuery(query);	
 			try {
 				if(result.next()) {

@@ -83,4 +83,18 @@ public class TransactionHistoryClubController {
 		salesTable.setItems(myFacade.getCellData());
 	}
 	
+	@FXML protected void handleLogOut(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ClientUI.class.getResource("login.fxml"));
+        Parent root=null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Scene scene = new Scene(root);
+        ClientUI.getMyStage().setScene(scene);
+	}
+	
 }
