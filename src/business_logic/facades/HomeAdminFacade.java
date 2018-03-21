@@ -14,15 +14,15 @@ public class HomeAdminFacade {
 	}
 
 	public void addClub(String logo, String name, String city, String country, String championship){
-		
+		dao.addClub(logo, name, city, country, championship);
 	}
 	
 	public void updateClub(String logo, String name, String city, String country, String championship){
-		
+		dao.updateClub(logo, name, city, country, championship);
 	}
 	
 	public Club [] getAllClub(){
-		return null;
+		return dao.getAllClub();
 		
 	}
 

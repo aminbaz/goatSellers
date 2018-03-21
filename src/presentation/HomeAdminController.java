@@ -15,15 +15,10 @@ import javafx.scene.control.Label;
 public class HomeAdminController {
 	
 	@FXML private Label nameAdmin;
-	
 	private HomeAdminFacade myFacade;
 	
 	public HomeAdminController() {
 		myFacade = new HomeAdminFacade();
-	}
-	
-	@FXML protected void setName(ActionEvent event) {
-		nameAdmin.setText(ClientUI.getMyUser().getMail());
 	}
 	
 	@FXML protected void handleLogOut(ActionEvent event) {
