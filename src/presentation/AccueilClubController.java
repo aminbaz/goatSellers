@@ -12,16 +12,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AccueilClubController {
-
+	
 	public AccueilClubController() {
-		//myFacade=new LoginFacade();
 	}
 	
 	@FXML private Button transfertButton;
+	@FXML private Label nameClubLabel;
 	
 	@FXML protected void handleTransfert(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
@@ -50,5 +51,23 @@ public class AccueilClubController {
 		}
         Scene scene = new Scene(root);
         ClientUI.getMyStage().setScene(scene);
+	}
+	
+	@FXML protected void handleLogOut(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(ClientUI.class.getResource("login.fxml"));
+        Parent root=null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Scene scene = new Scene(root);
+        ClientUI.getMyStage().setScene(scene);
+	}
+	
+	@FXML protected void handletest(ActionEvent event) {
+		nameClubLabel.setText(ClientUI.getMyUser().getMail());
 	}
 }
