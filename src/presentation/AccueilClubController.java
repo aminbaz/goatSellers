@@ -1,5 +1,6 @@
 package presentation;
 
+import java.io.File;
 import java.io.IOException;
 import business_logic.facades.LoginFacade;
 import business_logic.models.Authority;
@@ -15,6 +16,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class AccueilClubController {
 	
@@ -23,6 +26,7 @@ public class AccueilClubController {
 	
 	@FXML private Button transfertButton;
 	@FXML private Label nameClubLabel;
+	@FXML private ImageView image;
 	
 	@FXML protected void handleTransfert(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
@@ -69,5 +73,13 @@ public class AccueilClubController {
 	
 	@FXML protected void handletest(ActionEvent event) {
 		nameClubLabel.setText(ClientUI.getMyUser().getMail());
+	}
+	
+	@FXML public void initialize() {
+		Image myImage = null;
+		Club myUser = (Club) ClientUI.getMyUser();
+		File file = new File("@../../images/"+myUser.getLogo());
+        myImage = new Image(file.toURI().toString());
+		image.setImage(myImage);
 	}
 }

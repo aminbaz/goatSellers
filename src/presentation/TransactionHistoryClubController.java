@@ -1,5 +1,6 @@
 package presentation;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
@@ -28,15 +29,18 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import presentation.tableViewCell.SaleCell;
 
-public class TransactionHistoryClubController {
+public class TransactionHistoryClubController{
 
 	@FXML private TableView<SaleCell> salesTable;
 	
 	@FXML private TableColumn<SaleCell, String> firstname;
 	@FXML private TableColumn<SaleCell, String> lastname;
 	@FXML private TableColumn<SaleCell, String> saledate;
+	@FXML private ImageView image;
 	
 	private HistoricFacade myFacade;
 	
@@ -76,6 +80,11 @@ public class TransactionHistoryClubController {
 
 	
 	@FXML public void initialize() {
+		Image myImage = null;
+		Club myUser = (Club) ClientUI.getMyUser();
+		File file = new File("@../../images/"+myUser.getLogo());
+        myImage = new Image(file.toURI().toString());
+		image.setImage(myImage);
 		firstname.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		lastname.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 		saledate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
