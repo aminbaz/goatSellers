@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,6 +36,7 @@ import presentation.tableViewCell.SaleCell;
 
 public class TransactionHistoryClubController{
 
+	@FXML private Label nameClubLabel;
 	@FXML private TableView<SaleCell> salesTable;
 	
 	@FXML private TableColumn<SaleCell, String> name;
@@ -85,8 +87,15 @@ public class TransactionHistoryClubController{
 		File file = new File("@../../images/"+myUser.getLogo());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
+<<<<<<< Updated upstream
 		name.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		amount.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+=======
+		nameClubLabel.setText(myUser.getName());
+		
+		firstname.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		lastname.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+>>>>>>> Stashed changes
 		saledate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		
 		salesTable.setItems(myFacade.getCellData());
