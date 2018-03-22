@@ -110,6 +110,7 @@ public class ClubDAOPostgres extends ClubDAO{
 	@Override
 	public void addClub(String logo, String name, String city, String country, String championship){
 		// TODO Auto-generated method stub
+		//String query = "INSERT INTO public.\"Club\" VALUES(" + logo+"," + name + "," + city + "," + country + "," + championship + ",";
 	}
 	
 	@Override

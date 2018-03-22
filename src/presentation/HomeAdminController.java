@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 
 public class HomeAdminController {
 	
+	@FXML private Label nameAdmin;
 	private HomeAdminFacade myFacade;
 	
 	public HomeAdminController() {
