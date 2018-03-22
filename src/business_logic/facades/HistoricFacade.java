@@ -30,7 +30,8 @@ public class HistoricFacade {
 		List<Sale> list = getAllSales();
 		for(int i=0;i<list.size();i++) {
 			System.out.println(cellData.size());
-			SaleCell cell = new SaleCell(list.get(i).getPlayer().getFirstname(),list.get(i).getPlayer().getLastname(),list.get(i).getSale_date().toString());
+			float amount = list.get(i).getAmount()/1000000;
+			SaleCell cell = new SaleCell((list.get(i).getPlayer().getFirstname()+" "+list.get(i).getPlayer().getLastname()),(Float.toString(amount)+ " M€"),list.get(i).getSale_date().toString());
 			cellData.add(cell);
 		}
 	}
