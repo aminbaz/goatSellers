@@ -20,6 +20,7 @@ public class HistoricFacade {
 
 	private ClubDAO dao;
 	private ObservableList<SaleCell> cellData = FXCollections.observableArrayList();
+	private ObservableList<SaleCell> cellDataP = FXCollections.observableArrayList();
 	
 	public HistoricFacade() {
 		DAOFacade fac = new DAOFacade();
@@ -27,17 +28,33 @@ public class HistoricFacade {
 		dao = fact.getClubDAO();
 		//cellData = new ObservableArrayList<SaleCell>();
 		System.out.println("new Historicfacade");
+		
 		List<Sale> list = getAllSales();
 		for(int i=0;i<list.size();i++) {
-			System.out.println(cellData.size());
-			float amount = list.get(i).getAmount()/1000000;
+			float amount = (float) (list.get(i).getAmount()/1000000.00);
 			SaleCell cell = new SaleCell((list.get(i).getPlayer().getFirstname()+" "+list.get(i).getPlayer().getLastname()),(Float.toString(amount)+ " M€"),list.get(i).getSale_date().toString());
 			cellData.add(cell);
 		}
+		
+		List<Sale> listP = getAllPurchases();
+		for(int i=0;i<listP.size();i++) {
+			float amount = (float) (listP.get(i).getAmount()/1000000.00);
+			SaleCell cell = new SaleCell((listP.get(i).getPlayer().getFirstname()+" "+listP.get(i).getPlayer().getLastname()),(Float.toString(amount)+ " M€"),listP.get(i).getSale_date().toString());
+			cellDataP.add(cell);
+		}
+	}
+
+	public ObservableList<SaleCell> getCellDataP(){
+		return cellDataP;
 	}
 	
 	public ObservableList<SaleCell> getCellData(){
 		return cellData;
+	}
+	
+	public ArrayList<Sale> getAllPurchases() {
+		Club user = (Club) ClientUI.getMyUser();
+		return dao.getAllPurchases(user.getId_club());
 	}
 	
 	public ArrayList<Sale> getAllSales() {

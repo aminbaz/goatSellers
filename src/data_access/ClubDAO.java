@@ -1,5 +1,6 @@
 package data_access;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +8,12 @@ import business_logic.models.Club;
 import business_logic.models.Sale;
 
 public abstract class ClubDAO {
-	public abstract Sale[] getAllPurchases(int id);
+	public abstract ArrayList<Sale> getAllPurchases(int id);
 	public abstract ArrayList<Sale> getAllSales(int id);
 	public abstract void addClub(String logo, String name, String mail, String password);
 	public abstract void updateClub(String logo, String name, String mail, String password);
+	public abstract ResultSet getAllUpToSales(int id);
 	public abstract ArrayList<Club> getAllClub();
+	public abstract Boolean changeState(int idClub);
+	public abstract Boolean isBlock(int idClub);
 }

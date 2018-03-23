@@ -24,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -35,11 +36,17 @@ import presentation.tableViewCell.SaleCell;
 
 public class TransactionHistoryClubController{
 
+	@FXML private Label nameClubLabel;
 	@FXML private TableView<SaleCell> salesTable;
+	@FXML private TableView<SaleCell> purchasesTable;
 	
 	@FXML private TableColumn<SaleCell, String> name;
 	@FXML private TableColumn<SaleCell, String> amount;
 	@FXML private TableColumn<SaleCell, String> saledate;
+	@FXML private TableColumn<SaleCell, String> nameP;
+	@FXML private TableColumn<SaleCell, String> amountP;
+	@FXML private TableColumn<SaleCell, String> saledateP;
+	
 	@FXML private ImageView image;
 	
 	private HistoricFacade myFacade;
@@ -66,7 +73,22 @@ public class TransactionHistoryClubController{
 	@FXML protected void handleHome(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
-        loader.setLocation(ClientUI.class.getResource("accueilClub.fxml"));
+        loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
+        Parent root=null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Scene scene = new Scene(root);
+        ClientUI.getMyStage().setScene(scene);
+	}
+	
+	@FXML protected void handleManageTeam(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+		System.out.println("OK");
+        loader.setLocation(ClientUI.class.getResource("ManageTeamClub.fxml"));
         Parent root=null;
 		try {
 			root = loader.load();
@@ -85,11 +107,20 @@ public class TransactionHistoryClubController{
 		File file = new File("@../../images/"+myUser.getLogo());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
+		
+		nameP.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		amountP.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+		saledateP.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+		
+		purchasesTable.setItems(myFacade.getCellDataP());
+		
 		name.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		amount.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 		saledate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		
 		salesTable.setItems(myFacade.getCellData());
+		
+		nameClubLabel.setText(myUser.getName());
 	}
 	
 	@FXML protected void handleLogOut(ActionEvent event) {

@@ -9,19 +9,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.AccueilClubController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.HomeClubController">
    <children>
       <AnchorPane layoutX="-1.0" prefHeight="600.0" prefWidth="200.0" style="-fx-background-color: #D1D1D1;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button layoutX="59.0" layoutY="84.0" mnemonicParsing="false" text="Notifications" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="100.0" />
             <Button layoutX="30.0" layoutY="149.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" text="Home" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="200.0" />
-            <Button layoutX="30.0" layoutY="187.0" mnemonicParsing="false" onAction="#handletest" prefHeight="25.0" prefWidth="142.0" text="Manage team" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="250.0" />
+            <Button layoutX="30.0" layoutY="187.0" mnemonicParsing="false" onAction="#handleManageTeam" prefHeight="25.0" prefWidth="142.0" text="Manage team" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="250.0" />
             <Button layoutX="30.0" layoutY="228.0" mnemonicParsing="false" onAction="#handleTransactionHistory" prefHeight="25.0" prefWidth="142.0" text="Transaction history" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="300.0" />
             <Button layoutX="30.0" layoutY="270.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="142.0" text="Update information" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="350.0" />
             <Button fx:id="transfertButton" layoutX="30.0" layoutY="314.0" mnemonicParsing="false" onAction="#handleTransfert" prefHeight="25.0" prefWidth="142.0" text="Transfert market news" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="400.0" />
             <ImageView fx:id="image" fitHeight="70.0" fitWidth="70.0" layoutX="1.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <Label layoutX="76.0" layoutY="53.0" text="Welcome" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="80.0" />
-            <Label fx:id="nameClubLabel" layoutX="115.0" layoutY="80.0" text="Label" AnchorPane.leftAnchor="115.0" />
+            <Label layoutX="76.0" layoutY="53.0" text="Welcome" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
+            <Label fx:id="nameClubLabel" layoutX="115.0" layoutY="80.0" text="Label" AnchorPane.leftAnchor="105.0" AnchorPane.topAnchor="80.0" />
             <Button layoutX="40.0" layoutY="452.0" mnemonicParsing="false" onAction="#handleLogOut" prefWidth="142.0" text="Log out" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="450.0" />
          </children>
       </AnchorPane>
@@ -36,14 +36,13 @@
          </font>
       </Label>
       <Separator layoutX="502.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="8.0" AnchorPane.leftAnchor="671.0" />
-      <TableView fixedCellSize="5.0" layoutX="211.0" layoutY="51.0" prefHeight="533.0" prefWidth="450.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
+      <TableView fx:id="onSalesTable" fixedCellSize="5.0" layoutX="211.0" layoutY="51.0" prefHeight="533.0" prefWidth="450.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
         <columns>
-            <TableColumn prefWidth="75.0" text="NameClub" />
-          <TableColumn prefWidth="75.0" text="FirstName" />
-          <TableColumn prefWidth="75.0" text="LastName" />
-            <TableColumn prefWidth="75.0" text="DateOfBirth" />
-            <TableColumn prefWidth="75.0" text="Price" />
-            <TableColumn prefWidth="75.0" text="Button" />
+            <TableColumn fx:id="nameClub" prefWidth="75.0" style="-fx-alignment: CENTER;" text="NameClub" />
+          	<TableColumn fx:id="firstnameOS" prefWidth="75.0" style="-fx-alignment: CENTER;" text="FirstName" />
+          	<TableColumn fx:id="lastnameOS" prefWidth="75.0" style="-fx-alignment: CENTER;" text="LastName" />
+            <TableColumn fx:id="birth" prefWidth="75.0" style="-fx-alignment: CENTER;" text="DateOfBirth" />
+            <TableColumn fx:id="minPrice" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Price" />
         </columns>
       </TableView>
       <TableView layoutX="527.0" layoutY="56.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">

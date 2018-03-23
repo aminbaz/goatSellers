@@ -2,12 +2,19 @@ package presentation;
 
 import java.io.File;
 import java.io.IOException;
+
+import business_logic.facades.HomeAdminFacade;
+import business_logic.facades.HomeClubFacade;
 import business_logic.facades.LoginFacade;
 import business_logic.models.Authority;
 import business_logic.models.Club;
 import business_logic.models.SuperAdmin;
 import business_logic.models.User;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,23 +22,41 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
+import presentation.tableViewCell.OnSaleCell;
+import presentation.tableViewCell.SaleCell;
 
-public class TransfertMarketNewsController {
+public class HomeClubController {
 	
+	@FXML private Button transfertButton;
 	@FXML private Label nameClubLabel;
 	@FXML private ImageView image;
 	
-	public TransfertMarketNewsController() {
-		//myFacade=new LoginFacade();
+	@FXML private TableView<OnSaleCell> onSalesTable;
+	
+	@FXML private TableColumn<OnSaleCell, String> nameClub;
+	@FXML private TableColumn<OnSaleCell, String> firstnameOS;
+	@FXML private TableColumn<OnSaleCell, String> lastnameOS;
+	@FXML private TableColumn<OnSaleCell, String> birth;
+	@FXML private TableColumn<OnSaleCell, Integer> minPrice;
+	@FXML private TableColumn<OnSaleCell, Integer> idOS;
+	
+	private HomeClubFacade myFacade;
+	
+	public HomeClubController() {
+		myFacade= new HomeClubFacade();
 	}
 	
-	@FXML protected void handleHome(ActionEvent event) {
+	@FXML protected void handleTransfert(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
-        loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
+        loader.setLocation(ClientUI.class.getResource("transfertMarketNews.fxml"));
         Parent root=null;
 		try {
 			root = loader.load();
@@ -93,6 +118,35 @@ public class TransfertMarketNewsController {
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
 		nameClubLabel.setText(myUser.getName());
+		
+		nameClub.setCellValueFactory(cellData -> cellData.getValue().clubNameProperty());
+		firstnameOS.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		lastnameOS.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
+		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty().asObject());
+		
+		TableColumn col_action = new TableColumn<>("See");
+		col_action.setSortable(false);
+		
+        onSalesTable.getColumns().add(col_action);
+        
+        onSalesTable.setItems(myFacade.getCellData());
+		
 	}
+	
+    private class ButtonCell extends TableCell<OnSaleCell, Integer> {
+        final Button cellButton = new Button("Action");
+         
+        ButtonCell(){
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+ 
+                @Override
+                public void handle(ActionEvent t) {
+                    // do something when button clicked
+                    //...
+                }
+            });
+        }
 
+    }
 }

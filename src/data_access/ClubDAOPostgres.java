@@ -20,8 +20,9 @@ public class ClubDAOPostgres extends ClubDAO{
 	}
 	
 	@Override
-	public Sale[] getAllPurchases(int id) {
-		Sale purchases[] = null;
+	public ArrayList<Sale> getAllPurchases(int id) {
+		ArrayList<Sale> purchases;
+		purchases = new ArrayList<Sale>();
 		int cpt=0;
 		
 		String query="SELECT * FROM public.\"Sale\" WHERE buyer="+id;
@@ -53,7 +54,7 @@ public class ClubDAOPostgres extends ClubDAO{
 					myBuyer=null;
 				}					
 				Sale mySale = new Sale(result.getInt("id_sale"),result.getInt("amount_sale"),result.getDate("sale_date"),mySeller,myBuyer,myPlayer);
-				purchases[cpt] = mySale;
+				purchases.add(mySale);
 				cpt=cpt+1;
 			}
 		} catch (SQLException e) {
@@ -170,6 +171,41 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		
 		return clubs;
+	}
+
+	@Override
+	public Boolean changeState(int idClub) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean isBlock(int idClub) {
+		// TODO Auto-generated method stub
+		String query="SELECT blocked FROM public.\"Club\" WHERE id_Club="+idClub;
+		ResultSet result=db.makeQuery(query);
+		
+		try {
+			if (result.next()) {
+				return result.getBoolean("blocked");
+			}
+			else {
+				return null;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+
+	@Override
+	public ResultSet getAllUpToSales(int id) {
+		
+		String query="SELECT u.id_uptosale, u.minprice, p.firstname, p.lastname, p.birthdate, c.name FROM public.\"UpToSale\" u, public.\"Player\" p, public.\"Club\" c WHERE u.club=c.id_club AND u.player=p.id_player AND c.role="+id;
+		ResultSet result=db.makeQuery(query);
+		return result;
 	}
 	
 }
