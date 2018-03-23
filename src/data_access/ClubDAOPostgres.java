@@ -139,5 +139,32 @@ public class ClubDAOPostgres extends ClubDAO{
 		
 		return clubs;
 	}
+
+	@Override
+	public Boolean changeState(int idClub) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Boolean isBlock(int idClub) {
+		// TODO Auto-generated method stub
+		String query="SELECT blocked FROM public.\"Club\" WHERE id_Club="+idClub;
+		ResultSet result=db.makeQuery(query);
+		
+		try {
+			if (result.next()) {
+				return result.getBoolean("blocked");
+			}
+			else {
+				return null;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 	
 }

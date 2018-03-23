@@ -47,6 +47,11 @@ public class Club extends User{
 	public void setLogo(String logo) {
 		this.logo = logo;
 	}
+
+	public Boolean getState() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

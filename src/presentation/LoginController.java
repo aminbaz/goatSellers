@@ -36,7 +36,7 @@ public class LoginController {
 		        loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
 			}else if(myUser instanceof Authority) {
 				System.out.println("true authority");
-		        loader.setLocation(ClientUI.class.getResource("authority_accueil.fxml"));
+		        loader.setLocation(ClientUI.class.getResource("HomeAuthority.fxml"));
 			}else if(myUser instanceof SuperAdmin) {
 				System.out.println("true superadmin");
 		        loader.setLocation(ClientUI.class.getResource("HomeAdmin.fxml"));

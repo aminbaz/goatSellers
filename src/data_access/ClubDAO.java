@@ -12,4 +12,6 @@ public abstract class ClubDAO {
 	public abstract void addClub(String logo, String name, String city, String country, String championship);
 	public abstract void updateClub(String logo, String name, String city, String country, String championship);
 	public abstract ArrayList<Club> getAllClub();
+	public abstract Boolean changeState(int idClub);
+	public abstract Boolean isBlock(int idClub);
 }
