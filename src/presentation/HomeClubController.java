@@ -28,19 +28,18 @@ import presentation.tableViewCell.SaleCell;
 
 public class HomeClubController {
 	
-	
 	@FXML private Button transfertButton;
 	@FXML private Label nameClubLabel;
 	@FXML private ImageView image;
 	
 	@FXML private TableView<OnSaleCell> onSalesTable;
 	
-	@FXML private TableColumn<SaleCell, String> nameClub;
-	@FXML private TableColumn<SaleCell, String> firstnameOS;
-	@FXML private TableColumn<SaleCell, String> lastnameOS;
-	@FXML private TableColumn<SaleCell, String> birth;
-	@FXML private TableColumn<SaleCell, Integer> minPrice;
-	@FXML private TableColumn<SaleCell, Integer> idOS;
+	@FXML private TableColumn<OnSaleCell, String> nameClub;
+	@FXML private TableColumn<OnSaleCell, String> firstnameOS;
+	@FXML private TableColumn<OnSaleCell, String> lastnameOS;
+	@FXML private TableColumn<OnSaleCell, String> birth;
+	@FXML private TableColumn<OnSaleCell, Integer> minPrice;
+	@FXML private TableColumn<OnSaleCell, Integer> idOS;
 	
 	private HomeClubFacade myFacade;
 	
@@ -114,6 +113,11 @@ public class HomeClubController {
 		image.setImage(myImage);
 		nameClubLabel.setText(myUser.getName());
 		
+		nameClub.setCellValueFactory(cellData -> cellData.getValue().clubNameProperty());
+		firstnameOS.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		lastnameOS.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
+		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty().asObject());
 		
 	}
 }
