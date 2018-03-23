@@ -71,6 +71,21 @@ public class HomeClubController {
         ClientUI.getMyStage().setScene(scene);
 	}
 	
+	@FXML protected void handleManageTeam(ActionEvent event) {
+        FXMLLoader loader = new FXMLLoader();
+		System.out.println("OK");
+        loader.setLocation(ClientUI.class.getResource("ManageTeamClub.fxml"));
+        Parent root=null;
+		try {
+			root = loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        Scene scene = new Scene(root);
+        ClientUI.getMyStage().setScene(scene);
+	}
+	
 	@FXML public void initialize() {
 		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
