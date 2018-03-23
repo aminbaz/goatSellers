@@ -11,10 +11,10 @@
       <Button layoutX="906.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleLogOut" text="LOGOUT" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
       <Button layoutX="468.0" layoutY="533.0" mnemonicParsing="false" text="ADD CLUB" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="530.0" />
       <Label layoutX="460.0" layoutY="90.0" text="INFORMATION" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="80.0" />
-      <TableView layoutX="20.0" layoutY="110.0" prefHeight="397.0" prefWidth="965.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="clubTable" layoutX="20.0" layoutY="110.0" prefHeight="397.0" prefWidth="965.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="110.0">
         <columns>
-          <TableColumn prefWidth="125.0" text="Logo" />
-          <TableColumn prefWidth="200.66668701171875" text="Name Club" />
+          <TableColumn fx:id="logo" prefWidth="125.0" text="Logo" />
+          <TableColumn fx:id="name" prefWidth="200.66668701171875" text="Name Club" />
             <TableColumn prefWidth="173.66668701171875" text="City" />
             <TableColumn minWidth="0.0" prefWidth="161.33331298828125" text="Country" />
             <TableColumn prefWidth="171.66668701171875" text="Championship" />
