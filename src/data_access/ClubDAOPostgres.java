@@ -20,8 +20,9 @@ public class ClubDAOPostgres extends ClubDAO{
 	}
 	
 	@Override
-	public Sale[] getAllPurchases(int id) {
-		Sale purchases[] = null;
+	public ArrayList<Sale> getAllPurchases(int id) {
+		ArrayList<Sale> purchases;
+		purchases = new ArrayList<Sale>();
 		int cpt=0;
 		
 		String query="SELECT * FROM public.\"Sale\" WHERE buyer="+id;
@@ -53,7 +54,7 @@ public class ClubDAOPostgres extends ClubDAO{
 					myBuyer=null;
 				}					
 				Sale mySale = new Sale(result.getInt("id_sale"),result.getInt("amount_sale"),result.getDate("sale_date"),mySeller,myBuyer,myPlayer);
-				purchases[cpt] = mySale;
+				purchases.add(mySale);
 				cpt=cpt+1;
 			}
 		} catch (SQLException e) {

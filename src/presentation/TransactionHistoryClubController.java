@@ -38,10 +38,15 @@ public class TransactionHistoryClubController{
 
 	@FXML private Label nameClubLabel;
 	@FXML private TableView<SaleCell> salesTable;
+	@FXML private TableView<SaleCell> purchasesTable;
 	
 	@FXML private TableColumn<SaleCell, String> name;
 	@FXML private TableColumn<SaleCell, String> amount;
 	@FXML private TableColumn<SaleCell, String> saledate;
+	@FXML private TableColumn<SaleCell, String> nameP;
+	@FXML private TableColumn<SaleCell, String> amountP;
+	@FXML private TableColumn<SaleCell, String> saledateP;
+	
 	@FXML private ImageView image;
 	
 	private HistoricFacade myFacade;
@@ -102,13 +107,20 @@ public class TransactionHistoryClubController{
 		File file = new File("@../../images/"+myUser.getLogo());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
-
+		
+		nameP.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		amountP.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+		saledateP.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+		
+		purchasesTable.setItems(myFacade.getCellDataP());
+		
 		name.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		amount.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
-		nameClubLabel.setText(myUser.getName());
 		saledate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		
 		salesTable.setItems(myFacade.getCellData());
+		
+		nameClubLabel.setText(myUser.getName());
 	}
 	
 	@FXML protected void handleLogOut(ActionEvent event) {
