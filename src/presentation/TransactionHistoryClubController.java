@@ -73,7 +73,7 @@ public class TransactionHistoryClubController{
 	@FXML protected void handleHome(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
-        loader.setLocation(ClientUI.class.getResource("accueilClub.fxml"));
+        loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
         Parent root=null;
 		try {
 			root = loader.load();
