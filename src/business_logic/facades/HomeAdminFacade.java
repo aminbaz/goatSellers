@@ -25,7 +25,7 @@ public class HomeAdminFacade {
 		List<Club> list = getAllClub();
 		for(int i=0;i<list.size();i++) {
 			System.out.println(cellData.size());
-			ClubCell cell = new ClubCell((list.get(i).getLogo()),(list.get(i).getName()));
+			ClubCell cell = new ClubCell((list.get(i).getLogo()),(list.get(i).getName()),(list.get(i).getState()));
 			cellData.add(cell);
 		}
 	}
