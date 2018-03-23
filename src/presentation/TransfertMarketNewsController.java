@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -20,6 +21,7 @@ import javafx.scene.image.ImageView;
 
 public class TransfertMarketNewsController {
 	
+	@FXML private Label nameClubLabel;
 	@FXML private ImageView image;
 	
 	public TransfertMarketNewsController() {
@@ -75,6 +77,7 @@ public class TransfertMarketNewsController {
 		File file = new File("@../../images/"+myUser.getLogo());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
+		nameClubLabel.setText(myUser.getName());
 	}
 
 }

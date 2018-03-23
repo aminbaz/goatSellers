@@ -19,9 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class AccueilClubController {
+public class HomeClubController {
 	
-	public AccueilClubController() {
+	public HomeClubController() {
 	}
 	
 	@FXML private Button transfertButton;
@@ -71,15 +71,12 @@ public class AccueilClubController {
         ClientUI.getMyStage().setScene(scene);
 	}
 	
-	@FXML protected void handletest(ActionEvent event) {
-		nameClubLabel.setText(ClientUI.getMyUser().getMail());
-	}
-	
 	@FXML public void initialize() {
 		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
 		File file = new File("@../../images/"+myUser.getLogo());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
+		nameClubLabel.setText(myUser.getName());
 	}
 }

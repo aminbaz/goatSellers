@@ -33,7 +33,7 @@ public class LoginController {
 			ClientUI.setMyUser(myUser);
 			if(myUser instanceof Club) {
 				System.out.println("true club");
-		        loader.setLocation(ClientUI.class.getResource("accueilClub.fxml"));
+		        loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
 			}else if(myUser instanceof Authority) {
 				System.out.println("true authority");
 		        loader.setLocation(ClientUI.class.getResource("authority_accueil.fxml"));

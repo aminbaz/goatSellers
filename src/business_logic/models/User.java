@@ -6,13 +6,17 @@ public class User {
 	private String password;
 	private int role;
 
+	public User(int id_user) {
+		this.id_user = id_user;
+	}
+	
 	public User(int id_user, String mail, String password, int role) {
 		this.id_user=id_user;
 		this.mail=mail;
 		this.password=password;
 		this.role=role;
 	}
-	
+
 	public int getRole() {
 		return role;
 	}
