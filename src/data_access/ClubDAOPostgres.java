@@ -119,9 +119,24 @@ public class ClubDAOPostgres extends ClubDAO{
 	}
 	
 	@Override
-	public Club[] getAllClub() {
+	public ArrayList<Club> getAllClub() {
 		// TODO Auto-generated method stub
-		return null;
+		ArrayList<Club> clubs;
+		clubs = new ArrayList<Club>();
+		
+		String query="SELECT * FROM public.\"Club\"";
+		ResultSet result=db.makeQuery(query);
+		try {
+			while(result.next()) {
+				Club myClub = new Club(result.getInt("id_club"),result.getString("name"),result.getString("logo"));
+				clubs.add(myClub);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return clubs;
 	}
 	
 }

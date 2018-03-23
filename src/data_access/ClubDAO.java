@@ -11,5 +11,5 @@ public abstract class ClubDAO {
 	public abstract ArrayList<Sale> getAllSales(int id);
 	public abstract void addClub(String logo, String name, String city, String country, String championship);
 	public abstract void updateClub(String logo, String name, String city, String country, String championship);
-	public abstract Club[] getAllClub();
+	public abstract ArrayList<Club> getAllClub();
 }
