@@ -1,5 +1,7 @@
 package presentation.tableViewCell;
 
+import java.sql.Date;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -18,11 +20,11 @@ public class OnSaleCell {
 		this(null,null,null,null,0,0);
 	}
 	
-	public OnSaleCell(String name, String firstname, String lastname, String birthdate, int minPrice, int id) {
+	public OnSaleCell(String name, String firstname, String lastname, Date birthdate, int minPrice, int id) {
 		this.nameClub = new SimpleStringProperty(name);
 		this.firstnameOS = new SimpleStringProperty(firstname);
 		this.lastnameOS = new SimpleStringProperty(lastname);
-		this.birth = new SimpleStringProperty(birthdate);
+		this.birth = new SimpleStringProperty(birthdate.toString());
 		this.minPrice = new SimpleIntegerProperty(minPrice);
 		this.idOS = new SimpleIntegerProperty(id);
 	}

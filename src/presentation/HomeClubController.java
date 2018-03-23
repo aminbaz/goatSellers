@@ -10,7 +10,11 @@ import business_logic.models.Authority;
 import business_logic.models.Club;
 import business_logic.models.SuperAdmin;
 import business_logic.models.User;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,11 +22,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Callback;
 import presentation.tableViewCell.OnSaleCell;
 import presentation.tableViewCell.SaleCell;
 
@@ -119,5 +125,28 @@ public class HomeClubController {
 		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
 		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty().asObject());
 		
+		TableColumn col_action = new TableColumn<>("See");
+		col_action.setSortable(false);
+		
+        onSalesTable.getColumns().add(col_action);
+        
+        onSalesTable.setItems(myFacade.getCellData());
+		
 	}
+	
+    private class ButtonCell extends TableCell<OnSaleCell, Integer> {
+        final Button cellButton = new Button("Action");
+         
+        ButtonCell(){
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+ 
+                @Override
+                public void handle(ActionEvent t) {
+                    // do something when button clicked
+                    //...
+                }
+            });
+        }
+
+    }
 }

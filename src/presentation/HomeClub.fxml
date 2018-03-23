@@ -43,7 +43,6 @@
           	<TableColumn fx:id="lastnameOS" prefWidth="75.0" style="-fx-alignment: CENTER;" text="LastName" />
             <TableColumn fx:id="birth" prefWidth="75.0" style="-fx-alignment: CENTER;" text="DateOfBirth" />
             <TableColumn fx:id="minPrice" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Price" />
-            <TableColumn fx:id="seeButton" prefWidth="75.0" style="-fx-alignment: CENTER;" text="Button" />
         </columns>
       </TableView>
       <TableView layoutX="527.0" layoutY="56.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
