@@ -104,6 +104,8 @@ public class TransactionHistoryClubController{
 		saledate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
 		
 		salesTable.setItems(myFacade.getCellData());
+		
+		nameClubLabel.setText(myUser.getName());
 	}
 	
 	@FXML protected void handleLogOut(ActionEvent event) {
