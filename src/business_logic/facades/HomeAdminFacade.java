@@ -8,6 +8,8 @@ import business_logic.models.Sale;
 import data_access.ClubDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import presentation.ClientUI;
 import presentation.tableViewCell.ClubCell;
 import presentation.tableViewCell.SaleCell;
@@ -30,12 +32,12 @@ public class HomeAdminFacade {
 		}
 	}
 
-	public void addClub(String logo, String name, String city, String country, String championship){
-		dao.addClub(logo, name, city, country, championship);
+	public void addClub(String logo, String name, String mail, String password){
+		dao.addClub(logo, name, mail, password);
 	}
 	
-	public void updateClub(String logo, String name, String city, String country, String championship){
-		dao.updateClub(logo, name, city, country, championship);
+	public void updateClub(String logo, String name, String mail, String password){
+		dao.updateClub(logo, name, mail, password);
 	}
 	
 	public ArrayList<Club> getAllClub() {

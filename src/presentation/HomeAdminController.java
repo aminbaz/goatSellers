@@ -18,7 +18,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import presentation.tableViewCell.ClubCell;
-import presentation.tableViewCell.SaleCell;
+import javafx.geometry.Pos;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
 
 public class HomeAdminController {
 	
@@ -26,11 +30,8 @@ public class HomeAdminController {
 	
 	@FXML private TableView<ClubCell> clubTable;
 	
-	//@FXML private TableColumn<ClubCell, String> logo;
+	@FXML private TableColumn<ClubCell, String> logo;
 	@FXML private TableColumn<ClubCell, String> name;
-	/*@FXML private TableColumn<SaleCell, String> city;
-	@FXML private TableColumn<SaleCell, String> country;
-	@FXML private TableColumn<SaleCell, String> championship;*/
 	
 	
 	
@@ -41,13 +42,8 @@ public class HomeAdminController {
 	}
 	
 	@FXML public void initialize() {
-		/*Image myImage = null;
-		Club myUser = (Club) ClientUI.getMyUser();
-		File file = new File("@../../images/"+myUser.getLogo());
-        myImage = new Image(file.toURI().toString());*/
-		//image.setImage(myImage);
-        //logo.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
-		name.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+        logo.setCellValueFactory(cellData -> cellData.getValue().logoProperty());
+		name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 		
 		clubTable.setItems(myFacade.getCellData());
 	}
@@ -66,5 +62,32 @@ public class HomeAdminController {
         Scene scene = new Scene(root);
         ClientUI.getMyStage().setScene(scene);
 	}
+	
+	@FXML protected void handleAddClub(ActionEvent event) {
+		display();
+	}
+	
+	public void display(){
+		Stage popupwindow=new Stage();     
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("ADD A CLUB");     
+		Label logoLabel = new Label("LOGO : "); 
+		TextField logoTf = new TextField();
+		Label nameLabel = new Label("NAME : ");
+		TextField nameTf = new TextField();
+		Label mailLabel = new Label("MAIL : ");
+		TextField mailTf = new TextField();
+		Label passwordLabel = new Label("PASSWORD : ");
+		TextField passwordTf = new TextField();
+		Button addBtn= new Button("ADD THE CLUB");  
+		addBtn.setOnAction(e -> myFacade.addClub(logoTf.getText(), nameTf.getText(), mailTf.getText(), passwordTf.getText()));
+		VBox layout= new VBox(10);	      
+		layout.getChildren().addAll(logoLabel, logoTf, nameLabel, nameTf, mailLabel, mailTf, passwordLabel, passwordTf, addBtn);	      
+		layout.setAlignment(Pos.CENTER);	      
+		Scene scene1= new Scene(layout, 300, 350);	      
+		popupwindow.setScene(scene1);   
+		popupwindow.showAndWait();      
+	}
+	
 	
 }

@@ -6,21 +6,18 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.HomeAdminController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.HomeAdminController">
    <children>
       <Button layoutX="906.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleLogOut" text="LOGOUT" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
-      <Button layoutX="468.0" layoutY="533.0" mnemonicParsing="false" text="ADD CLUB" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="530.0" />
-      <Label layoutX="460.0" layoutY="90.0" text="INFORMATION" AnchorPane.leftAnchor="450.0" AnchorPane.rightAnchor="450.0" AnchorPane.topAnchor="80.0" />
-      <TableView fx:id="clubTable" layoutX="20.0" layoutY="110.0" prefHeight="397.0" prefWidth="965.0" AnchorPane.bottomAnchor="90.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="110.0">
+      <TableView fx:id="clubTable" layoutX="41.0" layoutY="112.0" prefHeight="400.0" prefWidth="718.0" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="112.0">
         <columns>
-          <TableColumn fx:id="logo" prefWidth="125.0" text="Logo" />
-          <TableColumn fx:id="name" prefWidth="200.66668701171875" text="Name Club" />
-            <TableColumn prefWidth="173.66668701171875" text="City" />
-            <TableColumn minWidth="0.0" prefWidth="161.33331298828125" text="Country" />
-            <TableColumn prefWidth="171.66668701171875" text="Championship" />
-            <TableColumn prefWidth="130.0" text="Update" />
+          <TableColumn fx:id="logo" prefWidth="251.0" text="Logo" />
+          <TableColumn fx:id="name" prefWidth="280.0" text="Name Club" />
+            <TableColumn prefWidth="186.0" text="Update" />
         </columns>
       </TableView>
       <Label layoutX="46.0" layoutY="38.0" text="Admin Name" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
+      <Label layoutX="376.0" layoutY="80.0" text="Information" AnchorPane.bottomAnchor="503.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="361.0" AnchorPane.topAnchor="80.0" />
+      <Button layoutX="389.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleAddClub" text="ADD CLUB" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="338.0" AnchorPane.topAnchor="526.0" />
    </children>
 </AnchorPane>

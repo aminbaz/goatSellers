@@ -33,11 +33,11 @@ public class ClubCell {
 		this.name.set(name);
 	}
 	
-	public StringProperty lastnameProperty() {
+	public StringProperty logoProperty() {
 		return logo;
 	}
 	
-	public StringProperty firstnameProperty() {
+	public StringProperty nameProperty() {
 		return name;
 	}	
 }
