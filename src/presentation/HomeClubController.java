@@ -19,9 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-public class AccueilClubController {
+public class HomeClubController {
 	
-	public AccueilClubController() {
+	public HomeClubController() {
 	}
 	
 	@FXML private Button transfertButton;
