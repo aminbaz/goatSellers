@@ -36,7 +36,7 @@
          </font>
       </Label>
       <Separator layoutX="502.0" orientation="VERTICAL" prefHeight="600.0" prefWidth="8.0" AnchorPane.leftAnchor="671.0" />
-      <TableView fx:id="onSalesTable" fixedCellSize="5.0" layoutX="211.0" layoutY="51.0" prefHeight="533.0" prefWidth="450.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
+      <TableView fx:id="onSalesTable" layoutX="211.0" layoutY="51.0" prefHeight="533.0" prefWidth="450.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="210.0">
         <columns>
             <TableColumn fx:id="nameClub" prefWidth="75.0" style="-fx-alignment: CENTER;" text="NameClub" />
           	<TableColumn fx:id="firstnameOS" prefWidth="75.0" style="-fx-alignment: CENTER;" text="FirstName" />

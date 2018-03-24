@@ -202,7 +202,6 @@ public class ClubDAOPostgres extends ClubDAO{
 
 	@Override
 	public ResultSet getAllUpToSales(int id) {
-		
 		String query="SELECT u.id_uptosale, u.minprice, p.firstname, p.lastname, p.birthdate, c.name FROM public.\"UpToSale\" u, public.\"Player\" p, public.\"Club\" c WHERE u.club=c.id_club AND u.player=p.id_player AND c.role="+id;
 		ResultSet result=db.makeQuery(query);
 		return result;

@@ -29,6 +29,7 @@ public class HomeClubFacade {
 		try {
 			while(result.next()) {
 				OnSaleCell cell = new OnSaleCell(result.getString("name"),result.getString("firstname"),result.getString("lastname"),result.getDate("birthdate"),result.getInt("minprice"),result.getInt("id_uptosale"));
+				System.out.println(result.getString("firstname")+" "+result.getString("lastname"));
 				cellData.add(cell);
 			}
 		}catch (SQLException e) {

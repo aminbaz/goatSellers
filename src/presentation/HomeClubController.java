@@ -125,8 +125,30 @@ public class HomeClubController {
 		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
 		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty().asObject());
 		
-		TableColumn col_action = new TableColumn<>("See");
+		TableColumn col_action = new TableColumn<>("Action");
 		col_action.setSortable(false);
+		col_action.setPrefWidth(75.0);
+		col_action.setStyle("-fx-alignment: CENTER;");
+		
+        col_action.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<OnSaleCell, Boolean>, 
+                ObservableValue<Boolean>>() {
+ 
+            @Override
+            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<OnSaleCell, Boolean> p) {
+            	return new SimpleBooleanProperty(p.getValue() != null);
+            }
+        });
+		
+        col_action.setCellFactory(
+                new Callback<TableColumn<OnSaleCell, Boolean>, TableCell<OnSaleCell, Boolean>>() {
+
+			@Override
+			public TableCell<OnSaleCell, Boolean> call(TableColumn<OnSaleCell, Boolean> p) {
+				return new ButtonCell();
+			}
+         
+        });
 		
         onSalesTable.getColumns().add(col_action);
         
@@ -134,9 +156,9 @@ public class HomeClubController {
 		
 	}
 	
-    private class ButtonCell extends TableCell<OnSaleCell, Integer> {
+    private class ButtonCell extends TableCell<OnSaleCell, Boolean> {
         final Button cellButton = new Button("Action");
-         
+        
         ButtonCell(){
             cellButton.setOnAction(new EventHandler<ActionEvent>(){
  
@@ -146,6 +168,13 @@ public class HomeClubController {
                     //...
                 }
             });
+        }
+        
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+                setGraphic(cellButton);
+            }
         }
 
     }
