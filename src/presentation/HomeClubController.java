@@ -35,6 +35,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import presentation.tableViewCell.OfferCell;
 import presentation.tableViewCell.OnSaleCell;
 import presentation.tableViewCell.SaleCell;
 
@@ -45,6 +46,7 @@ public class HomeClubController {
 	@FXML private ImageView image;
 	
 	@FXML private TableView<OnSaleCell> onSalesTable;
+	@FXML private TableView<OfferCell> offersTable;
 	
 	@FXML private TableColumn<OnSaleCell, String> nameClub;
 	@FXML private TableColumn<OnSaleCell, String> firstnameOS;
@@ -52,6 +54,11 @@ public class HomeClubController {
 	@FXML private TableColumn<OnSaleCell, String> birth;
 	@FXML private TableColumn<OnSaleCell, String> minPrice;
 	@FXML private TableColumn<OnSaleCell, Integer> idOS;
+	
+	@FXML private TableColumn<OfferCell, String> firstnameOF;
+	@FXML private TableColumn<OfferCell, String> lastnameOF;
+	@FXML private TableColumn<OfferCell, String> priceOF;
+	@FXML private TableColumn<OfferCell, String> statusOF;	
 	
 	private HomeClubFacade myFacade;
 	
@@ -161,9 +168,15 @@ public class HomeClubController {
         });
 		
         onSalesTable.getColumns().add(col_action);
-        myFacade.initAllUpToSales();
-        onSalesTable.setItems(myFacade.getCellData());
+        onSalesTable.setItems(myFacade.getAllUpToSales());
+        
+        
+		firstnameOF.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		lastnameOF.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+		priceOF.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
+		statusOF.setCellValueFactory(cellData -> cellData.getValue().statusProperty());
 		
+        offersTable.setItems(myFacade.getAllClubOffers());		
 	}
 	
     private class ButtonCell extends TableCell<OnSaleCell, Boolean> {
@@ -214,6 +227,14 @@ public class HomeClubController {
 
 	public void setOnSalesTable(TableView<OnSaleCell> onSalesTable) {
 		this.onSalesTable = onSalesTable;
+	}
+	
+	public TableView<OfferCell> getOffersTable() {
+		return offersTable;
+	}
+
+	public void setOffersTable(TableView<OfferCell> offersTable) {
+		this.offersTable = offersTable;
 	}
     
 }

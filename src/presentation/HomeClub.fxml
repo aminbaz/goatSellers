@@ -45,12 +45,12 @@
             <TableColumn fx:id="minPrice" prefWidth="75.0" style="-fx-alignment: CENTER;" text="minPrice" />
         </columns>
       </TableView>
-      <TableView layoutX="527.0" layoutY="56.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
+      <TableView fx:id="offersTable" layoutX="527.0" layoutY="56.0" prefHeight="533.0" prefWidth="300.0" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="10.0">
          <columns>
-            <TableColumn prefWidth="75.0" text="FirstName" />
-            <TableColumn prefWidth="75.0" text="LastName" />
-            <TableColumn prefWidth="75.0" text="Price" />
-            <TableColumn prefWidth="75.0" text="Statut" />
+            <TableColumn fx:id="firstnameOF" prefWidth="75.0" text="FirstName" />
+            <TableColumn fx:id="lastnameOF" prefWidth="75.0" text="LastName" />
+            <TableColumn fx:id="priceOF" prefWidth="75.0" text="Price" />
+            <TableColumn fx:id="statusOF" prefWidth="75.0" text="Status" />
          </columns>
       </TableView>
    </children>

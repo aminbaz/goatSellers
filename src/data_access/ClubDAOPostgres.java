@@ -228,4 +228,11 @@ public class ClubDAOPostgres extends ClubDAO{
 		db.makeQueryUpdate(query);
 	}
 	
+	public ResultSet getAllClubOffers(int id) {
+		System.out.println(id);
+		String query="SELECT o.amount, o.status, p.firstname, p.lastname FROM public.\"Offer\" o, public.\"UpToSale\" u, public.\"Player\" p WHERE p.id_player=u.player AND u.id_uptosale=o.id_uptosale AND o.club="+id;
+		ResultSet result=db.makeQuery(query);
+		return result;
+	}
+	
 }
