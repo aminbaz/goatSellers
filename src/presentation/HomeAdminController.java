@@ -34,6 +34,7 @@ public class HomeAdminController {
 	
 	@FXML private TableColumn<AdminCell, String> logo;
 	@FXML private TableColumn<AdminCell, String> name;
+	@FXML private TableColumn<AdminCell, Integer> idClub;
 	
 	
 	
@@ -126,11 +127,9 @@ public class HomeAdminController {
 	    
 	    ButtonCell(){
 	        cellButton.setOnAction(new EventHandler<ActionEvent>(){
-
 	            @Override
 	            public void handle(ActionEvent t) {
-	                // do something when button clicked
-	                //...
+	            	final AdminCell item = (AdminCell) getTableRow().getItem();
 	            }
 	        });
 	    }
