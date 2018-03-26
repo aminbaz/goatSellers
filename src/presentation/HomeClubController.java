@@ -10,6 +10,7 @@ import business_logic.models.Authority;
 import business_logic.models.Club;
 import business_logic.models.SuperAdmin;
 import business_logic.models.User;
+import javafx.animation.FadeTransition;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.value.ObservableValue;
@@ -28,7 +29,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import presentation.tableViewCell.OnSaleCell;
 import presentation.tableViewCell.SaleCell;
 
@@ -44,7 +50,7 @@ public class HomeClubController {
 	@FXML private TableColumn<OnSaleCell, String> firstnameOS;
 	@FXML private TableColumn<OnSaleCell, String> lastnameOS;
 	@FXML private TableColumn<OnSaleCell, String> birth;
-	@FXML private TableColumn<OnSaleCell, Integer> minPrice;
+	@FXML private TableColumn<OnSaleCell, String> minPrice;
 	@FXML private TableColumn<OnSaleCell, Integer> idOS;
 	
 	private HomeClubFacade myFacade;
@@ -123,9 +129,9 @@ public class HomeClubController {
 		firstnameOS.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		lastnameOS.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
-		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty().asObject());
+		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty());
 		
-		TableColumn col_action = new TableColumn<>("Action");
+		TableColumn col_action = new TableColumn<>("");
 		col_action.setSortable(false);
 		col_action.setPrefWidth(75.0);
 		col_action.setStyle("-fx-alignment: CENTER;");
@@ -157,15 +163,33 @@ public class HomeClubController {
 	}
 	
     private class ButtonCell extends TableCell<OnSaleCell, Boolean> {
-        final Button cellButton = new Button("Action");
+        final Button cellButton = new Button("See");
         
         ButtonCell(){
             cellButton.setOnAction(new EventHandler<ActionEvent>(){
  
                 @Override
                 public void handle(ActionEvent t) {
-                    // do something when button clicked
-                    //...
+                    final OnSaleCell item = (OnSaleCell) getTableRow().getItem();
+                    System.out.println(item.getId());
+            		Stage popupwindow=new Stage();     
+            		popupwindow.initModality(Modality.APPLICATION_MODAL);
+            		popupwindow.setTitle("Up To Sale"); 
+               		FXMLLoader loader = new FXMLLoader();
+               		loader.setController(new PopUp_UpToSaleController(item));
+            		loader.setLocation(ClientUI.class.getResource("PopUp_UpToSale.fxml"));
+            		AnchorPane page = null;
+					try {
+						page = (AnchorPane) loader.load();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					Scene scene1= new Scene(page, 600, 300);	      
+					popupwindow.setScene(scene1);   
+					popupwindow.showAndWait();   
+					
                 }
             });
         }

@@ -13,19 +13,19 @@ public class OnSaleCell {
 	private final StringProperty firstnameOS;
 	private final StringProperty lastnameOS;
 	private final StringProperty birth;
-	private final IntegerProperty minPrice;
+	private final StringProperty minPrice;
 	private final IntegerProperty idOS;
 	
 	public OnSaleCell() {
-		this(null,null,null,null,0,0);
+		this(null,null,null,null,null,0);
 	}
 	
-	public OnSaleCell(String name, String firstname, String lastname, Date birthdate, int minPrice, int id) {
+	public OnSaleCell(String name, String firstname, String lastname, Date birthdate, String minPrice, int id) {
 		this.nameClub = new SimpleStringProperty(name);
 		this.firstnameOS = new SimpleStringProperty(firstname);
 		this.lastnameOS = new SimpleStringProperty(lastname);
 		this.birth = new SimpleStringProperty(birthdate.toString());
-		this.minPrice = new SimpleIntegerProperty(minPrice);
+		this.minPrice = new SimpleStringProperty(minPrice);
 		this.idOS = new SimpleIntegerProperty(id);
 	}
 	
@@ -41,7 +41,7 @@ public class OnSaleCell {
 	public String getBirth() {
 		return birth.get();
 	}
-	public Integer getMinPrice() {
+	public String getMinPrice() {
 		return minPrice.get();
 	}
 	public Integer getId() {
@@ -60,7 +60,7 @@ public class OnSaleCell {
 	public void setBirth(String birth) {
 		this.birth.set(birth);
 	}
-	public void setMinPrice(int minPrice) {
+	public void setMinPrice(String minPrice) {
 		this.minPrice.set(minPrice);
 	}
 	public void setId(int id) {
@@ -79,7 +79,7 @@ public class OnSaleCell {
 	public StringProperty birthProperty() {
 		return birth;
 	}
-	public IntegerProperty minPriceProperty() {
+	public StringProperty minPriceProperty() {
 		return minPrice;
 	}
 	public IntegerProperty idOSProperty() {
