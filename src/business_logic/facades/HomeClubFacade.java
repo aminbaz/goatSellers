@@ -53,4 +53,8 @@ public class HomeClubFacade {
 	public void ClubDao(ClubDAO dao) {
 		this.dao = dao;
 	}
+	
+	public void updateUpToSale(int id, int price) {
+		dao.updateUpToSale(id, price);
+	}
 }

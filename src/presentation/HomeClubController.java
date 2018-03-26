@@ -59,6 +59,10 @@ public class HomeClubController {
 		myFacade= new HomeClubFacade();
 	}
 	
+	public HomeClubController getHomeClubController() {
+		return this;
+	}
+	
 	@FXML protected void handleTransfert(ActionEvent event) {
         FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
@@ -166,6 +170,7 @@ public class HomeClubController {
         final Button cellButton = new Button("See");
         
         ButtonCell(){
+        	
             cellButton.setOnAction(new EventHandler<ActionEvent>(){
  
                 @Override
@@ -176,7 +181,7 @@ public class HomeClubController {
             		popupwindow.initModality(Modality.APPLICATION_MODAL);
             		popupwindow.setTitle("Up To Sale"); 
                		FXMLLoader loader = new FXMLLoader();
-               		loader.setController(new PopUp_UpToSaleController(item));
+               		loader.setController(new PopUp_UpToSaleController(item,getHomeClubController()));
             		loader.setLocation(ClientUI.class.getResource("PopUp_UpToSale.fxml"));
             		AnchorPane page = null;
 					try {
@@ -202,4 +207,13 @@ public class HomeClubController {
         }
 
     }
+
+	public TableView<OnSaleCell> getOnSalesTable() {
+		return onSalesTable;
+	}
+
+	public void setOnSalesTable(TableView<OnSaleCell> onSalesTable) {
+		this.onSalesTable = onSalesTable;
+	}
+    
 }
