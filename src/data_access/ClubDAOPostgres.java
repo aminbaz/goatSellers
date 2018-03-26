@@ -202,13 +202,29 @@ public class ClubDAOPostgres extends ClubDAO{
 
 	@Override
 	public ResultSet getAllUpToSales(int id) {
-		String query="SELECT u.id_uptosale, u.minprice, p.firstname, p.lastname, p.birthdate, c.name FROM public.\"UpToSale\" u, public.\"Player\" p, public.\"Club\" c WHERE u.club=c.id_club AND u.player=p.id_player AND c.role="+id;
+		String query="SELECT u.id_uptosale, u.minprice, p.firstname, p.lastname, p.birthdate, c.name, c.logo FROM public.\"UpToSale\" u, public.\"Player\" p, public.\"Club\" c WHERE u.club=c.id_club AND u.player=p.id_player AND c.role!="+id;
 		ResultSet result=db.makeQuery(query);
 		return result;
 	}
 	
 	public void updateUpToSale(int id, int price) {
 		String query="UPDATE public.\"UpToSale\" SET minprice="+price+" WHERE id_uptosale="+id;
+		db.makeQueryUpdate(query);
+	}
+	
+	public void makeAnOffer(int id_club, int id_uptosale, int price) {
+		int id = 0;
+		String queryIdUser = "select max(id_offer) + 1 from public.\"Offer\"";
+		ResultSet maxIdOffer=db.makeQuery(queryIdUser);
+		try {
+			if(maxIdOffer.next()) {
+				id = maxIdOffer.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		String query="INSERT INTO public.\"Offer\" VALUES ("+id+","+price+",current_date,'en cours',"+id_uptosale+","+id_club+")";
 		db.makeQueryUpdate(query);
 	}
 	

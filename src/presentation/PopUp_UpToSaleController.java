@@ -24,7 +24,7 @@ public class PopUp_UpToSaleController {
 	@FXML private Label firstName;
 	@FXML private Label lastName;
 	@FXML private Label birth;
-	@FXML private TextField minPrice;
+	@FXML private TextField Price;
 	@FXML private Button validateButton;
 	
 	private HomeClubFacade myFacade;
@@ -37,20 +37,18 @@ public class PopUp_UpToSaleController {
 	}
 	@FXML public void initialize() {
 		Image myImage = null;
-		Club myUser = (Club) ClientUI.getMyUser();
-		File file = new File("@../../images/"+myUser.getLogo());
+		File file = new File("@../../images/"+myCell.getLogoClub());
         myImage = new Image(file.toURI().toString());
         clubImage.setImage(myImage);
-        clubName.setText(myUser.getName());
+        clubName.setText(myCell.getNameClub());
         firstName.setText(myCell.getFirstname());
         lastName.setText(myCell.getLastname());
         birth.setText(myCell.getBirth());
-        minPrice.setText(Integer.toString(myCell.getMinPrice()));
+        Price.setText(Integer.toString(myCell.getMinPrice()));
 	}
 	
 	@FXML protected void handleAction(ActionEvent event) {
-		myFacade.updateUpToSale(myCell.getId(), Integer.parseInt(minPrice.getText()));
-		myCell.setMinPrice(Integer.parseInt(minPrice.getText()));
+		myFacade.makeAnOffer(myCell.getId(), ((Club)ClientUI.getMyUser()).getId_club(),Integer.parseInt(Price.getText()));
 	    Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
 	    view.getOnSalesTable().refresh();
 	    stage.close();

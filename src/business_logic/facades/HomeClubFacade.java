@@ -36,7 +36,7 @@ public class HomeClubFacade {
 		try {
 			while(result.next()) {
 				float amount = (float) (result.getInt("minprice")/1000000.00);
-				OnSaleCell cell = new OnSaleCell(result.getString("name"),result.getString("firstname"),result.getString("lastname"),result.getDate("birthdate"),result.getInt("minprice"),result.getInt("id_uptosale"));
+				OnSaleCell cell = new OnSaleCell(result.getString("logo"),result.getString("name"),result.getString("firstname"),result.getString("lastname"),result.getDate("birthdate"),result.getInt("minprice"),result.getInt("id_uptosale"));
 				System.out.println(result.getString("firstname")+" "+result.getString("lastname"));
 				cellData.add(cell);
 			}
@@ -56,5 +56,9 @@ public class HomeClubFacade {
 	
 	public void updateUpToSale(int id, int price) {
 		dao.updateUpToSale(id, price);
+	}
+	
+	public void makeAnOffer(int id_uptosale, int id_club, int price) {
+		dao.makeAnOffer(id_uptosale,id_club,price);
 	}
 }

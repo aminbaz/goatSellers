@@ -9,6 +9,7 @@ import javafx.beans.property.StringProperty;
 
 public class OnSaleCell {
 
+	private final StringProperty logoClub;
 	private final StringProperty nameClub;
 	private final StringProperty firstnameOS;
 	private final StringProperty lastnameOS;
@@ -17,10 +18,11 @@ public class OnSaleCell {
 	private final IntegerProperty idOS;
 	
 	public OnSaleCell() {
-		this(null,null,null,null,0,0);
+		this(null,null,null,null,null,0,0);
 	}
 	
-	public OnSaleCell(String name, String firstname, String lastname, Date birthdate, int minPrice, int id) {
+	public OnSaleCell(String logo,String name, String firstname, String lastname, Date birthdate, int minPrice, int id) {
+		this.logoClub = new SimpleStringProperty(logo);
 		this.nameClub = new SimpleStringProperty(name);
 		this.firstnameOS = new SimpleStringProperty(firstname);
 		this.lastnameOS = new SimpleStringProperty(lastname);
@@ -29,6 +31,9 @@ public class OnSaleCell {
 		this.idOS = new SimpleIntegerProperty(id);
 	}
 	
+	public String getLogoClub() {
+		return logoClub.get();
+	}
 	public String getNameClub() {
 		return nameClub.get();
 	}
@@ -52,6 +57,9 @@ public class OnSaleCell {
 		return idOS.get();
 	}
 	
+	public void setLogoClub(String logo) {
+		this.logoClub.set(logo);
+	}
 	public void setClubName(String name) {
 		this.nameClub.set(name);
 	}
@@ -71,6 +79,9 @@ public class OnSaleCell {
 		this.idOS.set(id);
 	}
 	
+	public StringProperty logoClubProperty() {
+		return logoClub;
+	}
 	public StringProperty clubNameProperty() {
 		return nameClub;
 	}
