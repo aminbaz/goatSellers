@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import presentation.tableViewCell.AdminCell;
 import presentation.tableViewCell.ClubCell;
 import javafx.geometry.Pos;
 import javafx.scene.*;
@@ -28,10 +29,10 @@ public class HomeAdminController {
 	
 	@FXML private Label nameAdmin;
 	
-	@FXML private TableView<ClubCell> clubTable;
+	@FXML private TableView<AdminCell> clubTable;
 	
-	@FXML private TableColumn<ClubCell, String> logo;
-	@FXML private TableColumn<ClubCell, String> name;
+	@FXML private TableColumn<AdminCell, String> logo;
+	@FXML private TableColumn<AdminCell, String> name;
 	
 	
 	

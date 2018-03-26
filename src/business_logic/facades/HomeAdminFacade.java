@@ -11,13 +11,14 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import presentation.ClientUI;
+import presentation.tableViewCell.AdminCell;
 import presentation.tableViewCell.ClubCell;
 import presentation.tableViewCell.SaleCell;
 
 public class HomeAdminFacade {
 	
 	private ClubDAO dao;
-	private ObservableList<ClubCell> cellData = FXCollections.observableArrayList();
+	private ObservableList<AdminCell> cellData = FXCollections.observableArrayList();
 	
 	public HomeAdminFacade() {
 		DAOFacade fac = new DAOFacade();
@@ -27,7 +28,7 @@ public class HomeAdminFacade {
 		List<Club> list = getAllClub();
 		for(int i=0;i<list.size();i++) {
 			System.out.println(cellData.size());
-			ClubCell cell = new ClubCell((list.get(i).getLogo()),(list.get(i).getName()),(list.get(i).getState()));
+			AdminCell cell = new AdminCell((list.get(i).getLogo()),(list.get(i).getName()));
 			cellData.add(cell);
 		}
 	}
@@ -44,7 +45,7 @@ public class HomeAdminFacade {
 		return dao.getAllClub();
 	}
 
-	public ObservableList<ClubCell> getCellData(){
+	public ObservableList<AdminCell> getCellData(){
 		return cellData;
 	}
 	
