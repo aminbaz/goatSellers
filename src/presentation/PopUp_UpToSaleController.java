@@ -36,6 +36,6 @@ public class PopUp_UpToSaleController {
         firstName.setText(myCell.getFirstname());
         lastName.setText(myCell.getLastname());
         birth.setText(myCell.getBirth());
-        minPrice.setText(myCell.getMinPrice());
+        minPrice.setText(Integer.toString(myCell.getMinPrice()));
 	}
 }

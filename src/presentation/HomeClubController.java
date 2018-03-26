@@ -129,7 +129,7 @@ public class HomeClubController {
 		firstnameOS.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		lastnameOS.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
-		minPrice.setCellValueFactory(cellData -> cellData.getValue().minPriceProperty());
+		minPrice.setCellValueFactory(cellData -> cellData.getValue().minStringPriceProperty());
 		
 		TableColumn col_action = new TableColumn<>("");
 		col_action.setSortable(false);
