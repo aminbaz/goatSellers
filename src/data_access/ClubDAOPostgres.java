@@ -148,8 +148,9 @@ public class ClubDAOPostgres extends ClubDAO{
 	}
 	
 	@Override
-	public void updateClub(String logo, String name, String mail, String password) {
-		// TODO Auto-generated method stub
+	public void updateClub(Integer idClub, String logo, String name, String mail, String password) {
+		String queryClub = "UPDATE public.\"Club\" SET name='"+name+"', logo='"+logo+"' WHERE id_club = "+idClub;
+		db.makeQueryUpdate(queryClub);
 	}
 	
 	@Override

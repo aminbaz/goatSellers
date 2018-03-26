@@ -37,8 +37,8 @@ public class HomeAdminFacade {
 		dao.addClub(logo, name, mail, password);
 	}
 	
-	public void updateClub(String logo, String name, String mail, String password){
-		dao.updateClub(logo, name, mail, password);
+	public void updateClub(Integer idClub, String logo, String name, String mail, String password){
+		dao.updateClub(idClub, logo, name, mail, password);
 	}
 	
 	public ArrayList<Club> getAllClub() {

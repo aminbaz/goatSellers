@@ -36,12 +36,14 @@ public class HomeAdminController {
 	@FXML private TableColumn<AdminCell, String> name;
 	@FXML private TableColumn<AdminCell, Integer> idClub;
 	
-	
-	
 	private HomeAdminFacade myFacade;
 	
 	public HomeAdminController() {
 		myFacade = new HomeAdminFacade();
+	}
+	
+	public HomeAdminController getHomeClubController() {
+		return this;
 	}
 	
 	@FXML protected void handleLogOut(ActionEvent event) {
@@ -59,7 +61,22 @@ public class HomeAdminController {
 	}
 	
 	@FXML protected void handleAddClub(ActionEvent event) {
-		display();
+  		Stage popupwindow=new Stage();     
+  		popupwindow.initModality(Modality.APPLICATION_MODAL);
+  		popupwindow.setTitle("Add club"); 
+  		FXMLLoader loader = new FXMLLoader();
+  		loader.setLocation(ClientUI.class.getResource("popupAddClub.fxml"));
+  		AnchorPane page = null;
+			try {
+				page = (AnchorPane) loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Scene scene1= new Scene(page, 600, 300);	      
+			popupwindow.setScene(scene1);   
+			popupwindow.showAndWait();   
 	}
 	
 	@FXML public void initialize() {
@@ -101,27 +118,7 @@ public class HomeAdminController {
     
 	}
     
-	public void display(){
-		Stage popupwindow=new Stage();     
-		popupwindow.initModality(Modality.APPLICATION_MODAL);
-		popupwindow.setTitle("ADD A CLUB");     
-		Label logoLabel = new Label("LOGO : "); 
-		TextField logoTf = new TextField();
-		Label nameLabel = new Label("NAME : ");
-		TextField nameTf = new TextField();
-		Label mailLabel = new Label("MAIL : ");
-		TextField mailTf = new TextField();
-		Label passwordLabel = new Label("PASSWORD : ");
-		TextField passwordTf = new TextField();
-		Button addBtn= new Button("ADD THE CLUB");  
-		addBtn.setOnAction(e -> myFacade.addClub(logoTf.getText(), nameTf.getText(), mailTf.getText(), passwordTf.getText()));
-		VBox layout= new VBox(10);	      
-		layout.getChildren().addAll(logoLabel, logoTf, nameLabel, nameTf, mailLabel, mailTf, passwordLabel, passwordTf, addBtn);	      
-		layout.setAlignment(Pos.CENTER);	      
-		Scene scene1= new Scene(layout, 300, 350);	      
-		popupwindow.setScene(scene1);   
-		popupwindow.showAndWait();      
-	}
+
 	private class ButtonCell extends TableCell<AdminCell, Boolean> {
 	    final Button cellButton = new Button("Update");
 	    
@@ -130,6 +127,23 @@ public class HomeAdminController {
 	            @Override
 	            public void handle(ActionEvent t) {
 	            	final AdminCell item = (AdminCell) getTableRow().getItem();
+	            	Stage popupwindow=new Stage();     
+	          		popupwindow.initModality(Modality.APPLICATION_MODAL);
+	          		popupwindow.setTitle("Update cLub"); 
+	          		FXMLLoader loader = new FXMLLoader();
+	          		loader.setController(new PopupUpdateClubController(item,getHomeClubController()));
+	          		loader.setLocation(ClientUI.class.getResource("PopupUpdateClub.fxml"));
+	          		AnchorPane page = null;
+	        			try {
+	        				page = (AnchorPane) loader.load();
+	        			} catch (IOException e) {
+	        				// TODO Auto-generated catch block
+	        				e.printStackTrace();
+	        			}
+	        			
+	        			Scene scene1= new Scene(page, 600, 300);	      
+	        			popupwindow.setScene(scene1);   
+	        			popupwindow.showAndWait();
 	            }
 	        });
 	    }

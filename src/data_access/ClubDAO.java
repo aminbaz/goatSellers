@@ -11,7 +11,7 @@ public abstract class ClubDAO {
 	public abstract ArrayList<Sale> getAllPurchases(int id);
 	public abstract ArrayList<Sale> getAllSales(int id);
 	public abstract void addClub(String logo, String name, String mail, String password);
-	public abstract void updateClub(String logo, String name, String mail, String password);
+	public abstract void updateClub(Integer idClub, String logo, String name, String mail, String password);
 	public abstract ResultSet getAllUpToSales(int id);
 	public abstract ArrayList<Club> getAllClub();
 	public abstract Boolean changeState(int idClub);
