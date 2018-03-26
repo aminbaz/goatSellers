@@ -16,4 +16,5 @@ public abstract class ClubDAO {
 	public abstract ArrayList<Club> getAllClub();
 	public abstract Boolean changeState(int idClub);
 	public abstract Boolean isBlock(int idClub);
+	public abstract void updateUpToSale(int id, int price);
 }

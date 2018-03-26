@@ -207,4 +207,9 @@ public class ClubDAOPostgres extends ClubDAO{
 		return result;
 	}
 	
+	public void updateUpToSale(int id, int price) {
+		String query="UPDATE public.\"UpToSale\" SET minprice="+price+" WHERE id_uptosale="+id;
+		db.makeQueryUpdate(query);
+	}
+	
 }
