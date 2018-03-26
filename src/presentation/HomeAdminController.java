@@ -16,7 +16,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import presentation.HomeClubController.ButtonCell;
 import presentation.tableViewCell.AdminCell;
 import presentation.tableViewCell.ClubCell;
 import presentation.tableViewCell.OnSaleCell;
@@ -35,6 +34,7 @@ public class HomeAdminController {
 	
 	@FXML private TableColumn<AdminCell, String> logo;
 	@FXML private TableColumn<AdminCell, String> name;
+	@FXML private TableColumn<AdminCell, Integer> idClub;
 	
 	
 	
@@ -127,11 +127,9 @@ public class HomeAdminController {
 	    
 	    ButtonCell(){
 	        cellButton.setOnAction(new EventHandler<ActionEvent>(){
-
 	            @Override
 	            public void handle(ActionEvent t) {
-	                // do something when button clicked
-	                //...
+	            	final AdminCell item = (AdminCell) getTableRow().getItem();
 	            }
 	        });
 	    }
