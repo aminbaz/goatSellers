@@ -19,4 +19,5 @@ public abstract class ClubDAO {
 	public abstract void updateUpToSale(int id, int price);
 	public abstract void makeAnOffer(int id_club, int id_uptosale, int price);
 	public abstract ResultSet getAllClubOffers(int id);
+	public abstract String getNameClub(int id);
 }

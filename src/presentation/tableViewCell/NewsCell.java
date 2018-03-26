@@ -9,18 +9,20 @@ public class NewsCell {
 	private final StringProperty firstname;
 	private final StringProperty lastname;
 	private final StringProperty birth;
+	private final StringProperty position;
 	private final StringProperty oldClub;
 	private final StringProperty newClub;
 	private final StringProperty price;
 	
 	public NewsCell() {
-		this(null,null,null,null,null,0);
+		this(null,null,null,null,null,null,0);
 	}
 	
-	public NewsCell(String firstname, String lastname, Date birthday, String oldClub, String newClub, int price) {
+	public NewsCell(String firstname, String lastname, Date birthday, String position, String oldClub, String newClub, int price) {
 		this.firstname = new SimpleStringProperty(firstname);
 		this.lastname = new SimpleStringProperty(lastname);
 		this.birth = new SimpleStringProperty(birthday.toString());
+		this.position = new SimpleStringProperty(position);
 		this.oldClub = new SimpleStringProperty(oldClub);
 		this.newClub = new SimpleStringProperty(newClub);
 		float amount = (float) (price/1000000.00);
@@ -35,6 +37,9 @@ public class NewsCell {
 	}
 	public String getBirth() {
 		return birth.get();
+	}
+	public String getPosition() {
+		return position.get();
 	}
 	public String getOldClub() {
 		return oldClub.get();
@@ -55,6 +60,9 @@ public class NewsCell {
 	public void setBirth(String birth) {
 		this.birth.set(birth);
 	}
+	public void setPosition(String position) {
+		this.position.set(position);
+	}
 	public void setOldClub(String oldClub) {
 		this.oldClub.set(oldClub);
 	}
@@ -73,6 +81,9 @@ public class NewsCell {
 	}
 	public StringProperty birthProperty() {
 		return birth;
+	}
+	public StringProperty positionProperty() {
+		return position;
 	}
 	public StringProperty oldClubProperty() {
 		return oldClub;

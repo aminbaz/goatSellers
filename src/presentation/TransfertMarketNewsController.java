@@ -2,6 +2,8 @@ package presentation;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+
 import business_logic.facades.LoginFacade;
 import business_logic.facades.MarketNewsFacade;
 import business_logic.models.Authority;
@@ -17,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -31,9 +34,12 @@ public class TransfertMarketNewsController {
 	@FXML private TableColumn<NewsCell, String> firstname;
 	@FXML private TableColumn<NewsCell, String> lastname;
 	@FXML private TableColumn<NewsCell, String> birth;
+	@FXML private TableColumn<NewsCell, String> position;
 	@FXML private TableColumn<NewsCell, String> oldClub;
 	@FXML private TableColumn<NewsCell, String> newClub;
 	@FXML private TableColumn<NewsCell, String> price;
+	
+	@FXML private TableView<NewsCell> salesTable;
 	
 	private MarketNewsFacade myFacade;
 	
@@ -106,6 +112,21 @@ public class TransfertMarketNewsController {
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
 		nameClubLabel.setText(myUser.getName());
+		
+		firstname.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
+		lastname.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
+		birth.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
+		position.setCellValueFactory(cellData -> cellData.getValue().positionProperty());
+		oldClub.setCellValueFactory(cellData -> cellData.getValue().oldClubProperty());
+		newClub.setCellValueFactory(cellData -> cellData.getValue().newClubProperty());
+		price.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
+		
+		try {
+			salesTable.setItems(myFacade.getAllSales());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
