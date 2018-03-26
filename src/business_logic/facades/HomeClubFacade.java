@@ -24,8 +24,15 @@ public class HomeClubFacade {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
-		
-		ResultSet result = getAllUpToSales();
+	}
+	
+	public ObservableList<OnSaleCell> getCellData(){
+		return cellData;
+	}
+	
+	public void initAllUpToSales() {
+		Club user = (Club) ClientUI.getMyUser();
+		ResultSet result = dao.getAllUpToSales(user.getRole());
 		try {
 			while(result.next()) {
 				float amount = (float) (result.getInt("minprice")/1000000.00);
@@ -37,15 +44,6 @@ public class HomeClubFacade {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public ObservableList<OnSaleCell> getCellData(){
-		return cellData;
-	}
-	
-	public ResultSet getAllUpToSales() {
-		Club user = (Club) ClientUI.getMyUser();
-		return dao.getAllUpToSales(user.getRole());
 	}
 
 	public ClubDAO getDao() {

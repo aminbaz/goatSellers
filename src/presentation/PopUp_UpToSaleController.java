@@ -2,7 +2,9 @@ package presentation;
 
 import java.io.File;
 
+import business_logic.facades.HomeClubFacade;
 import business_logic.models.Club;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,8 +25,11 @@ public class PopUp_UpToSaleController {
 	@FXML private TextField minPrice;
 	@FXML private Button validateButton;
 	
+	private HomeClubFacade myFacade;
+	
 	public PopUp_UpToSaleController(OnSaleCell item) {
 		this.myCell=item;
+		myFacade= new HomeClubFacade();
 	}
 	@FXML public void initialize() {
 		Image myImage = null;
@@ -37,5 +42,9 @@ public class PopUp_UpToSaleController {
         lastName.setText(myCell.getLastname());
         birth.setText(myCell.getBirth());
         minPrice.setText(Integer.toString(myCell.getMinPrice()));
+	}
+	
+	@FXML protected void handleAction(ActionEvent event) {
+		
 	}
 }
