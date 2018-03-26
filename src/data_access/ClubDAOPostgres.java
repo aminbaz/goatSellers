@@ -122,7 +122,6 @@ public class ClubDAOPostgres extends ClubDAO{
 			e.printStackTrace();
 		}	
 		String queryRole = "INSERT INTO public.\"Role\" VALUES ("+ id_roleBd +", 'Club')";
-		//String queryRole = "INSERT INTO public.\"Role\" VALUES ("+ id_roleBd +", 'amin')";
 		db.makeQueryUpdate(queryRole);
 		
 		Integer id_userBd = 0;
@@ -139,11 +138,9 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		
 		String queryUser = "INSERT INTO public.\"User\" VALUES ("+ id_userBd +",'"+ mailtmp +"','"+passwordtmp+"',"+id_roleBd+")";
-		//String queryUser = "INSERT INTO public.\"User\"(id_user, mail, password, role)VALUES (" +id_roleBd+ ",'amin','amin'," +id_roleBd+")";
 		db.makeQueryUpdate(queryUser);
 		
 		String queryClub = "INSERT INTO public.\"Club\" VALUES ("+ id_userBd +",'"+ nametmp +"','"+logotmp+"',"+id_roleBd+",'false')";
-		//String queryClub = "INSERT INTO public.\"Club\"(id_club, name, logo, role, blocked)VALUES ("+ id_userBd +",'amin','amin',"+id_roleBd+",'false')";
 		db.makeQueryUpdate(queryClub);
 		
 		

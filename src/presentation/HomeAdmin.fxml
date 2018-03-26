@@ -11,13 +11,12 @@
       <Button layoutX="906.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleLogOut" text="LOGOUT" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="30.0" />
       <TableView fx:id="clubTable" layoutX="41.0" layoutY="112.0" prefHeight="400.0" prefWidth="718.0" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="112.0">
         <columns>
-          <TableColumn fx:id="logo" prefWidth="251.0" text="Logo" />
-          <TableColumn fx:id="name" prefWidth="280.0" text="Name Club" />
-            <TableColumn prefWidth="186.0" text="Update" />
+          <TableColumn fx:id="logo" prefWidth="267.0" text="Logo" />
+          <TableColumn fx:id="name" minWidth="0.0" prefWidth="252.0" text="Name Club" />
         </columns>
       </TableView>
       <Label layoutX="46.0" layoutY="38.0" text="Admin Name" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
-      <Label layoutX="376.0" layoutY="80.0" text="Information" AnchorPane.bottomAnchor="503.0" AnchorPane.leftAnchor="376.0" AnchorPane.rightAnchor="361.0" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="400.0" layoutY="80.0" text="Information" AnchorPane.bottomAnchor="503.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="337.0" AnchorPane.topAnchor="80.0" />
       <Button layoutX="389.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleAddClub" text="ADD CLUB" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="338.0" AnchorPane.topAnchor="526.0" />
    </children>
 </AnchorPane>
