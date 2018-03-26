@@ -37,11 +37,11 @@ public class UserDAOPostgres extends UserDAO{
 	public User getRoleUser(User user) {
 		boolean find=false;
 		User speUser=user;
-		String query="SELECT c.id_club, c.name, c.logo, r.id_role FROM public.\"Club\" c, public.\"Role\" r WHERE c.role=r.id_role AND r.rolename LIKE \'Club\' AND c.role="+user.getRole();
+		String query="SELECT c.id_club, c.name, c.logo, r.id_role, c.blocked FROM public.\"Club\" c, public.\"Role\" r WHERE c.role=r.id_role AND r.rolename LIKE \'Club\' AND c.role="+user.getRole();
 		ResultSet result=db.makeQuery(query);
 		try {
 			if(result.next()) {
-				speUser = new Club(user.getId(),user.getMail(),user.getPassword(),user.getRole(),result.getInt("id_club"),result.getString("name"),result.getString("logo"));
+				speUser = new Club(user.getId(),user.getMail(),user.getPassword(),user.getRole(),result.getInt("id_club"),result.getString("name"),result.getString("logo"),result.getBoolean("blocked"));
 				find=true;
 			}
 		} catch (SQLException e) {

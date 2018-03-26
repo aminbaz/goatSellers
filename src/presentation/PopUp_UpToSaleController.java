@@ -6,6 +6,8 @@ import business_logic.facades.HomeClubFacade;
 import business_logic.models.Club;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Label;
@@ -48,7 +50,13 @@ public class PopUp_UpToSaleController {
 	}
 	
 	@FXML protected void handleAction(ActionEvent event) {
-		if((Price.getText()).equals("Amount too low !")) {
+		Club myUser = (Club) ClientUI.getMyUser();
+		if(myUser.isBlocked()) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Error");
+			alert.setHeaderText(null);
+			alert.setContentText("Your club has been blocked!");
+			alert.showAndWait();			
 		}else {
 			if(myCell.getMinPrice()<=Integer.parseInt(Price.getText())) {
 				myFacade.makeAnOffer(myCell.getId(), ((Club)ClientUI.getMyUser()).getId_club(),Integer.parseInt(Price.getText()));
@@ -57,7 +65,11 @@ public class PopUp_UpToSaleController {
 				view.getOffersTable().refresh();
 				stage.close();
 			}else {
-				Price.setText("Amount too low !");
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Error");
+				alert.setHeaderText(null);
+				alert.setContentText("Amount is too low!");
+				alert.showAndWait();
 			}
 		}
 	}

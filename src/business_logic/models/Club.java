@@ -5,6 +5,7 @@ public class Club extends User{
 	private int id_club;
 	private String name;
 	private String logo;
+	private boolean blocked;
 	
 	public Club(int id_user, String name, String logo){
 		super(id_user);
@@ -17,11 +18,12 @@ public class Club extends User{
 		super(id_user,mail,password,role);
 	}
 	
-	public Club(int id_user, String mail, String password, int role, int id_club, String name, String logo){
+	public Club(int id_user, String mail, String password, int role, int id_club, String name, String logo, boolean blocked){
 		super(id_user,mail,password,role);
 		this.id_club=id_club;
 		this.name=name;
 		this.logo=logo;
+		this.blocked=blocked;
 	}
 
 	public int getId_club() {
@@ -52,6 +54,12 @@ public class Club extends User{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	
+
+	public boolean isBlocked() {
+		return blocked;
+	}
+
+	public void setBlocked(boolean blocked) {
+		this.blocked = blocked;
+	}
 }
