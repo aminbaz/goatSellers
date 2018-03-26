@@ -48,9 +48,13 @@ public class PopUp_UpToSaleController {
 	}
 	
 	@FXML protected void handleAction(ActionEvent event) {
-		myFacade.makeAnOffer(myCell.getId(), ((Club)ClientUI.getMyUser()).getId_club(),Integer.parseInt(Price.getText()));
-	    Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
-	    view.getOnSalesTable().refresh();
-	    stage.close();
+		if(myCell.getMinPrice()<Integer.parseInt(Price.getText())) {
+			myFacade.makeAnOffer(myCell.getId(), ((Club)ClientUI.getMyUser()).getId_club(),Integer.parseInt(Price.getText()));
+			Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
+			view.getOnSalesTable().refresh();
+			stage.close();
+		}else {
+			Price.setText("Amount too low !");
+		}
 	}
 }
