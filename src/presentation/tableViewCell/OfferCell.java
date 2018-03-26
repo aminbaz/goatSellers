@@ -17,7 +17,8 @@ public class OfferCell {
 	public OfferCell(String firstname, String lastname, int price, String status) {
 		this.firstname = new SimpleStringProperty(firstname);
 		this.lastname = new SimpleStringProperty(lastname);
-		this.price = new SimpleStringProperty(Integer.toString(price));
+		float amount = (float) (price/1000000.00);
+		this.price = new SimpleStringProperty(Float.toString(amount)+" M€");
 		this.status = new SimpleStringProperty(status);
 	}
 	
