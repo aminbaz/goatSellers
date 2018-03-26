@@ -157,7 +157,7 @@ public class HomeClubController {
         });
 		
         onSalesTable.getColumns().add(col_action);
-        
+        myFacade.initAllUpToSales();
         onSalesTable.setItems(myFacade.getCellData());
 		
 	}
