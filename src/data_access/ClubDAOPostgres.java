@@ -121,8 +121,9 @@ public class ClubDAOPostgres extends ClubDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
-		String queryRole = "INSERT INTO public.\"Role\"(id_role, rolename)VALUES ("+ id_roleBd +", 'Club')";
-		ResultSet resultRole=db.makeQuery(queryRole);
+		String queryRole = "INSERT INTO public.\"Role\" VALUES ("+ id_roleBd +", 'Club')";
+		//String queryRole = "INSERT INTO public.\"Role\" VALUES ("+ id_roleBd +", 'amin')";
+		db.makeQueryUpdate(queryRole);
 		
 		Integer id_userBd = 0;
 		String queryIdUser = "select max(id_user) + 1 from public.\"User\"";
@@ -137,11 +138,13 @@ public class ClubDAOPostgres extends ClubDAO{
 			e.printStackTrace();
 		}
 		
-		String queryUser = "INSERT INTO public.\"User\"(id_user, mail, password, role)VALUES ("+ id_userBd +","+ mailtmp +","+passwordtmp+","+id_roleBd+")";
-		ResultSet resultUser=db.makeQuery(queryUser);
+		String queryUser = "INSERT INTO public.\"User\" VALUES ("+ id_userBd +",'"+ mailtmp +"','"+passwordtmp+"',"+id_roleBd+")";
+		//String queryUser = "INSERT INTO public.\"User\"(id_user, mail, password, role)VALUES (" +id_roleBd+ ",'amin','amin'," +id_roleBd+")";
+		db.makeQueryUpdate(queryUser);
 		
-		String queryClub = "INSERT INTO public.\"Club\"(id_club, name, logo, role, blocked)VALUES ("+ id_userBd +","+ nametmp +","+logotmp+","+id_roleBd+",'false')";
-		ResultSet resultClub=db.makeQuery(queryClub);
+		String queryClub = "INSERT INTO public.\"Club\" VALUES ("+ id_userBd +",'"+ nametmp +"','"+logotmp+"',"+id_roleBd+",'false')";
+		//String queryClub = "INSERT INTO public.\"Club\"(id_club, name, logo, role, blocked)VALUES ("+ id_userBd +",'amin','amin',"+id_roleBd+",'false')";
+		db.makeQueryUpdate(queryClub);
 		
 		
 		

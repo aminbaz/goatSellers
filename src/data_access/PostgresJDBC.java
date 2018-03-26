@@ -54,17 +54,28 @@ public class PostgresJDBC {
 	}
 	
 	public ResultSet makeQuery(String query) {
+		ResultSet result = null;
 		try {
 			Statement state = myconnect.createStatement();
-			ResultSet result = state.executeQuery(query);
+			result = state.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int makeQueryUpdate(String query) {
+		try {
+			Statement state = myconnect.createStatement();
+			int result = state.executeUpdate(query);
 			return result;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		return 0;
 	}
-	
 	
 	
 	public Connection getMyconnect() {
