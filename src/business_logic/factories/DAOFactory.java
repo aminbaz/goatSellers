@@ -3,6 +3,7 @@ package business_logic.factories;
 import data_access.ClubDAO;
 import data_access.PlayerDAO;
 import data_access.PostgresJDBC;
+import data_access.SaleDAO;
 import data_access.UserDAO;
 import data_access.UserDAOPostgres;
 
@@ -17,6 +18,7 @@ public abstract class DAOFactory {
 	public abstract UserDAO getUserDAO();
 	public abstract PlayerDAO getPlayerDAO();
 	public abstract ClubDAO getClubDAO();
+	public abstract SaleDAO getSaleDAO();
 	
 	public static DAOFactory getInstance() {
 		return myFactory;

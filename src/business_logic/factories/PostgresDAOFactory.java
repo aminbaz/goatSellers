@@ -4,6 +4,8 @@ import data_access.ClubDAO;
 import data_access.ClubDAOPostgres;
 import data_access.PlayerDAO;
 import data_access.PlayerDAOPostgres;
+import data_access.SaleDAO;
+import data_access.SaleDAOPostgres;
 import data_access.UserDAO;
 import data_access.UserDAOPostgres;
 
@@ -35,5 +37,11 @@ public class PostgresDAOFactory extends DAOFactory{
 	public ClubDAO getClubDAO() {
 		// TODO Auto-generated method stub
 		return new ClubDAOPostgres();
+	}
+	
+	@Override
+	public SaleDAO getSaleDAO() {
+		// TODO Auto-generated method stub
+		return new SaleDAOPostgres();
 	}
 }

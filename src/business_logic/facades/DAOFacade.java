@@ -4,6 +4,7 @@ import business_logic.factories.DAOFactory;
 import business_logic.factories.PostgresDAOFactory;
 import data_access.ClubDAO;
 import data_access.PlayerDAO;
+import data_access.SaleDAO;
 import data_access.UserDAO;
 
 public class DAOFacade {
@@ -24,4 +25,7 @@ public class DAOFacade {
 		return this.getDAOFactory().getClubDAO();
 	}		
 	
+	public SaleDAO getSaleDAO() {
+		return this.getDAOFactory().getSaleDAO();
+	}			
 }
