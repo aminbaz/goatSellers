@@ -235,5 +235,20 @@ public class ClubDAOPostgres extends ClubDAO{
 		ResultSet result=db.makeQuery(query);
 		return result;
 	}
+
+	@Override
+	public String getNameClub(int id) {
+		String query="SELECT name FROM public.\"Club\" WHERE id_club="+id;
+		ResultSet result=db.makeQuery(query);
+		try {
+			if(result.next()) {
+				return result.getString("name");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	
 }

@@ -22,15 +22,15 @@
             <Label layoutX="76.0" layoutY="53.0" text="Welcome" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="80.0" />
          </children>
       </AnchorPane>
-      <TableView layoutX="463.0" layoutY="172.0" prefHeight="533.0" prefWidth="700.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="250.0">
+      <TableView fx:id="salesTable" layoutX="463.0" layoutY="172.0" prefHeight="533.0" prefWidth="700.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="250.0">
         <columns>
-          <TableColumn fx:id="firstname" prefWidth="100.0" text="FirstName" />
-          <TableColumn fx:id="lastname" prefWidth="100.0" text="LastName" />
-            <TableColumn fx:id="birth" prefWidth="100.0" text="DateOfBirth" />
-            <TableColumn fx:id="position" prefWidth="100.0" text="Position" />
-            <TableColumn fx:id="oldClub" prefWidth="100.0" text="OldClub" />
-            <TableColumn fx:id="newClub" prefWidth="100.0" text="NewClub" />
-            <TableColumn fx:id="price" prefWidth="100.0" text="Price" />
+          <TableColumn fx:id="firstname" prefWidth="100.0" style="-fx-alignment: CENTER;" text="FirstName" />
+          <TableColumn fx:id="lastname" prefWidth="100.0" style="-fx-alignment: CENTER;" text="LastName" />
+            <TableColumn fx:id="birth" prefWidth="100.0" style="-fx-alignment: CENTER;" text="DateOfBirth" />
+            <TableColumn fx:id="position" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Position" />
+            <TableColumn fx:id="oldClub" prefWidth="100.0" style="-fx-alignment: CENTER;" text="OldClub" />
+            <TableColumn fx:id="newClub" prefWidth="100.0" style="-fx-alignment: CENTER;" text="NewClub" />
+            <TableColumn fx:id="price" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Price" />
         </columns>
       </TableView>
       <Label layoutX="586.0" layoutY="22.0" text="Transfert market news" AnchorPane.leftAnchor="502.0" AnchorPane.topAnchor="10.0">

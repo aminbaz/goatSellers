@@ -1,5 +1,7 @@
 package data_access;
 
-public abstract class SaleDAO {
+import java.sql.ResultSet;
 
+public abstract class SaleDAO {
+	public abstract ResultSet getAllSales();
 }
