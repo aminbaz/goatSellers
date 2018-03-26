@@ -41,7 +41,11 @@ public class OnSaleCell {
 	public String getBirth() {
 		return birth.get();
 	}
-	public Integer getMinPrice() {
+	public String getMinStringPrice() {
+		float amount = (float) (this.minPrice.getValue()/1000000.00);
+		return amount+" M€";
+	}
+	public int getMinPrice() {
 		return minPrice.get();
 	}
 	public Integer getId() {
@@ -81,6 +85,10 @@ public class OnSaleCell {
 	}
 	public IntegerProperty minPriceProperty() {
 		return minPrice;
+	}
+	public StringProperty minStringPriceProperty() {
+		float amount = (float) (this.minPrice.getValue()/1000000.00);
+		return new SimpleStringProperty(amount+" M€");
 	}
 	public IntegerProperty idOSProperty() {
 		return idOS;

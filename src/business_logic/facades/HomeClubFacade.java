@@ -28,6 +28,7 @@ public class HomeClubFacade {
 		ResultSet result = getAllUpToSales();
 		try {
 			while(result.next()) {
+				float amount = (float) (result.getInt("minprice")/1000000.00);
 				OnSaleCell cell = new OnSaleCell(result.getString("name"),result.getString("firstname"),result.getString("lastname"),result.getDate("birthdate"),result.getInt("minprice"),result.getInt("id_uptosale"));
 				System.out.println(result.getString("firstname")+" "+result.getString("lastname"));
 				cellData.add(cell);
