@@ -31,16 +31,6 @@
             <TableColumn fx:id="birthDate" prefWidth="100.0" text="DateOfBirth" />
             <TableColumn fx:id="position" prefWidth="100.0" text="Position" />
             <TableColumn fx:id="contract" prefWidth="100.0" text="DateEndOfContrat" />
-            <TableColumn prefWidth="100.0" text="Column X">
-               <graphic>
-                  <Button mnemonicParsing="false" text="Button" />
-               </graphic>
-            </TableColumn>
-            <TableColumn prefWidth="100.0" text="Column X">
-               <graphic>
-                  <Button mnemonicParsing="false" text="Button" />
-               </graphic>
-            </TableColumn>
         </columns>
       </TableView>
       <Label layoutX="301.0" layoutY="29.0" text="Manage team" AnchorPane.leftAnchor="539.0" AnchorPane.topAnchor="15.0">
