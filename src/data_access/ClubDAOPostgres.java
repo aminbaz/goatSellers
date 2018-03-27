@@ -251,4 +251,25 @@ public class ClubDAOPostgres extends ClubDAO{
 		return null;
 	}
 	
+	@Override
+	public ArrayList<Player> getAllPlayer(int idClub) {
+		// TODO Auto-generated method stub
+		ArrayList<Player> players;
+		players = new ArrayList<Player>();
+		
+		String query="SELECT * FROM public.\"Player\" WHERE club="+idClub;
+		ResultSet result=db.makeQuery(query);
+		try {
+			while(result.next()) {
+				Player myPlayer = new Player(result.getInt("id_player"),result.getString("firstname"),result.getString("lastname"),result.getDate("birthdate"),result.getString("position"),result.getDate("contract"));
+				players.add(myPlayer);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return players;
+	}
+	
 }

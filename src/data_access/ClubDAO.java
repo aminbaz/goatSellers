@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import business_logic.models.Club;
+import business_logic.models.Player;
 import business_logic.models.Sale;
 
 public abstract class ClubDAO {
@@ -20,4 +21,5 @@ public abstract class ClubDAO {
 	public abstract void makeAnOffer(int id_club, int id_uptosale, int price);
 	public abstract ResultSet getAllClubOffers(int id);
 	public abstract String getNameClub(int id);
+	public abstract ArrayList<Player> getAllPlayer(int idClub);
 }

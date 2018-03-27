@@ -1,0 +1,81 @@
+package presentation.tableViewCell;
+
+import java.sql.Date;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
+public class PlayerCell {
+	
+	private final StringProperty firstname;
+	private final StringProperty lastname;
+	private final StringProperty birth;
+	private final StringProperty position;
+	private final StringProperty endOfContrat;
+	
+	public PlayerCell() {
+		this(null,null,null,null,null);
+	}
+	
+	public PlayerCell(String firstname, String lastname, Date birthdate, String position, Date endOfContrat) {
+		this.firstname = new SimpleStringProperty(firstname);
+		this.lastname = new SimpleStringProperty(lastname);
+		this.birth = new SimpleStringProperty(birthdate.toString());
+		this.position = new SimpleStringProperty(position);
+		this.endOfContrat = new SimpleStringProperty(endOfContrat.toString());
+	}
+
+//Function get
+	public String getFirstname() {
+		return firstname.get();
+	}
+	public String getLastname() {
+		return lastname.get();
+	}
+	public String getBirth() {
+		return birth.get();
+	}
+	public String getPosition() {
+		return position.get();
+	}
+	public String getEndOfContrat() {
+		return endOfContrat.get();
+	}
+//Function set
+	public void setFirstname(String name) {
+		this.firstname.set(name);
+	}
+	public void setLastname(String name) {
+		this.lastname.set(name);
+	}
+	public void setBirth(String birth) {
+		this.birth.set(birth);
+	}
+	public void setPosition(String position) {
+		this.position.set(position);
+	}
+	public void setEndOfContrat(String endOfContrat) {
+		this.endOfContrat.set(endOfContrat);
+	}
+
+	
+
+	public StringProperty firstnameProperty() {
+		return firstname;
+	}
+	public StringProperty lastnameProperty() {
+		return lastname;
+	}
+	public StringProperty birthProperty() {
+		return birth;
+	}
+	public StringProperty PositionProperty() {
+		return position;
+	}
+	public StringProperty endOfContratProperty() {
+		return endOfContrat;
+	}
+
+}

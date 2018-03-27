@@ -13,6 +13,7 @@ import javafx.event.EventHandler;
 import presentation.ClientUI;
 import presentation.tableViewCell.AdminCell;
 import presentation.tableViewCell.ClubCell;
+import presentation.tableViewCell.PlayerCell;
 import presentation.tableViewCell.SaleCell;
 
 public class HomeAdminFacade {

@@ -24,13 +24,13 @@
             <Button layoutX="40.0" layoutY="452.0" mnemonicParsing="false" onAction="#handleLogOut" prefWidth="142.0" text="Log out" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="450.0" />
          </children>
       </AnchorPane>
-      <TableView layoutX="465.0" layoutY="200.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="60.0">
+      <TableView fx:id="clubTable" layoutX="465.0" layoutY="200.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="60.0">
         <columns>
-          <TableColumn prefWidth="100.0" text="FirstName" />
-          <TableColumn prefWidth="100.0" text="LastName" />
-            <TableColumn prefWidth="100.0" text="DateOfBirth" />
-            <TableColumn prefWidth="100.0" text="Position" />
-            <TableColumn prefWidth="100.0" text="DateEndOfContrat" />
+          <TableColumn fx:id="firstname" prefWidth="100.0" text="FirstName" />
+          <TableColumn fx:id="lastname" prefWidth="100.0" text="LastName" />
+            <TableColumn fx:id="birthDate" prefWidth="100.0" text="DateOfBirth" />
+            <TableColumn fx:id="position" prefWidth="100.0" text="Position" />
+            <TableColumn fx:id="contract" prefWidth="100.0" text="DateEndOfContrat" />
             <TableColumn prefWidth="100.0" text="Column X">
                <graphic>
                   <Button mnemonicParsing="false" text="Button" />
