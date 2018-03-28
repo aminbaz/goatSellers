@@ -1,9 +1,10 @@
 package business_logic.facades;
 
 import java.io.DataOutput;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -49,10 +50,11 @@ public class ManageTeamClubFacade {
 		int id=daoP.maxId();
 		Club user = (Club) ClientUI.getMyUser();
 		int id_club= user.getId_club();
-		Date newBirthdate = (Date) Date.from(birthdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date newContract = (Date) Date.from(endContract.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		
-		Player myPlayer = new Player(id,firstname, lastname, newBirthdate, position, newContract);
+		Date dateBirth = Date.from(birthdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date dateContract = Date.from(endContract.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		Player myPlayer = new Player(id+1,firstname, lastname, dateBirth, position, dateContract);
 		daoP.addPlayer(myPlayer, id_club);
 	}
 
