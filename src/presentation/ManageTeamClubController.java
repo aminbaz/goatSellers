@@ -139,6 +139,7 @@ public class ManageTeamClubController {
 		image.setImage(myImage);
 		nameClubLabel.setText(myUser.getName());
 		
+		
 	    firstname.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 	    lastname.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 	    birthDate.setCellValueFactory(cellData -> cellData.getValue().birthProperty());
@@ -218,6 +219,7 @@ public class ManageTeamClubController {
 	            		popupwindow.initModality(Modality.APPLICATION_MODAL);
 	            		popupwindow.setTitle("Player"); 
 	               		FXMLLoader loader = new FXMLLoader();
+		          		loader.setController(new PopupUpdatePlayerController(item,getManageTeamClubController()));
 	            		loader.setLocation(ClientUI.class.getResource("PopUp_UpdatePlayer.fxml"));
 	            		AnchorPane page = null;
 						try {

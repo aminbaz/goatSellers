@@ -17,6 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import presentation.tableViewCell.OnSaleCell;
 import presentation.tableViewCell.PlayerCell;
 
 public class PopupUpdatePlayerController {
@@ -29,9 +30,11 @@ public class PopupUpdatePlayerController {
 	
 
 	PlayerCell myCell = null;
-	private ManageTeamClubFacade myFacade;;
+	private ManageTeamClubFacade myFacade;
+	private ManageTeamClubController view;
 	
-	public PopupUpdatePlayerController() {
+	public PopupUpdatePlayerController(PlayerCell item, ManageTeamClubController view) {
+		this.myCell=item;
 		myFacade= new ManageTeamClubFacade();
 	}
 	
@@ -44,13 +47,33 @@ public class PopupUpdatePlayerController {
         ObservableList obList = FXCollections.observableList(list);
         position.getItems().clear();
         position.setItems(obList); 
+        
+		firstName.setText(myCell.getFirstname());
+		lastName.setText(myCell.getLastname());
+		
+		//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		//LocalDate localDate = LocalDate.parse(myCell.getBirth(), formatter);
+		//dateOfBirth.setValue(localDate);
+		
+		position.setValue(myCell.getPosition());
+		
+		//DateTimeFormatter formatter1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		//LocalDate localDate1 = LocalDate.parse(myCell.getEndOfContrat(), formatter1);
+		//endOfContrat.setValue(localDate1);
+		
 	}	
 	
-	/*@FXML protected void updatePlayer(ActionEvent event) {
-		System.out.println("OK");
+	@FXML protected void updatePlayer(ActionEvent event) {
+		System.out.println(myCell.getIdPlayer());
 		myFacade.updatePlayer(myCell.getIdPlayer(),firstName.getText(), lastName.getText(), dateOfBirth.getValue(), position.getValue(), endOfContrat.getValue());
+        
+        myCell.setFirstname(firstName.getText());
+		myCell.setLastname(lastName.getText());
+		myCell.setBirth(dateOfBirth.getValue().toString());
+		myCell.setPosition(position.getValue());
+		myCell.setEndOfContrat(endOfContrat.getValue().toString());
 		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
-		stage.close(); 
-	}*/
+		stage.close();
+	}
 
 }

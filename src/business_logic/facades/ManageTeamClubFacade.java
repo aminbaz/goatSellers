@@ -1,7 +1,7 @@
 package business_logic.facades;
 
 import java.io.DataOutput;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -45,7 +45,7 @@ public class ManageTeamClubFacade {
 		return getCellData();
 	}
 	
-	public void addPlayer(String firstname, String lastname, LocalDate birthdate, String position, LocalDate endContract) {
+	/*public void addPlayer(String firstname, String lastname, LocalDate birthdate, String position, LocalDate endContract) {
 		int id=daoP.maxId();
 		Club user = (Club) ClientUI.getMyUser();
 		int id_club= user.getId_club();
@@ -54,11 +54,11 @@ public class ManageTeamClubFacade {
 		
 		Player myPlayer = new Player(id,firstname, lastname, newBirthdate, position, newContract);
 		daoP.addPlayer(myPlayer, id_club);
-	}
+	}*/
 	
 	public void updatePlayer(Integer id_player, String firstName, String lastName, LocalDate birthDate, String position, LocalDate contrat){
-		Date newBirthdate = (Date) Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		Date newContract = (Date) Date.from(contrat.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date newBirthdate = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date newContract = Date.from(contrat.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		daoP.updatePlayer(id_player, firstName, lastName, newBirthdate, position, newContract);
 	}
 
