@@ -21,5 +21,7 @@ public abstract class ClubDAO {
 	public abstract void makeAnOffer(int id_club, int id_uptosale, int price);
 	public abstract ResultSet getAllClubOffers(int id);
 	public abstract String getNameClub(int id);
+	public abstract String getMailClub(int id);
+	public abstract String getPasswordClub(int id);
 	public abstract ArrayList<Player> getAllPlayer(int idClub);
 }

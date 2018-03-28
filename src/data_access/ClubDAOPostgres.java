@@ -252,6 +252,36 @@ public class ClubDAOPostgres extends ClubDAO{
 	}
 	
 	@Override
+	public String getMailClub(int id) {
+		String query="SELECT u.mail FROM public.\"User\" u, public.\"Role\" r, public.\"Club\" c WHERE c.id_club="+id +"and c.role = r.id_role and u.role = r.id_role";
+		ResultSet result=db.makeQuery(query);
+		try {
+			if(result.next()) {
+				return result.getString("mail");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
+	public String getPasswordClub(int id) {
+		String query="SELECT u.password FROM public.\"User\" u, public.\"Role\" r, public.\"Club\" c WHERE c.id_club="+id +"and c.role = r.id_role and u.role = r.id_role";
+		ResultSet result=db.makeQuery(query);
+		try {
+			if(result.next()) {
+				return result.getString("password");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@Override
 	public ArrayList<Player> getAllPlayer(int idClub) {
 		// TODO Auto-generated method stub
 		ArrayList<Player> players;
