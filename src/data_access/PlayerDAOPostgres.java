@@ -40,9 +40,16 @@ public class PlayerDAOPostgres extends PlayerDAO{
 	@Override
 	public void updatePlayer(Integer id_player, String firstName, String lastName, Date birthDate, String position, Date contrat) {
 		
+		final String NEW_FORMAT = "yyyy-MM-dd";
+		String newBirthdate;
+		String newContract;
+
+		SimpleDateFormat sdf = new SimpleDateFormat(NEW_FORMAT);
+		newBirthdate = sdf.format(birthDate);
+		newContract = sdf.format(contrat);
 		
-		String queryClub = "UPDATE public.\"Player\" SET firstname='"+firstName+"', lastname='"+lastName+"', birthDate='"+birthDate+"', position='"+position+"', contract='"+contrat+"' WHERE id_player = "+id_player;
-		db.makeQueryUpdate(queryClub);
+		String queryPlayer = "UPDATE public.\"Player\" SET firstname='"+firstName+"', lastname='"+lastName+"', birthdate='"+newBirthdate+"', position='"+position+"', contract='"+newContract+"' WHERE id_player = "+id_player;
+		db.makeQueryUpdate(queryPlayer);
 	}
 
 	@Override

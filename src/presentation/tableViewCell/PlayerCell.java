@@ -21,13 +21,13 @@ public class PlayerCell {
 		this(null,null,null,null,null,null);
 	}
 	
-	public PlayerCell(Integer idPlayer, String firstname, String lastname, Date birthdate, String position, Date endOfContrat) {
+	public PlayerCell(Integer idPlayer, String firstname, String lastname, Date date, String position, Date date2) {
 		this.idPlayer = new SimpleIntegerProperty(idPlayer);
 		this.firstname = new SimpleStringProperty(firstname);
 		this.lastname = new SimpleStringProperty(lastname);
-		this.birth = new SimpleStringProperty(birthdate.toString());
+		this.birth = new SimpleStringProperty(date.toString());
 		this.position = new SimpleStringProperty(position);
-		this.endOfContrat = new SimpleStringProperty(endOfContrat.toString());
+		this.endOfContrat = new SimpleStringProperty(date2.toString());
 	}
 
 //Function get

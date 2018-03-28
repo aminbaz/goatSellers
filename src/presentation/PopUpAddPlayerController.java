@@ -43,8 +43,8 @@ public class PopUpAddPlayerController {
         position.setItems(obList);
 	}
 	
-	@FXML public void AddPlayer() {
+	/*@FXML public void AddPlayer() {
 		myFacade.addPlayer(firstname.getText(), lastname.getText(),birthdate.getValue(), position.getValue(), endContract.getValue());
-	}
+	}*/
 
 }

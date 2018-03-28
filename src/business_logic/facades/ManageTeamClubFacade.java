@@ -56,8 +56,10 @@ public class ManageTeamClubFacade {
 		daoP.addPlayer(myPlayer, id_club);
 	}
 	
-	public void updatePlayer(Integer id_player, String firstName, String lastName, Date birthDate, String position, Date contrat){
-		daoP.updatePlayer(id_player, firstName, lastName, birthDate, position, contrat);
+	public void updatePlayer(Integer id_player, String firstName, String lastName, LocalDate birthDate, String position, LocalDate contrat){
+		Date newBirthdate = (Date) Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date newContract = (Date) Date.from(contrat.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		daoP.updatePlayer(id_player, firstName, lastName, newBirthdate, position, newContract);
 	}
 
 	public ClubDAO getDao() {
