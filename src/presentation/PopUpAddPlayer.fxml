@@ -11,7 +11,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.PopUpAddPlayerController">
    <children>
-      <Button layoutX="158.0" layoutY="314.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="84.0" text="Add" />
+      <Button layoutX="158.0" layoutY="314.0" mnemonicParsing="false" onAction="#AddPlayer" prefHeight="25.0" prefWidth="84.0" text="Add" />
       <Label layoutX="131.0" layoutY="27.0" prefHeight="36.0" prefWidth="139.0" text="Add a player">
          <font>
             <Font size="24.0" />
@@ -42,12 +42,12 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="firstname" layoutX="158.0" layoutY="95.0">
+      <TextField fx:id="firstname" Text="Firstname" layoutX="158.0" layoutY="95.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <TextField fx:id="lastname" layoutX="158.0" layoutY="132.0">
+      <TextField fx:id="lastname" Text="Lastname" layoutX="158.0" layoutY="132.0">
          <font>
             <Font size="15.0" />
          </font>

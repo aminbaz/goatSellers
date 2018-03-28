@@ -2,6 +2,7 @@ package data_access;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 
 import business_logic.models.Player;
 
@@ -20,5 +21,33 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		return result;
 	}
 
+	@Override
+	public void addPlayer(Player player, int club) {
+		
+		final String NEW_FORMAT = "yyyy-MM-dd";
+		String newBirthdate;
+		String newContract;
+
+		SimpleDateFormat sdf = new SimpleDateFormat(NEW_FORMAT);
+		newBirthdate = sdf.format(player.getBirthdate());
+		newContract = sdf.format(player.getContract());
+		
+		String query="INSERT INTO public.\"Player\" VALUES ("+player.getId_player()+",'"+player.getFirstname()+"','"+player.getFirstname()+"',"+newBirthdate+",'"+player.getPosition()+"',"+newContract+","+club+")";                                      
+		db.makeQueryUpdate(query);
+	}
+
+	@Override
+	public int maxId() {
+		String query="SELECT Max(id_player) as nb FROM public.\"Player\"";
+		ResultSet result=db.makeQuery(query);
+		try {
+			result.next();
+			return result.getInt("nb");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 }

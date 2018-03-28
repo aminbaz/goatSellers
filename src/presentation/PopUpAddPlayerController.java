@@ -1,5 +1,9 @@
 package presentation;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +17,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 public class PopUpAddPlayerController {
 	@FXML private TextField firstname;
@@ -36,6 +41,10 @@ public class PopUpAddPlayerController {
         ObservableList obList = FXCollections.observableList(list);
         position.getItems().clear();
         position.setItems(obList);
+	}
+	
+	@FXML public void AddPlayer() {
+		myFacade.addPlayer(firstname.getText(), lastname.getText(),birthdate.getValue(), position.getValue(), endContract.getValue());
 	}
 
 }

@@ -1,13 +1,18 @@
 package business_logic.facades;
 
+import java.io.DataOutput;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 import business_logic.factories.DAOFactory;
 import business_logic.models.Club;
 import business_logic.models.Player;
 import data_access.ClubDAO;
+import data_access.PlayerDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import presentation.ClientUI;
@@ -16,13 +21,14 @@ import presentation.tableViewCell.PlayerCell;
 public class ManageTeamClubFacade {
 	
 	private ClubDAO dao;
+	private PlayerDAO daoP;
 	private ObservableList<PlayerCell> cellData = FXCollections.observableArrayList();
 	
 	public ManageTeamClubFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
-
+		daoP = fact.getPlayerDAO();
 	}
 	
 	public ObservableList<PlayerCell> getCellData(){
@@ -37,6 +43,17 @@ public class ManageTeamClubFacade {
 			cellData.add(cell);
 		}
 		return getCellData();
+	}
+	
+	public void addPlayer(String firstname, String lastname, LocalDate birthdate, String position, LocalDate endContract) {
+		int id=daoP.maxId();
+		Club user = (Club) ClientUI.getMyUser();
+		int id_club= user.getId_club();
+		Date newBirthdate = (Date) Date.from(birthdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date newContract = (Date) Date.from(endContract.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		
+		Player myPlayer = new Player(id,firstname, lastname, newBirthdate, position, newContract);
+		daoP.addPlayer(myPlayer, id_club);
 	}
 
 	public ClubDAO getDao() {
