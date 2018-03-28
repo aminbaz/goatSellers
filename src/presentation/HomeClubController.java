@@ -35,6 +35,7 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.util.Duration;
+import presentation.tableViewCell.AdminCell;
 import presentation.tableViewCell.OfferCell;
 import presentation.tableViewCell.OnSaleCell;
 import presentation.tableViewCell.SaleCell;
@@ -235,6 +236,27 @@ public class HomeClubController {
 
 	public void setOffersTable(TableView<OfferCell> offersTable) {
 		this.offersTable = offersTable;
+	}
+	
+	@FXML protected void handleUpdateClub(ActionEvent event) {
+		Club myUser = (Club) ClientUI.getMyUser();
+  		Stage popupwindow=new Stage();     
+  		popupwindow.initModality(Modality.APPLICATION_MODAL);
+  		popupwindow.setTitle("Update club"); 
+  		FXMLLoader loader = new FXMLLoader();
+  		loader.setController(new PopupHomeUpdateClubController(myUser));
+  		loader.setLocation(ClientUI.class.getResource("PopupHomeUpdateClub.fxml"));
+  		AnchorPane page = null;
+			try {
+				page = (AnchorPane) loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Scene scene1= new Scene(page, 600, 300);	      
+			popupwindow.setScene(scene1);   
+			popupwindow.showAndWait();
 	}
     
 }
