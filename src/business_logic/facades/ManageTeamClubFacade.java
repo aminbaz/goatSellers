@@ -75,6 +75,11 @@ public class ManageTeamClubFacade {
 		Club myClub = (Club) ClientUI.getMyUser();
 		daoS.addUpToSale(minprice, myClub.getId_club(), idPlayer);
 	}
+	
+	public void deleteUpToSale(int idPlayer) {
+		Club myClub = (Club) ClientUI.getMyUser();
+		daoS.deleteUpToSale(myClub.getId_club(), idPlayer);
+	}
 
 	public ClubDAO getDao() {
 		return dao;

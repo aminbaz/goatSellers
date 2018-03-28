@@ -228,6 +228,18 @@ public class ManageTeamClubController {
 		       	            		popupwindow.setTitle("Up To Sale"); 
 		       	               		FXMLLoader loader = new FXMLLoader();        
 	                            	if(btn.getText().equals("On Sale")) {
+			       		          		loader.setController(new PopUpSaleController(this,btn,player,getManageTeamClubController()));
+			       	            		loader.setLocation(ClientUI.class.getResource("Popup_PlayerOnSale.fxml"));
+			       	            		AnchorPane page = null;
+			       						try {
+			       							page = (AnchorPane) loader.load();
+			       						} catch (IOException e) {
+			       							// TODO Auto-generated catch block
+			       							e.printStackTrace();
+			       						}
+			       						
+			       						Scene scene1= new Scene(page, 600, 400);
+			       						popupwindow.setScene(scene1); 	
 	                            	}else {
 			       		          		loader.setController(new PopUpToSaleController(this,btn,player,getManageTeamClubController()));
 			       	            		loader.setLocation(ClientUI.class.getResource("popUpToSale.fxml"));

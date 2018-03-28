@@ -39,8 +39,6 @@ public class PopUpToSaleController {
 	}
 	
 	@FXML protected void ActionValidate(ActionEvent event) {
-		btn.setText("On Sale");
-		buttonCol.setGraphic(btn);
 		myFacade.addUpToSale(Integer.parseInt(minPrice.getText()), myCell.getIdPlayer());
 		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
 		stage.close();

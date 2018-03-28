@@ -37,5 +37,11 @@ public class SaleDAOPostgres extends SaleDAO{
 		String queryInsert="INSERT INTO public.\"UpToSale\" VALUES("+(nb+1)+","+minprice+",current_date,"+idClub+","+idPlayer+")";
 		db.makeQueryUpdate(queryInsert);
 	}
+	
+	@Override
+	public void deleteUpToSale(int idClub, int idPlayer) {
+		String queryDelete="DELETE FROM public.\"UpToSale\" WHERE player="+idPlayer+" AND club="+idClub;
+		db.makeQueryUpdate(queryDelete);
+	}
 
 }
