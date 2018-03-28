@@ -36,7 +36,7 @@ public class ManageTeamClubFacade {
 	
 	public ArrayList<Player> getAllPlayer() {
 		Club user = (Club) ClientUI.getMyUser();
-		return dao.getAllPlayer(user.getId());
+		return dao.getAllPlayer(user.getId_club());
 	}
 
 	public ClubDAO getDao() {
