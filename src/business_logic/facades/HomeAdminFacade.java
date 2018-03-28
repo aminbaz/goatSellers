@@ -29,7 +29,7 @@ public class HomeAdminFacade {
 		List<Club> list = getAllClub();
 		for(int i=0;i<list.size();i++) {
 			System.out.println(cellData.size());
-			AdminCell cell = new AdminCell((list.get(i).getId_club()),(list.get(i).getLogo()),(list.get(i).getName()));
+			AdminCell cell = new AdminCell((list.get(i).getId_club()),(list.get(i).getLogo()),(list.get(i).getName()),dao.getMailClub(list.get(i).getId_club()),dao.getPasswordClub(list.get(i).getId_club()));
 			cellData.add(cell);
 		}
 	}

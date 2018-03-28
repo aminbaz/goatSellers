@@ -29,8 +29,8 @@ public class PopupUpdateClubController {
 	@FXML public void initialize() {
 		logoTf.setText(myCell.getLogo());
 		nameTf.setText(myCell.getName());
-		//mailTf.setText(myCell.g);
-		//passwordTadminf.setText(myCell);
+		mailTf.setText(myCell.getMail());
+		passwordTf.setText(myCell.getPassword());
 	}
 	
 	@FXML protected void updateClub(ActionEvent event) {
