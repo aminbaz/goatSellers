@@ -14,6 +14,7 @@ import business_logic.models.Club;
 import business_logic.models.Player;
 import data_access.ClubDAO;
 import data_access.PlayerDAO;
+import data_access.SaleDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import presentation.ClientUI;
@@ -23,6 +24,7 @@ public class ManageTeamClubFacade {
 	
 	private ClubDAO dao;
 	private PlayerDAO daoP;
+	private SaleDAO daoS;
 	private ObservableList<PlayerCell> cellData = FXCollections.observableArrayList();
 	
 	public ManageTeamClubFacade() {
@@ -30,6 +32,7 @@ public class ManageTeamClubFacade {
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
 		daoP = fact.getPlayerDAO();
+		daoS = fact.getSaleDAO();
 	}
 	
 	public ObservableList<PlayerCell> getCellData(){
@@ -62,6 +65,15 @@ public class ManageTeamClubFacade {
 		Date newBirthdate = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date newContract = Date.from(contrat.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		daoP.updatePlayer(id_player, firstName, lastName, newBirthdate, position, newContract);
+	}
+	
+	public boolean isOnSale(int id) {
+		return daoP.isOnSale(id);
+	}
+	
+	public void addUpToSale(int minprice, int idPlayer) {
+		Club myClub = (Club) ClientUI.getMyUser();
+		daoS.addUpToSale(minprice, myClub.getId_club(), idPlayer);
 	}
 
 	public ClubDAO getDao() {

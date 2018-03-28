@@ -64,5 +64,20 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		}
 		return 0;
 	}
+	
+	@Override
+	public boolean isOnSale(int id) {
+		String query="SELECT * FROM public.\"UpToSale\" WHERE player="+id;
+		ResultSet result=db.makeQuery(query);
+		try {
+			if(result.next()) {
+				return true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 }
