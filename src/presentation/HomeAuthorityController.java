@@ -17,12 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import presentation.tableViewCell.AdminCell;
 import presentation.tableViewCell.ClubCell;
+import presentation.tableViewCell.OnSaleCell;
 
 
 public class HomeAuthorityController {
@@ -56,7 +58,7 @@ public class HomeAuthorityController {
 		sumPurchases.setCellValueFactory(cellData ->cellData.getValue().sumPurchasesProperty());
 		sumSold.setCellValueFactory(cellData ->cellData.getValue().sumSoldProperty());
 		
-		TableColumn col_action = new TableColumn<>("");
+/*		TableColumn col_action = new TableColumn<>("");
 		col_action.setSortable(false);
 		col_action.setPrefWidth(133.0);
 		col_action.setStyle("-fx-alignment: CENTER;");
@@ -79,9 +81,56 @@ public class HomeAuthorityController {
 				return new ButtonCell();
 			}
          
-        });
+        });*/
 		
-        authorityTable.getColumns().add(col_action);
+	      TableColumn actionCol = new TableColumn("");
+	        actionCol.setCellValueFactory(new PropertyValueFactory<>("block"));
+
+	        Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>> cellFactory
+	                = //
+	                new Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>>() {
+	            @Override
+	            public TableCell call(final TableColumn<ClubCell, String> param) {
+	                final TableCell<ClubCell, String> cell = new TableCell<ClubCell, String>() {
+
+	                    final Button btn = new Button("");
+
+	                    @Override
+	                    public void updateItem(String item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        ClubCell club = (ClubCell) getTableRow().getItem();
+	                        if (empty) {
+	                            setGraphic(null);
+	                            setText(null);
+	                        } else {
+	                        	if(club.getState()) {
+	                        		btn.setText("Unblock");
+	                        	}else {
+	                        		btn.setText("Block");
+	                        	}
+	                        	btn.setOnAction(event -> {
+	                            	Boolean change = myFacade.changeState(club.getIdClub());
+	                            	club.SetState(change);
+	                            	if(club.getState()) {
+	                            		btn.setText("Unblock");
+	                            	}else {
+	                            		btn.setText("Block");
+	                            	}
+	                            	setGraphic(btn);
+	                            	getAuthorityTable().refresh();
+	                            	System.out.println(change);
+	                            });
+                        		setGraphic(btn);
+	                        }
+	                    }
+	                };
+	                return cell;
+	            }
+	        };
+
+	        actionCol.setCellFactory(cellFactory);
+		
+        authorityTable.getColumns().add(actionCol);
 		authorityTable.setItems(myFacade.getCellData());
 	}
 	
