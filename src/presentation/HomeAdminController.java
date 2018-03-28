@@ -42,7 +42,7 @@ public class HomeAdminController {
 		myFacade = new HomeAdminFacade();
 	}
 	
-	public HomeAdminController getHomeClubController() {
+	public HomeAdminController getHomeAdminController() {
 		return this;
 	}
 	
@@ -66,7 +66,7 @@ public class HomeAdminController {
   		popupwindow.initModality(Modality.APPLICATION_MODAL);
   		popupwindow.setTitle("Add club"); 
   		FXMLLoader loader = new FXMLLoader();
-  		loader.setController(new PopupAddClubController(cell,getHomeClubController()));
+  		loader.setController(new PopupAddClubController(cell,this));
   		loader.setLocation(ClientUI.class.getResource("popupAddClub.fxml"));
   		AnchorPane page = null;
 			try {
@@ -80,7 +80,7 @@ public class HomeAdminController {
 			popupwindow.setScene(scene1);   
 			popupwindow.showAndWait();
 			myFacade.addCell(cell);
-			this.initialize();
+			clubTable.refresh();
 	}
 	
 	@FXML public void initialize() {
@@ -135,7 +135,7 @@ public class HomeAdminController {
 	          		popupwindow.initModality(Modality.APPLICATION_MODAL);
 	          		popupwindow.setTitle("Update cLub"); 
 	          		FXMLLoader loader = new FXMLLoader();
-	          		loader.setController(new PopupUpdateClubController(item,getHomeClubController()));
+	          		loader.setController(new PopupUpdateClubController(item,getHomeAdminController()));
 	          		loader.setLocation(ClientUI.class.getResource("PopupUpdateClub.fxml"));
 	          		AnchorPane page = null;
 	        			try {
@@ -148,7 +148,7 @@ public class HomeAdminController {
 	        			Scene scene1= new Scene(page, 600, 300);	      
 	        			popupwindow.setScene(scene1);   
 	        			popupwindow.showAndWait();
-	        		initialize();
+	        		clubTable.refresh();
 	            }
 	        });
 	    }

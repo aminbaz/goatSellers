@@ -151,6 +151,16 @@ public class ClubDAOPostgres extends ClubDAO{
 	public void updateClub(Integer idClub, String logo, String name, String mail, String password) {
 		String queryClub = "UPDATE public.\"Club\" SET name='"+name+"', logo='"+logo+"' WHERE id_club = "+idClub;
 		db.makeQueryUpdate(queryClub);
+		String queryId = "SELECT u.id_user FROM public.\"User\" u, public.\"Role\" r, public.\"Club\" c WHERE c.role=r.id_role AND r.id_role=u.role AND c.id_club="+idClub;
+		ResultSet result = db.makeQuery(queryId);
+		try {
+			result.next();
+			String queryUser = "UPDATE public.\"User\" SET mail='"+mail+"', password='"+password+"' WHERE id_user = "+result.getInt("id_user");
+			db.makeQueryUpdate(queryUser);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
