@@ -24,4 +24,7 @@ public abstract class ClubDAO {
 	public abstract String getMailClub(int id);
 	public abstract String getPasswordClub(int id);
 	public abstract ArrayList<Player> getAllPlayer(int idClub);
+	public abstract int getSumPurchases(int idclub);
+	public abstract int getSumSold(int idclub);
+	
 }

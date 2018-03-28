@@ -177,7 +177,18 @@ public class ClubDAOPostgres extends ClubDAO{
 	@Override
 	public Boolean changeState(int idClub) {
 		// TODO Auto-generated method stub
-		return null;
+		if (isBlock(idClub) == false) {
+			String queryClub = "UPDATE public.\"Club\" SET blocked='true' WHERE id_club = "+idClub;
+			db.makeQueryUpdate(queryClub);
+			return true;
+		}
+		else {
+			String queryClub = "UPDATE public.\"Club\" SET blocked='false' WHERE id_club = "+idClub;
+			db.makeQueryUpdate(queryClub);
+			return false;
+		}
+
+		
 	}
 
 	@Override
@@ -302,4 +313,35 @@ public class ClubDAOPostgres extends ClubDAO{
 		return players;
 	}
 	
+	@Override
+	public int getSumPurchases(int idclub) {
+		int Sum = 0;
+		String query="SELECT amount_sale FROM public.\"Sale\"  WHERE buyer="+idclub +"";
+		ResultSet result=db.makeQuery(query);
+		try {
+			while(result.next()) {
+				Sum = Sum + result.getInt("amount_sale");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Sum;
+	}	
+	
+	@Override
+	public int getSumSold(int idclub) {
+		int Sum = 0;
+		String query="SELECT amount_sale FROM public.\"Sale\"  WHERE seller="+idclub +"";
+		ResultSet result=db.makeQuery(query);
+		try {
+			while(result.next()) {
+				Sum = Sum + result.getInt("amount_sale");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Sum;
+	}
 }
