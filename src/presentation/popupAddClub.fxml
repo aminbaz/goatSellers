@@ -5,16 +5,16 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.PopupAddClubController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="321.0" prefWidth="349.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label layoutX="75.0" layoutY="54.0" text="Logo" />
-      <Label layoutX="73.0" layoutY="104.0" text="Name" />
-      <Label layoutX="78.0" layoutY="155.0" text="Mail" />
-      <Label layoutX="65.0" layoutY="206.0" text="Password" />
-      <TextField fx:id="logoTf" layoutX="143.0" layoutY="50.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="passwordTf" layoutX="143.0" layoutY="202.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="mailTf" layoutX="143.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="nameTf" layoutX="143.0" layoutY="100.0" prefHeight="25.0" prefWidth="181.0" />
-      <Button layoutX="163.0" layoutY="253.0" mnemonicParsing="false" onAction="#addClub" text="ADD CLUB" />
+      <Label layoutX="52.0" layoutY="54.0" text="Logo" />
+      <Label layoutX="50.0" layoutY="104.0" text="Name" />
+      <Label layoutX="55.0" layoutY="155.0" text="Mail" />
+      <Label layoutX="42.0" layoutY="206.0" text="Password" />
+      <TextField fx:id="logoTf" layoutX="115.0" layoutY="50.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="passwordTf" layoutX="115.0" layoutY="202.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="mailTf" layoutX="115.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="nameTf" layoutX="115.0" layoutY="100.0" prefHeight="25.0" prefWidth="181.0" />
+      <Button layoutX="138.0" layoutY="250.0" mnemonicParsing="false" onAction="#addClub" text="ADD CLUB" />
    </children>
 </AnchorPane>
