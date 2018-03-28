@@ -46,7 +46,7 @@ public class ManageTeamClubFacade {
 		return getCellData();
 	}
 	
-	/*public void addPlayer(String firstname, String lastname, LocalDate birthdate, String position, LocalDate endContract) {
+	public void addPlayer(String firstname, String lastname, LocalDate birthdate, String position, LocalDate endContract) {
 		int id=daoP.maxId();
 		Club user = (Club) ClientUI.getMyUser();
 		int id_club= user.getId_club();
@@ -56,7 +56,7 @@ public class ManageTeamClubFacade {
 		
 		Player myPlayer = new Player(id+1,firstname, lastname, dateBirth, position, dateContract);
 		daoP.addPlayer(myPlayer, id_club);
-	}*/
+	}
 	
 	public void updatePlayer(Integer id_player, String firstName, String lastName, LocalDate birthDate, String position, LocalDate contrat){
 		Date newBirthdate = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
