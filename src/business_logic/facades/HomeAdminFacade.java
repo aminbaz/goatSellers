@@ -33,6 +33,10 @@ public class HomeAdminFacade {
 			cellData.add(cell);
 		}
 	}
+	
+	public void addCell(AdminCell cell){
+		cellData.add(cell);
+	}
 
 	public void addClub(String logo, String name, String mail, String password){
 		dao.addClub(logo, name, mail, password);

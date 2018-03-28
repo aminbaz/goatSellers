@@ -31,8 +31,7 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		SimpleDateFormat sdf = new SimpleDateFormat(NEW_FORMAT);
 		newBirthdate = sdf.format(player.getBirthdate());
 		newContract = sdf.format(player.getContract());
-		
-		String query="INSERT INTO public.\"Player\" VALUES ("+player.getId_player()+",'"+player.getFirstname()+"','"+player.getFirstname()+"',"+newBirthdate+",'"+player.getPosition()+"',"+newContract+","+club+")";                                      
+		String query="INSERT INTO public.\"Player\" VALUES ("+player.getId_player()+",'"+player.getFirstname()+"','"+player.getLastname()+"','"+newBirthdate+"','"+player.getPosition()+"','"+newContract+"',"+club+")";                                      
 		db.makeQueryUpdate(query);
 	}
 

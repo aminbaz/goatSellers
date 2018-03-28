@@ -1,6 +1,8 @@
 package presentation;
 
 import business_logic.facades.HomeAdminFacade;
+import business_logic.facades.HomeClubFacade;
+import business_logic.models.Club;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -8,33 +10,30 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import presentation.tableViewCell.AdminCell;
 
-public class PopupAddClubController {
+public class PopupHomeUpdateClubController {
 	
 	@FXML private TextField logoTf;
 	@FXML private TextField nameTf;
 	@FXML private TextField mailTf;
 	@FXML private TextField passwordTf;
 	
-	AdminCell myCell = null;
+	private Club club;
 	private HomeAdminFacade myFacade;
-	private HomeAdminController view;
-
-	public PopupAddClubController(AdminCell item, HomeAdminController view) {
-		this.myCell=item;
-		this.view=view;
+	
+	public PopupHomeUpdateClubController(Club club) {
+		this.club = club;
 		myFacade= new HomeAdminFacade();
 	}
-	
+
 	@FXML public void initialize() {
-		
+		logoTf.setText(club.getLogo());
+		nameTf.setText(club.getName());
+		mailTf.setText(club.getMail());
+		passwordTf.setText(club.getPassword());
 	}
 	
-	@FXML protected void addClub(ActionEvent event) {
-		myFacade.addClub(logoTf.getText(), nameTf.getText(), mailTf.getText(), passwordTf.getText());
-		myCell.SetLogo(logoTf.getText());
-		myCell.SetName(nameTf.getText());
-		myCell.SetMail(mailTf.getText());
-		myCell.SetPassword(passwordTf.getText());
+	@FXML protected void updateClub(ActionEvent event) {
+		myFacade.updateClub(club.getId_club(),logoTf.getText(), nameTf.getText(), mailTf.getText(), passwordTf.getText());
 		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
 		stage.close();
 		
