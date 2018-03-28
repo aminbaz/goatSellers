@@ -39,7 +39,7 @@ public class ManageTeamClubFacade {
 		Club user = (Club) ClientUI.getMyUser();
 		ArrayList<Player> result = dao.getAllPlayer(user.getId_club());
 		for(int i=0;i<result.size();i++) {
-			PlayerCell cell = new PlayerCell((result.get(i).getFirstname()),(result.get(i).getLastname()),(result.get(i).getBirthdate()),(result.get(i).getPosition()),(result.get(i).getContract()));
+			PlayerCell cell = new PlayerCell((result.get(i).getId_player()), (result.get(i).getFirstname()),(result.get(i).getLastname()),(result.get(i).getBirthdate()),(result.get(i).getPosition()),(result.get(i).getContract()));
 			cellData.add(cell);
 		}
 		return getCellData();
@@ -54,6 +54,10 @@ public class ManageTeamClubFacade {
 		
 		Player myPlayer = new Player(id,firstname, lastname, newBirthdate, position, newContract);
 		daoP.addPlayer(myPlayer, id_club);
+	}
+	
+	public void updatePlayer(Integer id_player, String firstName, String lastName, Date birthDate, String position, Date contrat){
+		daoP.updatePlayer(id_player, firstName, lastName, birthDate, position, contrat);
 	}
 
 	public ClubDAO getDao() {

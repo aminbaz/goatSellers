@@ -1,5 +1,6 @@
 package data_access;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -34,6 +35,14 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		
 		String query="INSERT INTO public.\"Player\" VALUES ("+player.getId_player()+",'"+player.getFirstname()+"','"+player.getFirstname()+"',"+newBirthdate+",'"+player.getPosition()+"',"+newContract+","+club+")";                                      
 		db.makeQueryUpdate(query);
+	}
+	
+	@Override
+	public void updatePlayer(Integer id_player, String firstName, String lastName, Date birthDate, String position, Date contrat) {
+		
+		
+		String queryClub = "UPDATE public.\"Player\" SET firstname='"+firstName+"', lastname='"+lastName+"', birthDate='"+birthDate+"', position='"+position+"', contract='"+contrat+"' WHERE id_player = "+id_player;
+		db.makeQueryUpdate(queryClub);
 	}
 
 	@Override

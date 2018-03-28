@@ -1,6 +1,7 @@
 package presentation.tableViewCell;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -9,6 +10,7 @@ import javafx.beans.property.StringProperty;
 
 public class PlayerCell {
 	
+	private final IntegerProperty idPlayer;
 	private final StringProperty firstname;
 	private final StringProperty lastname;
 	private final StringProperty birth;
@@ -16,10 +18,11 @@ public class PlayerCell {
 	private final StringProperty endOfContrat;
 	
 	public PlayerCell() {
-		this(null,null,null,null,null);
+		this(null,null,null,null,null,null);
 	}
 	
-	public PlayerCell(String firstname, String lastname, Date birthdate, String position, Date endOfContrat) {
+	public PlayerCell(Integer idPlayer, String firstname, String lastname, Date birthdate, String position, Date endOfContrat) {
+		this.idPlayer = new SimpleIntegerProperty(idPlayer);
 		this.firstname = new SimpleStringProperty(firstname);
 		this.lastname = new SimpleStringProperty(lastname);
 		this.birth = new SimpleStringProperty(birthdate.toString());
@@ -28,6 +31,9 @@ public class PlayerCell {
 	}
 
 //Function get
+	public Integer getIdPlayer() {
+		return idPlayer.get();
+	}
 	public String getFirstname() {
 		return firstname.get();
 	}
@@ -44,6 +50,9 @@ public class PlayerCell {
 		return endOfContrat.get();
 	}
 //Function set
+	public void setIdPlayer(Integer idPlayer) {
+		this.idPlayer.set(idPlayer);
+	}
 	public void setFirstname(String name) {
 		this.firstname.set(name);
 	}
@@ -61,7 +70,9 @@ public class PlayerCell {
 	}
 
 	
-
+	public IntegerProperty idPlayerProperty() {
+		return idPlayer;
+	}
 	public StringProperty firstnameProperty() {
 		return firstname;
 	}
