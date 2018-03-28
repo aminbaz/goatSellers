@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import business_logic.facades.HomeAdminFacade;
 import business_logic.facades.HomeAuthorityFacade;
+import business_logic.models.Authority;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -53,6 +54,9 @@ public class HomeAuthorityController {
 	
 	@FXML public void initialize() {
 
+		Authority auth = (Authority) ClientUI.getMyUser();
+		nameAuthority.setText(auth.getName());
+		
 		name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
 		state.setCellValueFactory(cellData ->cellData.getValue().stateProperty());
 		sumPurchases.setCellValueFactory(cellData ->cellData.getValue().sumPurchasesProperty());
@@ -98,11 +102,11 @@ public class HomeAuthorityController {
 	                    @Override
 	                    public void updateItem(String item, boolean empty) {
 	                        super.updateItem(item, empty);
-	                        ClubCell club = (ClubCell) getTableRow().getItem();
 	                        if (empty) {
 	                            setGraphic(null);
 	                            setText(null);
 	                        } else {
+		                        ClubCell club = (ClubCell) getTableRow().getItem();
 	                        	if(club.getState()) {
 	                        		btn.setText("Unblock");
 	                        	}else {
