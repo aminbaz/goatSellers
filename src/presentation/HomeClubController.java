@@ -254,7 +254,7 @@ public class HomeClubController {
 				e.printStackTrace();
 			}
 			
-			Scene scene1= new Scene(page, 600, 300);	      
+			Scene scene1= new Scene(page, 350, 300);	      
 			popupwindow.setScene(scene1);   
 			popupwindow.showAndWait();
 	}

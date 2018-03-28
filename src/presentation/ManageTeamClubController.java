@@ -132,6 +132,27 @@ public class ManageTeamClubController {
 		popupwindow.showAndWait(); 
 	}
 	
+	@FXML protected void handleUpdateClub(ActionEvent event) {
+		Club myUser = (Club) ClientUI.getMyUser();
+  		Stage popupwindow=new Stage();     
+  		popupwindow.initModality(Modality.APPLICATION_MODAL);
+  		popupwindow.setTitle("Update club"); 
+  		FXMLLoader loader = new FXMLLoader();
+  		loader.setController(new PopupHomeUpdateClubController(myUser));
+  		loader.setLocation(ClientUI.class.getResource("PopupHomeUpdateClub.fxml"));
+  		AnchorPane page = null;
+			try {
+				page = (AnchorPane) loader.load();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			Scene scene1= new Scene(page, 350, 300);	      
+			popupwindow.setScene(scene1);   
+			popupwindow.showAndWait();
+	}
+	
 	@FXML public void initialize() {
 		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
