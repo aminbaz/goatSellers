@@ -112,6 +112,25 @@ public class ManageTeamClubController {
         ClientUI.getMyStage().setScene(scene);
 	}
 	
+	@FXML protected void AddButton(ActionEvent event) {
+		Stage popupwindow=new Stage();     
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Add Player"); 
+   		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ClientUI.class.getResource("PopUpAddPlayer.fxml"));
+		AnchorPane page = null;
+		try {
+			page = (AnchorPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Scene scene1= new Scene(page, 370, 400);	      
+		popupwindow.setScene(scene1);   
+		popupwindow.showAndWait(); 
+	}
+	
 	@FXML public void initialize() {
 		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
@@ -180,7 +199,7 @@ public class ManageTeamClubController {
 	    
         clubTable.getColumns().add(col_action);
         clubTable.getColumns().add(col_upToSaleaction);
-		clubTable.setItems(myFacade.getCellData());
+		clubTable.setItems(myFacade.getAllPlayer());
 	}
 	
 	

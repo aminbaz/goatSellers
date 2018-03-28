@@ -23,20 +23,20 @@ public class ManageTeamClubFacade {
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
 
-		ArrayList<Player> result = getAllPlayer();
-		for(int i=0;i<result.size();i++) {
-				PlayerCell cell = new PlayerCell((result.get(i).getFirstname()),(result.get(i).getLastname()),(result.get(i).getBirthdate()),(result.get(i).getPosition()),(result.get(i).getContract()));
-				cellData.add(cell);
-			}
 	}
 	
 	public ObservableList<PlayerCell> getCellData(){
 		return cellData;
 	}
 	
-	public ArrayList<Player> getAllPlayer() {
+	public ObservableList<PlayerCell> getAllPlayer() {
 		Club user = (Club) ClientUI.getMyUser();
-		return dao.getAllPlayer(user.getId_club());
+		ArrayList<Player> result = dao.getAllPlayer(user.getId_club());
+		for(int i=0;i<result.size();i++) {
+			PlayerCell cell = new PlayerCell((result.get(i).getFirstname()),(result.get(i).getLastname()),(result.get(i).getBirthdate()),(result.get(i).getPosition()),(result.get(i).getContract()));
+			cellData.add(cell);
+		}
+		return getCellData();
 	}
 
 	public ClubDAO getDao() {

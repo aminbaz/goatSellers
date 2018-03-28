@@ -21,7 +21,7 @@ public class PopupAddClubController {
 	}
 	
 	@FXML public void initialize() {
-
+		
 	}
 	
 	@FXML protected void addClub(ActionEvent event) {
