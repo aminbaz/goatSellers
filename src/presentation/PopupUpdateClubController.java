@@ -35,6 +35,10 @@ public class PopupUpdateClubController {
 	
 	@FXML protected void updateClub(ActionEvent event) {
 		myFacade.updateClub(myCell.getIdClub(),logoTf.getText(), nameTf.getText(), mailTf.getText(), passwordTf.getText());
+		myCell.SetLogo(logoTf.getText());
+		myCell.SetName(nameTf.getText());
+		myCell.SetMail(mailTf.getText());
+		myCell.SetPassword(passwordTf.getText());
 		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
 		stage.close();
 		

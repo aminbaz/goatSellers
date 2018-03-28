@@ -117,6 +117,7 @@ public class ManageTeamClubController {
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("Add Player"); 
    		FXMLLoader loader = new FXMLLoader();
+   		loader.setController(new PopUpAddPlayerController(this));
 		loader.setLocation(ClientUI.class.getResource("PopUpAddPlayer.fxml"));
 		AnchorPane page = null;
 		try {
@@ -268,4 +269,14 @@ public class ManageTeamClubController {
 	        }
 
 	    }
+
+	public TableView<PlayerCell> getClubTable() {
+		return clubTable;
+	}
+
+	public void setClubTable(TableView<PlayerCell> clubTable) {
+		this.clubTable = clubTable;
+	}
+	  
+	  
 }

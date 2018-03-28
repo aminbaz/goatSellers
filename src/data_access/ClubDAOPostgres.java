@@ -151,6 +151,16 @@ public class ClubDAOPostgres extends ClubDAO{
 	public void updateClub(Integer idClub, String logo, String name, String mail, String password) {
 		String queryClub = "UPDATE public.\"Club\" SET name='"+name+"', logo='"+logo+"' WHERE id_club = "+idClub;
 		db.makeQueryUpdate(queryClub);
+		String queryId = "SELECT u.id_user FROM public.\"User\" u, public.\"Role\" r, public.\"Club\" c WHERE c.role=r.id_role AND r.id_role=u.role AND c.id_club="+idClub;
+		ResultSet result = db.makeQuery(queryId);
+		try {
+			result.next();
+			String queryUser = "UPDATE public.\"User\" SET mail='"+mail+"', password='"+password+"' WHERE id_user = "+result.getInt("id_user");
+			db.makeQueryUpdate(queryUser);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
@@ -177,7 +187,18 @@ public class ClubDAOPostgres extends ClubDAO{
 	@Override
 	public Boolean changeState(int idClub) {
 		// TODO Auto-generated method stub
-		return null;
+		if (isBlock(idClub) == false) {
+			String queryClub = "UPDATE public.\"Club\" SET blocked='true' WHERE id_club = "+idClub;
+			db.makeQueryUpdate(queryClub);
+			return true;
+		}
+		else {
+			String queryClub = "UPDATE public.\"Club\" SET blocked='false' WHERE id_club = "+idClub;
+			db.makeQueryUpdate(queryClub);
+			return false;
+		}
+
+		
 	}
 
 	@Override
@@ -302,4 +323,35 @@ public class ClubDAOPostgres extends ClubDAO{
 		return players;
 	}
 	
+	@Override
+	public int getSumPurchases(int idclub) {
+		int Sum = 0;
+		String query="SELECT amount_sale FROM public.\"Sale\"  WHERE buyer="+idclub +"";
+		ResultSet result=db.makeQuery(query);
+		try {
+			while(result.next()) {
+				Sum = Sum + result.getInt("amount_sale");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Sum;
+	}	
+	
+	@Override
+	public int getSumSold(int idclub) {
+		int Sum = 0;
+		String query="SELECT amount_sale FROM public.\"Sale\"  WHERE seller="+idclub +"";
+		ResultSet result=db.makeQuery(query);
+		try {
+			while(result.next()) {
+				Sum = Sum + result.getInt("amount_sale");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return Sum;
+	}
 }

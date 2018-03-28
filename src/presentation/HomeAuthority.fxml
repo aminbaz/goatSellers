@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.HomeAuthorityController">
+   <children>
+      <Label fx:id="nameAuthority" layoutX="50.0" layoutY="41.0" text="Label" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="41.0" />
+      <TableView fx:id="authorityTable" layoutX="50.0" layoutY="99.0" prefHeight="461.0" prefWidth="900.0">
+        <columns>
+          <TableColumn fx:id="name" style="-fx-alignment: CENTER;"  prefWidth="183.0" text="Club name" />
+          <TableColumn fx:id="sumSold" style="-fx-alignment: CENTER;" prefWidth="225.0" text="Sum sold" />
+            <TableColumn fx:id="sumPurchases" style="-fx-alignment: CENTER;" prefWidth="207.0" text="Sum purchased" />
+            <TableColumn fx:id="state" style="-fx-alignment: CENTER;" prefWidth="152.0" text="State" />
+        </columns>
+      </TableView>
+      <Button layoutX="891.0" layoutY="22.0" mnemonicParsing="false" text="Logout" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="22.0" />
+   </children>
+</AnchorPane>

@@ -1,8 +1,10 @@
 package presentation;
 
-import java.sql.Date;
+import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +24,16 @@ import javafx.util.StringConverter;
 public class PopUpAddPlayerController {
 	@FXML private TextField firstname;
 	@FXML private TextField lastname;
-	@FXML private DatePicker birthdate;
+	@FXML private DatePicker birth;
 	@FXML private ChoiceBox<String> position;
 	@FXML private DatePicker endContract;
 	
 	private ManageTeamClubFacade myFacade;
+	private ManageTeamClubController view;
 
-	public PopUpAddPlayerController() {
+	public PopUpAddPlayerController(ManageTeamClubController view) {
 		myFacade = new ManageTeamClubFacade();
+		this.view=view;
 	}
 	
 	@FXML public void initialize() {
@@ -43,8 +47,12 @@ public class PopUpAddPlayerController {
         position.setItems(obList);
 	}
 	
-	/*@FXML public void AddPlayer() {
-		myFacade.addPlayer(firstname.getText(), lastname.getText(),birthdate.getValue(), position.getValue(), endContract.getValue());
-	}*/
+	@FXML public void AddPlayer(ActionEvent event) {
+		myFacade.addPlayer(firstname.getText(), lastname.getText(),birth.getValue(), position.getSelectionModel().getSelectedItem(), endContract.getValue());
+		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
+		view.getClubTable().setItems(myFacade.getAllPlayer());	
+		view.getClubTable().refresh();
+		stage.close();
+	}
 
 }
