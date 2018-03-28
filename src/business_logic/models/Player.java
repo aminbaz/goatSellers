@@ -20,6 +20,14 @@ public class Player {
 		this.contract = contract;
 	}
 	
+	public Player(String firstname, String lastname, Date birthdate, String position, Date contract) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.birthdate = birthdate;
+		this.position = position;
+		this.contract = contract;
+	}
+	
 	public int getId_player() {
 		return id_player;
 	}
