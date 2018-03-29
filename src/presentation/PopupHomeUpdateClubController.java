@@ -51,6 +51,10 @@ public class PopupHomeUpdateClubController {
 		File file = new File("@../../images/"+logoTf.getText());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
+		club.setLogo(logoTf.getText());
+		club.setName(nameTf.getText());
+		club.setMail(mailTf.getText());
+		club.setPassword(passwordTf.getText());
 		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();
 		stage.close();
 
