@@ -12,22 +12,24 @@ import javafx.beans.property.StringProperty;
 public class ClubCell {
 	private final StringProperty name;
 	private final StringProperty logo;
-	private final BooleanProperty state;
 	private final IntegerProperty idclub;
+	private final BooleanProperty state;
 	private final ReadOnlyObjectWrapper<Integer> sumPurchases;
 	private final ReadOnlyObjectWrapper<Integer> sumSold;
+	private final ReadOnlyObjectWrapper<Integer> diff;
 	
 	public ClubCell() {
-		this(null,null,null, 0,0,0);
+		this(null,null,null,0, 0,0,0);
 	}
 	
-	public ClubCell(String logo, String name, Boolean state,int idclub, int sumPurchases, int sumSold) {
+	public ClubCell(String logo, String name,Boolean state, int diff,int idclub, int sumPurchases, int sumSold) {
 		this.name = new SimpleStringProperty(name);
 		this.logo = new SimpleStringProperty(logo);
 		this.state = new SimpleBooleanProperty(state);
 		this.idclub = new SimpleIntegerProperty(idclub);
 		this.sumPurchases = new ReadOnlyObjectWrapper<Integer>(sumPurchases);
 		this.sumSold = new ReadOnlyObjectWrapper<Integer>(sumSold);
+		this.diff = new ReadOnlyObjectWrapper<Integer>(diff);
 	}
 	
 	public String getLogo() {
@@ -37,8 +39,7 @@ public class ClubCell {
 	public String getName() {
 		return name.get();
 	}
-	
-	public Boolean getState() {
+	public boolean getState() {
 		return state.get();
 	}
 	
@@ -52,8 +53,15 @@ public class ClubCell {
 		return sumSold.get();
 	}
 	
+	public int getDiff() {
+		return (sumSold.get()-sumPurchases.get());
+	}
+	
 	public void SetLogo(String logo) {
 		this.logo.set(logo);
+	}
+	public void SetState(boolean state) {
+		this.state.set(state);
 	}
 	
 	public void SetSumPurchases(int sum) {
@@ -68,10 +76,6 @@ public class ClubCell {
 		this.name.set(name);
 	}
 	
-	public void SetState(Boolean state) {
-		this.state.set(state);
-	}
-	
 	public StringProperty logoProperty() {
 		return logo;
 	}
@@ -79,14 +83,14 @@ public class ClubCell {
 	public StringProperty nameProperty() {
 		return name;
 	}	
-
-	public BooleanProperty stateProperty() {
-		// TODO Auto-generated method stub
-		return state;
-	}
+	
 	public IntegerProperty idclubProperty() {
 		// TODO Auto-generated method stub
 		return idclub;
+	}
+	public BooleanProperty stateProperty() {
+		// TODO Auto-generated method stub
+		return state;
 	}
 	public ReadOnlyObjectWrapper<Integer> sumPurchasesProperty() {
 		// TODO Auto-generated method stub
@@ -96,6 +100,11 @@ public class ClubCell {
 	public ReadOnlyObjectWrapper<Integer> sumSoldProperty() {
 		// TODO Auto-generated method stub
 		return sumSold;
+	}
+	
+	public ReadOnlyObjectWrapper<Integer> diffProperty() {
+		// TODO Auto-generated method stub
+		return diff;
 	}
 }
 

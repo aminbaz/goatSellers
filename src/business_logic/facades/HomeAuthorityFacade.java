@@ -26,7 +26,8 @@ public class HomeAuthorityFacade {
 			Boolean isblock = isBlock(list.get(i).getId_club());
 			int SumPurchases = getSumPurchases(list.get(i).getId_club());
 			int SumSold = getSumSold(list.get(i).getId_club());
-			ClubCell cell = new ClubCell((list.get(i).getLogo()),(list.get(i).getName()),isblock, list.get(i).getId_club(), SumPurchases, SumSold);
+			int diff = SumSold - SumPurchases;
+			ClubCell cell = new ClubCell((list.get(i).getLogo()),(list.get(i).getName()),isblock, diff, list.get(i).getId_club(), SumPurchases, SumSold);
 			
 			System.out.println(list.get(i).getId_club());
 			
