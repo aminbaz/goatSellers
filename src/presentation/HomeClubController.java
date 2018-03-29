@@ -130,8 +130,8 @@ public class HomeClubController {
 	}
 	
 	@FXML public void initialize() {
-		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
+		Image myImage = null;
 		File file = new File("@../../images/"+myUser.getLogo());
         myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
@@ -208,7 +208,6 @@ public class HomeClubController {
 					Scene scene1= new Scene(page, 600, 300);	      
 					popupwindow.setScene(scene1);   
 					popupwindow.showAndWait();   
-					
                 }
             });
         }
@@ -244,7 +243,7 @@ public class HomeClubController {
   		popupwindow.initModality(Modality.APPLICATION_MODAL);
   		popupwindow.setTitle("Update club"); 
   		FXMLLoader loader = new FXMLLoader();
-  		loader.setController(new PopupHomeUpdateClubController(myUser));
+  		loader.setController(new PopupHomeUpdateClubController(myUser, nameClubLabel, image));
   		loader.setLocation(ClientUI.class.getResource("PopupHomeUpdateClub.fxml"));
   		AnchorPane page = null;
 			try {
@@ -252,11 +251,10 @@ public class HomeClubController {
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
-			
-			Scene scene1= new Scene(page, 350, 300);	      
-			popupwindow.setScene(scene1);   
-			popupwindow.showAndWait();
+			}	
+		Scene scene1= new Scene(page, 350, 300);	      
+		popupwindow.setScene(scene1);   
+		popupwindow.showAndWait();
 	}
     
 }
