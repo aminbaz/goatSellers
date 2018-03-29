@@ -197,6 +197,7 @@ public class ManageTeamClubController {
 	    
 	      TableColumn col_upToSaleaction = new TableColumn("");
 	      col_upToSaleaction.setPrefWidth(100);
+	      col_upToSaleaction.setStyle("-fx-alignment: CENTER;");
 	      col_upToSaleaction.setCellValueFactory(new PropertyValueFactory<>("uptosale"));
 
 	        Callback<TableColumn<PlayerCell, String>, TableCell<PlayerCell, String>> cellFactory

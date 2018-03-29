@@ -40,6 +40,21 @@ public class SaleDAOPostgres extends SaleDAO{
 	
 	@Override
 	public void deleteUpToSale(int idClub, int idPlayer) {
+		String query="SELECT id_uptosale FROM public.\"UpToSale\" WHERE player="+idPlayer+" AND club="+idClub;
+		ResultSet result = db.makeQuery(query);
+		int id=0;
+		try {
+			if(result.next()) {
+				id=result.getInt("id_uptosale");
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		query="UPDATE public.\"Offer\" SET status='declined' WHERE id_uptosale="+id;
+		db.makeQueryUpdate(query);
+		query="UPDATE public.\"Offer\" SET id_uptosale=null WHERE id_uptosale="+id;
+		db.makeQueryUpdate(query);
 		String queryDelete="DELETE FROM public.\"UpToSale\" WHERE player="+idPlayer+" AND club="+idClub;
 		db.makeQueryUpdate(queryDelete);
 	}

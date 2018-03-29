@@ -140,8 +140,10 @@ public class PopUpSaleController {
                     final PlayerOfferCell item = (PlayerOfferCell) getTableRow().getItem();
                     Club myClub = (Club) ClientUI.getMyUser();
                     myFacade.AcceptOffer(item.getIdOffer(), item.getIdClub(), item.getIdPlayer());
-                    getOffersTable().setItems(null);
-                    getOffersTable().refresh();
+                    myCell=null;
+                    view.getClubTable().setItems(myFacade.getAllPlayer());
+            		Stage stage = (Stage)((Button) t.getSource()).getScene().getWindow();
+            		stage.close();
                 }	
             });
         }

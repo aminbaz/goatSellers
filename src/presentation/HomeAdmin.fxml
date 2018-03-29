@@ -15,8 +15,8 @@
           <TableColumn fx:id="name" style="-fx-alignment: CENTER;" minWidth="0.0" prefWidth="252.0" text="Name Club" />
         </columns>
       </TableView>
-      <Label layoutX="46.0" layoutY="38.0" text="Welcom Admin" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
-      <Label layoutX="400.0" layoutY="80.0" text="Information" AnchorPane.bottomAnchor="503.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="337.0" AnchorPane.topAnchor="80.0" />
+      <Label layoutX="46.0" layoutY="38.0" text="Welcome Admin" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0" />
+      <Label layoutX="370.0" layoutY="80.0" prefWidth="150.0" text="Informations" AnchorPane.bottomAnchor="503.0" AnchorPane.topAnchor="80.0" />
       <Button layoutX="389.0" layoutY="526.0" mnemonicParsing="false" onAction="#handleAddClub" text="Add club" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="389.0" AnchorPane.rightAnchor="338.0" AnchorPane.topAnchor="526.0" />
    </children>
 </AnchorPane>

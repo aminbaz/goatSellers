@@ -26,11 +26,11 @@
       </AnchorPane>
       <TableView fx:id="clubTable" layoutX="465.0" layoutY="200.0" prefHeight="200.0" prefWidth="700.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="250.0" AnchorPane.topAnchor="60.0">
         <columns>
-          <TableColumn fx:id="firstname" prefWidth="100.0" text="FirstName" />
-          <TableColumn fx:id="lastname" prefWidth="100.0" text="LastName" />
-            <TableColumn fx:id="birthDate" prefWidth="100.0" text="DateOfBirth" />
-            <TableColumn fx:id="position" prefWidth="100.0" text="Position" />
-            <TableColumn fx:id="contract" prefWidth="100.0" text="DateEndOfContrat" />
+          <TableColumn fx:id="firstname" prefWidth="100.0" style="-fx-alignment: CENTER;" text="FirstName" />
+          <TableColumn fx:id="lastname" prefWidth="100.0" style="-fx-alignment: CENTER;" text="LastName" />
+            <TableColumn fx:id="birthDate" prefWidth="100.0" style="-fx-alignment: CENTER;" text="DateOfBirth" />
+            <TableColumn fx:id="position" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Position" />
+            <TableColumn fx:id="contract" prefWidth="100.0" style="-fx-alignment: CENTER;" text="DateEndOfContrat" />
         </columns>
       </TableView>
       <Label layoutX="301.0" layoutY="29.0" text="Manage team" AnchorPane.leftAnchor="539.0" AnchorPane.topAnchor="15.0">
