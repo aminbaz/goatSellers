@@ -114,7 +114,7 @@ public class TransfertMarketNewsController {
   		popupwindow.initModality(Modality.APPLICATION_MODAL);
   		popupwindow.setTitle("Update club"); 
   		FXMLLoader loader = new FXMLLoader();
-  		loader.setController(new PopupHomeUpdateClubController(myUser));
+  		loader.setController(new PopupHomeUpdateClubController(myUser, nameClubLabel, image));
   		loader.setLocation(ClientUI.class.getResource("PopupHomeUpdateClub.fxml"));
   		AnchorPane page = null;
 			try {
