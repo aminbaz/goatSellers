@@ -22,7 +22,7 @@
       <TableView fx:id="OffersTable" layoutX="11.0" layoutY="119.0" prefHeight="274.0" prefWidth="577.0">
         <columns>
           <TableColumn fx:id="ClubName" prefWidth="173.0" text="ClubName" />
-          <TableColumn fx:id="Price" prefWidth="210.0" text="Price" />
+          <TableColumn fx:id="Price" prefWidth="204.0" text="Price" />
         </columns>
       </TableView>
       <ImageView fx:id="ImageClub" fitHeight="75.0" fitWidth="108.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" />
