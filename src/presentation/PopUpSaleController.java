@@ -49,6 +49,12 @@ public class PopUpSaleController {
 		ImageClub.setImage(myImage);
 		TeamName.setText(myUser.getName());
 		PlayerName.setText(myCell.getFirstname()+ " "+myCell.getLastname());
+		
+		ClubName.setCellValueFactory(cellData -> cellData.getValue().clubNameProperty());
+		Price.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
+		System.out.println(" id du joueur : "+myCell.getIdPlayer());
+        OffersTable.setItems(myFacade.getAllPlayerOffers(myCell.getIdPlayer()));
+		
 	}
 	
 	@FXML protected void CancelSale(ActionEvent event) {

@@ -19,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import presentation.ClientUI;
 import presentation.tableViewCell.PlayerCell;
+import presentation.tableViewCell.PlayerOfferCell;
 
 public class ManageTeamClubFacade {
 	
@@ -26,6 +27,7 @@ public class ManageTeamClubFacade {
 	private PlayerDAO daoP;
 	private SaleDAO daoS;
 	private ObservableList<PlayerCell> cellData = FXCollections.observableArrayList();
+	private ObservableList<PlayerOfferCell> cellDataOffer = FXCollections.observableArrayList();
 	
 	public ManageTeamClubFacade() {
 		DAOFacade fac = new DAOFacade();
@@ -79,6 +81,23 @@ public class ManageTeamClubFacade {
 	public void deleteUpToSale(int idPlayer) {
 		Club myClub = (Club) ClientUI.getMyUser();
 		daoS.deleteUpToSale(myClub.getId_club(), idPlayer);
+	}
+	
+	public ObservableList<PlayerOfferCell> getAllPlayerOffers(int idplayer){
+
+		Club user = (Club) ClientUI.getMyUser();
+		ResultSet result = daoS.getAllOffersPlayer(user.getId_club(), idplayer);
+		try {
+			while(result.next()) {
+				System.out.println("boucle");
+				PlayerOfferCell cell = new PlayerOfferCell(user.getId_club(),idplayer,result.getString("name"),result.getInt("amount"),result.getInt("id_offer"));
+				cellDataOffer.add(cell);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cellDataOffer;
 	}
 
 	public ClubDAO getDao() {

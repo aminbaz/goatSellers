@@ -43,5 +43,13 @@ public class SaleDAOPostgres extends SaleDAO{
 		String queryDelete="DELETE FROM public.\"UpToSale\" WHERE player="+idPlayer+" AND club="+idClub;
 		db.makeQueryUpdate(queryDelete);
 	}
+	
+	@Override
+	public ResultSet getAllOffersPlayer(int idClub, int idPlayer) {
+		System.out.println("facade");
+		String query="SELECT o.id_offer, o.amount, c.name FROM public.\"Offer\" o, public.\"Club\" c, public.\"UpToSale\" u WHERE o.club=c.id_club AND o.id_uptosale=u.id_uptosale AND u.club="+idClub+" AND u.player="+idPlayer;
+		ResultSet result = db.makeQuery(query);
+		return result;
+	}
 
 }
