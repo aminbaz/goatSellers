@@ -18,9 +18,9 @@ import javafx.stage.Stage;
 import presentation.tableViewCell.OnSaleCell;
 
 public class PopUp_UpToSaleController {
-	
+
 	OnSaleCell myCell = null;
-	
+
 	@FXML private ImageView clubImage;
 	@FXML private Label clubName;
 	@FXML private Label firstName;
@@ -28,10 +28,10 @@ public class PopUp_UpToSaleController {
 	@FXML private Label birth;
 	@FXML private TextField Price;
 	@FXML private Button validateButton;
-	
+
 	private HomeClubFacade myFacade;
 	private HomeClubController view;
-	
+
 	public PopUp_UpToSaleController(OnSaleCell item, HomeClubController view) {
 		this.myCell=item;
 		this.view=view;
@@ -40,15 +40,15 @@ public class PopUp_UpToSaleController {
 	@FXML public void initialize() {
 		Image myImage = null;
 		File file = new File("@../../images/"+myCell.getLogoClub());
-        myImage = new Image(file.toURI().toString());
-        clubImage.setImage(myImage);
-        clubName.setText(myCell.getNameClub());
-        firstName.setText(myCell.getFirstname());
-        lastName.setText(myCell.getLastname());
-        birth.setText(myCell.getBirth());
-        Price.setText(Integer.toString(myCell.getMinPrice()));
+		myImage = new Image(file.toURI().toString());
+		clubImage.setImage(myImage);
+		clubName.setText(myCell.getNameClub());
+		firstName.setText(myCell.getFirstname());
+		lastName.setText(myCell.getLastname());
+		birth.setText(myCell.getBirth());
+		Price.setText(Integer.toString(myCell.getMinPrice()));
 	}
-	
+
 	@FXML protected void handleAction(ActionEvent event) {
 		Club myUser = (Club) ClientUI.getMyUser();
 		if(myUser.isBlocked()) {

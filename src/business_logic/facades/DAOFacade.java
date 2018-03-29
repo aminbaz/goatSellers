@@ -8,15 +8,15 @@ import data_access.SaleDAO;
 import data_access.UserDAO;
 
 public class DAOFacade {
-	
+
 	public DAOFactory getDAOFactory() {
 		return PostgresDAOFactory.getInstance();
 	}
-	
+
 	public UserDAO getUserDAO() {
 		return this.getDAOFactory().getUserDAO();
 	}
-	
+
 	public PlayerDAO getPlayerDAO() {
 		return this.getDAOFactory().getPlayerDAO();
 	}	
@@ -24,7 +24,7 @@ public class DAOFacade {
 	public ClubDAO getClubDAO() {
 		return this.getDAOFactory().getClubDAO();
 	}		
-	
+
 	public SaleDAO getSaleDAO() {
 		return this.getDAOFactory().getSaleDAO();
 	}			

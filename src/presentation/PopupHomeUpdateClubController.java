@@ -19,17 +19,17 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class PopupHomeUpdateClubController {
-	
+
 	@FXML private TextField logoTf;
 	@FXML private TextField nameTf;
 	@FXML private TextField mailTf;
 	@FXML private TextField passwordTf;
-	
+
 	private Label nameClubLabel;
 	private ImageView image;
 	private Club club;
 	private HomeAdminFacade myFacade;
-	
+
 	public PopupHomeUpdateClubController(Club club, Label name, ImageView image) {
 		this.club = club;
 		this.nameClubLabel = name;
@@ -43,13 +43,13 @@ public class PopupHomeUpdateClubController {
 		mailTf.setText(club.getMail());
 		passwordTf.setText(club.getPassword());
 	}
-	
+
 	@FXML protected void updateClub(ActionEvent event) {
 		myFacade.updateClub(club.getId_club(),logoTf.getText(), nameTf.getText(), mailTf.getText(), passwordTf.getText());
 		nameClubLabel.setText(nameTf.getText());
 		Image myImage = null;
 		File file = new File("@../../images/"+logoTf.getText());
-        myImage = new Image(file.toURI().toString());
+		myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
 		club.setLogo(logoTf.getText());
 		club.setName(nameTf.getText());

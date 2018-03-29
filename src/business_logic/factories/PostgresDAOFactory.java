@@ -26,7 +26,7 @@ public class PostgresDAOFactory extends DAOFactory{
 	public UserDAO getUserDAO() {
 		return new UserDAOPostgres();
 	}
-	
+
 	@Override
 	public PlayerDAO getPlayerDAO() {
 		// TODO Auto-generated method stub
@@ -38,7 +38,7 @@ public class PostgresDAOFactory extends DAOFactory{
 		// TODO Auto-generated method stub
 		return new ClubDAOPostgres();
 	}
-	
+
 	@Override
 	public SaleDAO getSaleDAO() {
 		// TODO Auto-generated method stub

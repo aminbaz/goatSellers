@@ -9,7 +9,7 @@ public class User {
 	public User(int id_user) {
 		this.id_user = id_user;
 	}
-	
+
 	public User(int id_user, String mail, String password, int role) {
 		this.id_user=id_user;
 		this.mail=mail;
@@ -36,15 +36,15 @@ public class User {
 	public String getMail() {
 		return mail;
 	}
-	
+
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
-	
+
 	public String getPassword() {
 		return password;
 	}
-	
+
 	public void setPassword(String password) {
 		this.password = password;
 	}

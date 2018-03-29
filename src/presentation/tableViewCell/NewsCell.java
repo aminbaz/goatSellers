@@ -13,11 +13,11 @@ public class NewsCell {
 	private final StringProperty oldClub;
 	private final StringProperty newClub;
 	private final StringProperty price;
-	
+
 	public NewsCell() {
 		this(null,null,null,null,null,null,0);
 	}
-	
+
 	public NewsCell(String firstname, String lastname, Date birthday, String position, String oldClub, String newClub, int price) {
 		this.firstname = new SimpleStringProperty(firstname);
 		this.lastname = new SimpleStringProperty(lastname);
@@ -28,7 +28,7 @@ public class NewsCell {
 		float amount = (float) (price/1000000.00);
 		this.price = new SimpleStringProperty(Float.toString(amount)+" M€");
 	}
-	
+
 	public String getFirstname() {
 		return firstname.get();
 	}
@@ -50,7 +50,7 @@ public class NewsCell {
 	public String getPrice() {
 		return price.get();
 	}
-	
+
 	public void setFirstname(String firstname) {
 		this.firstname.set(firstname);
 	}

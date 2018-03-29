@@ -6,21 +6,21 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class SaleCell {
-	
+
 	private final StringProperty name;
 	private final StringProperty amount;
 	private final StringProperty date;
-	
+
 	public SaleCell() {
 		this(null,null,null);
 	}
-	
+
 	public SaleCell(String name, String amount, String date) {
 		this.name = new SimpleStringProperty(name);
 		this.amount = new SimpleStringProperty(amount);
 		this.date = new SimpleStringProperty(date);
 	}
-	
+
 	public String getName() {
 		return name.get();
 	}

@@ -27,7 +27,7 @@ public class PopUpAddPlayerController {
 	@FXML private DatePicker birth;
 	@FXML private ChoiceBox<String> position;
 	@FXML private DatePicker endContract;
-	
+
 	private ManageTeamClubFacade myFacade;
 	private ManageTeamClubController view;
 
@@ -35,18 +35,18 @@ public class PopUpAddPlayerController {
 		myFacade = new ManageTeamClubFacade();
 		this.view=view;
 	}
-	
+
 	@FXML public void initialize() {
-        List<String> list = new ArrayList<String>();
-        list.add("GoalKeeper");
-        list.add("Defender");
-        list.add("Midfielder");
-        list.add("Striker");
-        ObservableList obList = FXCollections.observableList(list);
-        position.getItems().clear();
-        position.setItems(obList);
+		List<String> list = new ArrayList<String>();
+		list.add("GoalKeeper");
+		list.add("Defender");
+		list.add("Midfielder");
+		list.add("Striker");
+		ObservableList obList = FXCollections.observableList(list);
+		position.getItems().clear();
+		position.setItems(obList);
 	}
-	
+
 	@FXML public void AddPlayer(ActionEvent event) {
 		myFacade.addPlayer(firstname.getText(), lastname.getText(),birth.getValue(), position.getSelectionModel().getSelectedItem(), endContract.getValue());
 		Stage stage = (Stage)((Button) event.getSource()).getScene().getWindow();

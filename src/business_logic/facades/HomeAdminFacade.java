@@ -17,15 +17,15 @@ import presentation.tableViewCell.PlayerCell;
 import presentation.tableViewCell.SaleCell;
 
 public class HomeAdminFacade {
-	
+
 	private ClubDAO dao;
 	private ObservableList<AdminCell> cellData = FXCollections.observableArrayList();
-	
+
 	public HomeAdminFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
-		
+
 		List<Club> list = getAllClub();
 		for(int i=0;i<list.size();i++) {
 			System.out.println(cellData.size());
@@ -33,7 +33,7 @@ public class HomeAdminFacade {
 			cellData.add(cell);
 		}
 	}
-	
+
 	public void addCell(AdminCell cell){
 		cellData.add(cell);
 	}
@@ -41,11 +41,11 @@ public class HomeAdminFacade {
 	public void addClub(String logo, String name, String mail, String password){
 		dao.addClub(logo, name, mail, password);
 	}
-	
+
 	public void updateClub(Integer idClub, String logo, String name, String mail, String password){
 		dao.updateClub(idClub, logo, name, mail, password);
 	}
-	
+
 	public ArrayList<Club> getAllClub() {
 		return dao.getAllClub();
 	}
@@ -53,7 +53,7 @@ public class HomeAdminFacade {
 	public ObservableList<AdminCell> getCellData(){
 		return cellData;
 	}
-	
+
 	public ClubDAO getDao() {
 		return dao;
 	}
@@ -61,5 +61,5 @@ public class HomeAdminFacade {
 	public void setDao(ClubDAO dao) {
 		this.dao = dao;
 	}
-	
+
 }

@@ -9,13 +9,13 @@ import business_logic.models.SuperAdmin;
 import business_logic.models.User;
 
 public class UserDAOPostgres extends UserDAO{
-	
+
 	PostgresJDBC db;
-	
+
 	public UserDAOPostgres(){
 		db = PostgresJDBC.getInstance();
 	}
-	
+
 	@Override
 	public User createUserById(String mail, String password) {
 		// TODO Auto-generated method stub
@@ -76,5 +76,5 @@ public class UserDAOPostgres extends UserDAO{
 		}		
 		return speUser;
 	}
-	
+
 }

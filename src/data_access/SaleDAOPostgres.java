@@ -7,9 +7,9 @@ import business_logic.models.Club;
 import presentation.ClientUI;
 
 public class SaleDAOPostgres extends SaleDAO{
-	
+
 	PostgresJDBC db;
-	
+
 	public SaleDAOPostgres(){
 		db = PostgresJDBC.getInstance();
 	}
@@ -20,7 +20,7 @@ public class SaleDAOPostgres extends SaleDAO{
 		ResultSet result=db.makeQuery(query);
 		return result;
 	}
-	
+
 	@Override
 	public void addUpToSale(int minprice, int idClub, int idPlayer) {
 		String query="SELECT MAX(id_uptosale) as nb FROM public.\"UpToSale\"";
@@ -37,7 +37,7 @@ public class SaleDAOPostgres extends SaleDAO{
 		String queryInsert="INSERT INTO public.\"UpToSale\" VALUES("+(nb+1)+","+minprice+",current_date,"+idClub+","+idPlayer+")";
 		db.makeQueryUpdate(queryInsert);
 	}
-	
+
 	@Override
 	public void deleteUpToSale(int idClub, int idPlayer) {
 		String query="SELECT id_uptosale FROM public.\"UpToSale\" WHERE player="+idPlayer+" AND club="+idClub;
@@ -58,20 +58,20 @@ public class SaleDAOPostgres extends SaleDAO{
 		String queryDelete="DELETE FROM public.\"UpToSale\" WHERE player="+idPlayer+" AND club="+idClub;
 		db.makeQueryUpdate(queryDelete);
 	}
-	
+
 	@Override
 	public ResultSet getAllOffersPlayer(int idClub, int idPlayer) {
 		String query="SELECT o.id_offer, o.amount, c.name, o.club FROM public.\"Offer\" o, public.\"Club\" c, public.\"UpToSale\" u WHERE o.club=c.id_club AND o.id_uptosale=u.id_uptosale AND o.status LIKE 'in progress' AND u.club="+idClub+" AND u.player="+idPlayer;
 		ResultSet result = db.makeQuery(query);
 		return result;
 	}
-	
+
 	@Override
 	public void declineOffer(int id) {
 		String query="UPDATE public.\"Offer\" SET status='declined' WHERE id_offer="+id;
 		db.makeQueryUpdate(query);
 	}
-	
+
 	@Override
 	public void AcceptOffer(int id, int buyer, int player) {
 		String query="SELECT id_uptosale, amount FROM public.\"Offer\" WHERE id_offer="+id;

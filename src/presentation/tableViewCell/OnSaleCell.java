@@ -16,11 +16,11 @@ public class OnSaleCell {
 	private final StringProperty birth;
 	private final IntegerProperty minPrice;
 	private final IntegerProperty idOS;
-	
+
 	public OnSaleCell() {
 		this(null,null,null,null,null,0,0);
 	}
-	
+
 	public OnSaleCell(String logo,String name, String firstname, String lastname, Date birthdate, int minPrice, int id) {
 		this.logoClub = new SimpleStringProperty(logo);
 		this.nameClub = new SimpleStringProperty(name);
@@ -30,7 +30,7 @@ public class OnSaleCell {
 		this.minPrice = new SimpleIntegerProperty(minPrice);
 		this.idOS = new SimpleIntegerProperty(id);
 	}
-	
+
 	public String getLogoClub() {
 		return logoClub.get();
 	}
@@ -56,7 +56,7 @@ public class OnSaleCell {
 	public Integer getId() {
 		return idOS.get();
 	}
-	
+
 	public void setLogoClub(String logo) {
 		this.logoClub.set(logo);
 	}
@@ -78,7 +78,7 @@ public class OnSaleCell {
 	public void setId(int id) {
 		this.idOS.set(id);
 	}
-	
+
 	public StringProperty logoClubProperty() {
 		return logoClub;
 	}

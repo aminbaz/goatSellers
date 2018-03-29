@@ -14,17 +14,17 @@ import business_logic.models.User;
 public class ClubDAOPostgres extends ClubDAO{
 
 	PostgresJDBC db;
-	
+
 	public ClubDAOPostgres(){
 		db = PostgresJDBC.getInstance();
 	}
-	
+
 	@Override
 	public ArrayList<Sale> getAllPurchases(int id) {
 		ArrayList<Sale> purchases;
 		purchases = new ArrayList<Sale>();
 		int cpt=0;
-		
+
 		String query="SELECT * FROM public.\"Sale\" WHERE buyer="+id;
 		ResultSet result=db.makeQuery(query);
 		try {
@@ -69,7 +69,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		ArrayList<Sale> sales;
 		sales = new ArrayList<Sale>();
 		int cpt=0;
-		
+
 		String query="SELECT * FROM public.\"Sale\" WHERE seller="+id;
 		ResultSet result=db.makeQuery(query);
 		try {
@@ -107,7 +107,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		return sales;
 	}
-	
+
 	@Override
 	public void addClub(String logotmp, String nametmp, String mailtmp, String passwordtmp){
 		Integer id_roleBd = 0;
@@ -123,7 +123,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		}	
 		String queryRole = "INSERT INTO public.\"Role\" VALUES ("+ id_roleBd +", 'Club')";
 		db.makeQueryUpdate(queryRole);
-		
+
 		Integer id_userBd = 0;
 		String queryIdUser = "select max(id_user) + 1 from public.\"User\"";
 		ResultSet numberUser=db.makeQuery(queryIdUser);
@@ -136,17 +136,17 @@ public class ClubDAOPostgres extends ClubDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		String queryUser = "INSERT INTO public.\"User\" VALUES ("+ id_userBd +",'"+ mailtmp +"','"+passwordtmp+"',"+id_roleBd+")";
 		db.makeQueryUpdate(queryUser);
-		
+
 		String queryClub = "INSERT INTO public.\"Club\" VALUES ("+ id_userBd +",'"+ nametmp +"','"+logotmp+"',"+id_roleBd+",'false')";
 		db.makeQueryUpdate(queryClub);
-		
-		
-		
+
+
+
 	}
-	
+
 	@Override
 	public void updateClub(Integer idClub, String logo, String name, String mail, String password) {
 		String queryClub = "UPDATE public.\"Club\" SET name='"+name+"', logo='"+logo+"' WHERE id_club = "+idClub;
@@ -162,13 +162,13 @@ public class ClubDAOPostgres extends ClubDAO{
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public ArrayList<Club> getAllClub() {
 		// TODO Auto-generated method stub
 		ArrayList<Club> clubs;
 		clubs = new ArrayList<Club>();
-		
+
 		String query="SELECT * FROM public.\"Club\"";
 		ResultSet result=db.makeQuery(query);
 		try {
@@ -180,7 +180,7 @@ public class ClubDAOPostgres extends ClubDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return clubs;
 	}
 
@@ -198,7 +198,7 @@ public class ClubDAOPostgres extends ClubDAO{
 			return false;
 		}
 
-		
+
 	}
 
 	@Override
@@ -206,7 +206,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		// TODO Auto-generated method stub
 		String query="SELECT blocked FROM public.\"Club\" WHERE id_Club="+idClub;
 		ResultSet result=db.makeQuery(query);
-		
+
 		try {
 			if (result.next()) {
 				return result.getBoolean("blocked");
@@ -219,7 +219,7 @@ public class ClubDAOPostgres extends ClubDAO{
 			e.printStackTrace();
 		}
 		return null;
-		
+
 	}
 
 	@Override
@@ -228,12 +228,12 @@ public class ClubDAOPostgres extends ClubDAO{
 		ResultSet result=db.makeQuery(query);
 		return result;
 	}
-	
+
 	public void updateUpToSale(int id, int price) {
 		String query="UPDATE public.\"UpToSale\" SET minprice="+price+" WHERE id_uptosale="+id;
 		db.makeQueryUpdate(query);
 	}
-	
+
 	public void makeAnOffer(int id_club, int id_uptosale, int price) {
 		int id = 0;
 		String queryIdUser = "select max(id_offer) + 1 from public.\"Offer\"";
@@ -249,7 +249,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		String query="INSERT INTO public.\"Offer\" VALUES ("+id+","+price+",current_date,'in progress',"+id_uptosale+","+id_club+")";
 		db.makeQueryUpdate(query);
 	}
-	
+
 	public ResultSet getAllClubOffers(int id) {
 		System.out.println(id);
 		String query="SELECT o.amount, o.status, p.firstname, p.lastname FROM public.\"Offer\" o, public.\"UpToSale\" u, public.\"Player\" p WHERE p.id_player=u.player AND u.id_uptosale=o.id_uptosale AND o.club="+id;
@@ -271,7 +271,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		return null;
 	}
-	
+
 	@Override
 	public String getMailClub(int id) {
 		String query="SELECT u.mail FROM public.\"User\" u, public.\"Role\" r, public.\"Club\" c WHERE c.id_club="+id +"and c.role = r.id_role and u.role = r.id_role";
@@ -286,7 +286,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		return null;
 	}
-	
+
 	@Override
 	public String getPasswordClub(int id) {
 		String query="SELECT u.password FROM public.\"User\" u, public.\"Role\" r, public.\"Club\" c WHERE c.id_club="+id +"and c.role = r.id_role and u.role = r.id_role";
@@ -301,13 +301,13 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		return null;
 	}
-	
+
 	@Override
 	public ArrayList<Player> getAllPlayer(int idClub) {
 		// TODO Auto-generated method stub
 		ArrayList<Player> players;
 		players = new ArrayList<Player>();
-		
+
 		String query="SELECT * FROM public.\"Player\" WHERE club="+idClub;
 		ResultSet result=db.makeQuery(query);
 		try {
@@ -319,10 +319,10 @@ public class ClubDAOPostgres extends ClubDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return players;
 	}
-	
+
 	@Override
 	public int getSumPurchases(int idclub) {
 		int Sum = 0;
@@ -338,7 +338,7 @@ public class ClubDAOPostgres extends ClubDAO{
 		}
 		return Sum;
 	}	
-	
+
 	@Override
 	public int getSumSold(int idclub) {
 		int Sum = 0;

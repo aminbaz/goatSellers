@@ -29,11 +29,11 @@ import presentation.tableViewCell.OnSaleCell;
 
 
 public class HomeAuthorityController {
-	
+
 	@FXML private Label nameAuthority;
-	
+
 	@FXML private TableView<ClubCell> authorityTable;
-	
+
 	//@FXML private TableColumn<ClubCell, String> logo;
 	@FXML private TableColumn<ClubCell, String> name;
 	@FXML private TableColumn<ClubCell, Integer> state;
@@ -43,98 +43,98 @@ public class HomeAuthorityController {
 	@FXML private TableColumn<ClubCell, Integer> idClub;
 	@FXML private TableColumn<ClubCell, Integer> sumPurchases;
 	@FXML private TableColumn<ClubCell, Integer> sumSold;
-	
-	
-	
+
+
+
 	private HomeAuthorityFacade myFacade;
-	
+
 	public HomeAuthorityController() {
 		myFacade = new HomeAuthorityFacade();
 	}
-	
+
 	@FXML public void initialize() {
 
-	Authority auth = (Authority) ClientUI.getMyUser();
-	nameAuthority.setText(auth.getName());
-	
-	name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-	state.setCellValueFactory(cellData ->cellData.getValue().diffProperty());
-	sumPurchases.setCellValueFactory(cellData ->cellData.getValue().sumPurchasesProperty());
-	sumSold.setCellValueFactory(cellData ->cellData.getValue().sumSoldProperty());
-	
-      TableColumn actionCol = new TableColumn("");
-      actionCol.setSortable(false);
-      actionCol.setPrefWidth(130.0);
-      actionCol.setStyle("-fx-alignment: CENTER;");
-      
-      
-        actionCol.setCellValueFactory(new PropertyValueFactory<>("block"));
+		Authority auth = (Authority) ClientUI.getMyUser();
+		nameAuthority.setText(auth.getName());
 
-        Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>> cellFactory
-                = //
-                new Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>>() {
-            @Override
-            public TableCell call(final TableColumn<ClubCell, String> param) {
-                final TableCell<ClubCell, String> cell = new TableCell<ClubCell, String>() {
+		name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+		state.setCellValueFactory(cellData ->cellData.getValue().diffProperty());
+		sumPurchases.setCellValueFactory(cellData ->cellData.getValue().sumPurchasesProperty());
+		sumSold.setCellValueFactory(cellData ->cellData.getValue().sumSoldProperty());
 
-                    final Button btn = new Button("");
+		TableColumn actionCol = new TableColumn("");
+		actionCol.setSortable(false);
+		actionCol.setPrefWidth(130.0);
+		actionCol.setStyle("-fx-alignment: CENTER;");
 
-                    @Override
-                    public void updateItem(String item, boolean empty) {
-                        super.updateItem(item, empty);
-                        if (empty) {
-                            setGraphic(null);
-                            setText(null);
-                        } else {
-                        	if(getTableRow().getItem() != null) {              
-		                        ClubCell club = (ClubCell) getTableRow().getItem();
-	                        	if(club.getState()) {
-	                        		btn.setText("Unblock");
-	                        	}else {
-	                        		btn.setText("Block");
-	                        	}
-	                        	btn.setOnAction(event -> {
-	                            	Boolean change = myFacade.changeState(club.getIdClub());
-	                            	club.SetState(change);
-	                            	if(club.getState()) {
-	                            		btn.setText("Unblock");
-	                            	}else {
-	                            		btn.setText("Block");
-	                            	}
-	                            	setGraphic(btn);
-	                            	getAuthorityTable().refresh();
-	                            	System.out.println(change);
-	                            });
-	                    		setGraphic(btn);
-                        	}
-                        }
-                    }
-                };
-                return cell;
-            }
-        };
 
-        actionCol.setCellFactory(cellFactory);
-		
-        authorityTable.getColumns().add(actionCol);
+		actionCol.setCellValueFactory(new PropertyValueFactory<>("block"));
+
+		Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>> cellFactory
+		= //
+		new Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>>() {
+			@Override
+			public TableCell call(final TableColumn<ClubCell, String> param) {
+				final TableCell<ClubCell, String> cell = new TableCell<ClubCell, String>() {
+
+					final Button btn = new Button("");
+
+					@Override
+					public void updateItem(String item, boolean empty) {
+						super.updateItem(item, empty);
+						if (empty) {
+							setGraphic(null);
+							setText(null);
+						} else {
+							if(getTableRow().getItem() != null) {              
+								ClubCell club = (ClubCell) getTableRow().getItem();
+								if(club.getState()) {
+									btn.setText("Unblock");
+								}else {
+									btn.setText("Block");
+								}
+								btn.setOnAction(event -> {
+									Boolean change = myFacade.changeState(club.getIdClub());
+									club.SetState(change);
+									if(club.getState()) {
+										btn.setText("Unblock");
+									}else {
+										btn.setText("Block");
+									}
+									setGraphic(btn);
+									getAuthorityTable().refresh();
+									System.out.println(change);
+								});
+								setGraphic(btn);
+							}
+						}
+					}
+				};
+				return cell;
+			}
+		};
+
+		actionCol.setCellFactory(cellFactory);
+
+		authorityTable.getColumns().add(actionCol);
 		authorityTable.setItems(myFacade.getCellData());
 	}
-	
+
 	@FXML protected void handleLogOut(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ClientUI.class.getResource("login.fxml"));
-        Parent root=null;
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ClientUI.class.getResource("login.fxml"));
+		Parent root=null;
 		try {
 			root = loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        Scene scene = new Scene(root);
-        ClientUI.getMyStage().setScene(scene);
+		Scene scene = new Scene(root);
+		ClientUI.getMyStage().setScene(scene);
 	}
-	
-	 protected TableView<ClubCell> getAuthorityTable() {	 
-		 return authorityTable;
-	 }
+
+	protected TableView<ClubCell> getAuthorityTable() {	 
+		return authorityTable;
+	}
 }

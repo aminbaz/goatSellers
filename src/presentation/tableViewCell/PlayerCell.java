@@ -9,18 +9,18 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class PlayerCell {
-	
+
 	private final IntegerProperty idPlayer;
 	private final StringProperty firstname;
 	private final StringProperty lastname;
 	private final StringProperty birth;
 	private final StringProperty position;
 	private final StringProperty endOfContrat;
-	
+
 	public PlayerCell() {
 		this(null,null,null,null,null,null);
 	}
-	
+
 	public PlayerCell(Integer idPlayer, String firstname, String lastname, Date date, String position, Date date2) {
 		this.idPlayer = new SimpleIntegerProperty(idPlayer);
 		this.firstname = new SimpleStringProperty(firstname);
@@ -30,7 +30,7 @@ public class PlayerCell {
 		this.endOfContrat = new SimpleStringProperty(date2.toString());
 	}
 
-//Function get
+	//Function get
 	public Integer getIdPlayer() {
 		return idPlayer.get();
 	}
@@ -49,7 +49,7 @@ public class PlayerCell {
 	public String getEndOfContrat() {
 		return endOfContrat.get();
 	}
-//Function set
+	//Function set
 	public void setIdPlayer(Integer idPlayer) {
 		this.idPlayer.set(idPlayer);
 	}
@@ -69,7 +69,7 @@ public class PlayerCell {
 		this.endOfContrat.set(endOfContrat);
 	}
 
-	
+
 	public IntegerProperty idPlayerProperty() {
 		return idPlayer;
 	}

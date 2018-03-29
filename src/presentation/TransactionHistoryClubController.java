@@ -42,122 +42,122 @@ public class TransactionHistoryClubController{
 	@FXML private Label nameClubLabel;
 	@FXML private TableView<SaleCell> salesTable;
 	@FXML private TableView<SaleCell> purchasesTable;
-	
+
 	@FXML private TableColumn<SaleCell, String> name;
 	@FXML private TableColumn<SaleCell, String> amount;
 	@FXML private TableColumn<SaleCell, String> saledate;
 	@FXML private TableColumn<SaleCell, String> nameP;
 	@FXML private TableColumn<SaleCell, String> amountP;
 	@FXML private TableColumn<SaleCell, String> saledateP;
-	
+
 	@FXML private ImageView image;
-	
+
 	private HistoricFacade myFacade;
-	
+
 	public TransactionHistoryClubController() {
 		myFacade=new HistoricFacade();
-		}
-	
+	}
+
 	@FXML protected void handleTransfert(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
-        loader.setLocation(ClientUI.class.getResource("transfertMarketNews.fxml"));
-        Parent root=null;
+		loader.setLocation(ClientUI.class.getResource("transfertMarketNews.fxml"));
+		Parent root=null;
 		try {
 			root = loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        Scene scene = new Scene(root);
-        ClientUI.getMyStage().setScene(scene);
+		Scene scene = new Scene(root);
+		ClientUI.getMyStage().setScene(scene);
 	}
-	
+
 	@FXML protected void handleHome(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
-        loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
-        Parent root=null;
+		loader.setLocation(ClientUI.class.getResource("HomeClub.fxml"));
+		Parent root=null;
 		try {
 			root = loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        Scene scene = new Scene(root);
-        ClientUI.getMyStage().setScene(scene);
+		Scene scene = new Scene(root);
+		ClientUI.getMyStage().setScene(scene);
 	}
-	
+
 	@FXML protected void handleManageTeam(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
+		FXMLLoader loader = new FXMLLoader();
 		System.out.println("OK");
-        loader.setLocation(ClientUI.class.getResource("ManageTeamClub.fxml"));
-        Parent root=null;
+		loader.setLocation(ClientUI.class.getResource("ManageTeamClub.fxml"));
+		Parent root=null;
 		try {
 			root = loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        Scene scene = new Scene(root);
-        ClientUI.getMyStage().setScene(scene);
+		Scene scene = new Scene(root);
+		ClientUI.getMyStage().setScene(scene);
 	}
 
 	@FXML protected void handleUpdateClub(ActionEvent event) {
 		Club myUser = (Club) ClientUI.getMyUser();
-  		Stage popupwindow=new Stage();     
-  		popupwindow.initModality(Modality.APPLICATION_MODAL);
-  		popupwindow.setTitle("Update club"); 
-  		FXMLLoader loader = new FXMLLoader();
-  		loader.setController(new PopupHomeUpdateClubController(myUser, nameClubLabel, image));
-  		loader.setLocation(ClientUI.class.getResource("PopupHomeUpdateClub.fxml"));
-  		AnchorPane page = null;
-			try {
-				page = (AnchorPane) loader.load();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			Scene scene1= new Scene(page, 350, 300);	      
-			popupwindow.setScene(scene1);   
-			popupwindow.showAndWait();
+		Stage popupwindow=new Stage();     
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Update club"); 
+		FXMLLoader loader = new FXMLLoader();
+		loader.setController(new PopupHomeUpdateClubController(myUser, nameClubLabel, image));
+		loader.setLocation(ClientUI.class.getResource("PopupHomeUpdateClub.fxml"));
+		AnchorPane page = null;
+		try {
+			page = (AnchorPane) loader.load();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		Scene scene1= new Scene(page, 350, 300);	      
+		popupwindow.setScene(scene1);   
+		popupwindow.showAndWait();
 	}
-	
+
 	@FXML public void initialize() {
 		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
 		File file = new File("@../../images/"+myUser.getLogo());
-        myImage = new Image(file.toURI().toString());
+		myImage = new Image(file.toURI().toString());
 		image.setImage(myImage);
-		
+
 		nameP.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		amountP.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 		saledateP.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
-		
+
 		purchasesTable.setItems(myFacade.getCellDataP());
-		
+
 		name.setCellValueFactory(cellData -> cellData.getValue().firstnameProperty());
 		amount.setCellValueFactory(cellData -> cellData.getValue().lastnameProperty());
 		saledate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
-		
+
 		salesTable.setItems(myFacade.getCellData());
-		
+
 		nameClubLabel.setText(myUser.getName());
 	}
-	
+
 	@FXML protected void handleLogOut(ActionEvent event) {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ClientUI.class.getResource("login.fxml"));
-        Parent root=null;
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ClientUI.class.getResource("login.fxml"));
+		Parent root=null;
 		try {
 			root = loader.load();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        Scene scene = new Scene(root);
-        ClientUI.getMyStage().setScene(scene);
+		Scene scene = new Scene(root);
+		ClientUI.getMyStage().setScene(scene);
 	}
-	
+
 }

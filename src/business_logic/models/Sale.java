@@ -3,14 +3,14 @@ package business_logic.models;
 import java.sql.Date;
 
 public class Sale {
-	
+
 	private int id_sale;
 	private int amount;
 	private Date sale_date;
 	private Club seller;
 	private Club buyer;
 	private Player player;
-	
+
 	public Sale(int id_sale, int amount, Date sale_date, Club seller, Club buyer, Player player) {
 		super();
 		this.id_sale = id_sale;
@@ -68,7 +68,7 @@ public class Sale {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
-	
-	
+
+
+
 }

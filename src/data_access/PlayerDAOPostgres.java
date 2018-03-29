@@ -10,11 +10,11 @@ import business_logic.models.Player;
 public class PlayerDAOPostgres extends PlayerDAO{
 
 	PostgresJDBC db;
-	
+
 	public PlayerDAOPostgres(){
 		db = PostgresJDBC.getInstance();
 	}
-	
+
 	@Override
 	public ResultSet getPlayer(int id) {
 		String query="SELECT * FROM public.\"Player\" WHERE id_player="+id;
@@ -24,7 +24,7 @@ public class PlayerDAOPostgres extends PlayerDAO{
 
 	@Override
 	public void addPlayer(Player player, int club) {
-		
+
 		final String NEW_FORMAT = "yyyy-MM-dd";
 		String newBirthdate;
 		String newContract;
@@ -35,10 +35,10 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		String query="INSERT INTO public.\"Player\" VALUES ("+player.getId_player()+",'"+player.getFirstname()+"','"+player.getLastname()+"','"+newBirthdate+"','"+player.getPosition()+"','"+newContract+"',"+club+")";                                      
 		db.makeQueryUpdate(query);
 	}
-	
+
 	@Override
 	public void updatePlayer(Integer id_player, String firstName, String lastName, Date birthDate, String position, Date contrat) {
-		
+
 		final String NEW_FORMAT = "yyyy-MM-dd";
 		String newBirthdate;
 		String newContract;
@@ -46,7 +46,7 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		SimpleDateFormat sdf = new SimpleDateFormat(NEW_FORMAT);
 		newBirthdate = sdf.format(birthDate);
 		newContract = sdf.format(contrat);
-		
+
 		String queryPlayer = "UPDATE public.\"Player\" SET firstname='"+firstName+"', lastname='"+lastName+"', birthdate='"+newBirthdate+"', position='"+position+"', contract='"+newContract+"' WHERE id_player = "+id_player;
 		db.makeQueryUpdate(queryPlayer);
 	}
@@ -64,7 +64,7 @@ public class PlayerDAOPostgres extends PlayerDAO{
 		}
 		return 0;
 	}
-	
+
 	@Override
 	public boolean isOnSale(int id) {
 		String query="SELECT * FROM public.\"UpToSale\" WHERE player="+id;

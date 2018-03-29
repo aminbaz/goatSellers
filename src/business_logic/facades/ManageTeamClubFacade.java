@@ -22,13 +22,13 @@ import presentation.tableViewCell.PlayerCell;
 import presentation.tableViewCell.PlayerOfferCell;
 
 public class ManageTeamClubFacade {
-	
+
 	private ClubDAO dao;
 	private PlayerDAO daoP;
 	private SaleDAO daoS;
 	private ObservableList<PlayerCell> cellData = FXCollections.observableArrayList();
 	private ObservableList<PlayerOfferCell> cellDataOffer = FXCollections.observableArrayList();
-	
+
 	public ManageTeamClubFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
@@ -36,11 +36,11 @@ public class ManageTeamClubFacade {
 		daoP = fact.getPlayerDAO();
 		daoS = fact.getSaleDAO();
 	}
-	
+
 	public ObservableList<PlayerCell> getCellData(){
 		return cellData;
 	}
-	
+
 	public ObservableList<PlayerCell> getAllPlayer() {
 		Club user = (Club) ClientUI.getMyUser();
 		ArrayList<Player> result = dao.getAllPlayer(user.getId_club());
@@ -50,39 +50,39 @@ public class ManageTeamClubFacade {
 		}
 		return getCellData();
 	}
-	
+
 	public void addPlayer(String firstname, String lastname, LocalDate birthdate, String position, LocalDate endContract) {
 		int id=daoP.maxId();
 		Club user = (Club) ClientUI.getMyUser();
 		int id_club= user.getId_club();
-		
+
 		Date dateBirth = Date.from(birthdate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date dateContract = Date.from(endContract.atStartOfDay(ZoneId.systemDefault()).toInstant());
-		
+
 		Player myPlayer = new Player(id+1,firstname, lastname, dateBirth, position, dateContract);
 		daoP.addPlayer(myPlayer, id_club);
 	}
-	
+
 	public void updatePlayer(Integer id_player, String firstName, String lastName, LocalDate birthDate, String position, LocalDate contrat){
 		Date newBirthdate = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date newContract = Date.from(contrat.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		daoP.updatePlayer(id_player, firstName, lastName, newBirthdate, position, newContract);
 	}
-	
+
 	public boolean isOnSale(int id) {
 		return daoP.isOnSale(id);
 	}
-	
+
 	public void addUpToSale(int minprice, int idPlayer) {
 		Club myClub = (Club) ClientUI.getMyUser();
 		daoS.addUpToSale(minprice, myClub.getId_club(), idPlayer);
 	}
-	
+
 	public void deleteUpToSale(int idPlayer) {
 		Club myClub = (Club) ClientUI.getMyUser();
 		daoS.deleteUpToSale(myClub.getId_club(), idPlayer);
 	}
-	
+
 	public ObservableList<PlayerOfferCell> getAllPlayerOffers(int idplayer){
 
 		Club user = (Club) ClientUI.getMyUser();
@@ -99,11 +99,11 @@ public class ManageTeamClubFacade {
 		}
 		return cellDataOffer;
 	}
-	
+
 	public void DeclineOffer(int id) {
 		daoS.declineOffer(id);
 	}
-	
+
 	public void AcceptOffer(int id, int buyer, int player) {
 		daoS.AcceptOffer(id, buyer, player);
 	}

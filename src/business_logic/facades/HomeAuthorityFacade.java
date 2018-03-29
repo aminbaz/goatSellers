@@ -11,15 +11,15 @@ import javafx.collections.ObservableList;
 import presentation.tableViewCell.ClubCell;
 
 public class HomeAuthorityFacade {
-	
+
 	private ClubDAO dao;
 	private ObservableList<ClubCell> cellData = FXCollections.observableArrayList();
-	
+
 	public HomeAuthorityFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
-		
+
 		List<Club> list = getAllClub();
 		for(int i=0;i<list.size();i++) {
 			//System.out.println(cellData.size());
@@ -28,17 +28,17 @@ public class HomeAuthorityFacade {
 			int SumSold = getSumSold(list.get(i).getId_club());
 			int diff = SumSold - SumPurchases;
 			ClubCell cell = new ClubCell((list.get(i).getLogo()),(list.get(i).getName()),isblock, diff, list.get(i).getId_club(), SumPurchases, SumSold);
-			
+
 			System.out.println(list.get(i).getId_club());
-			
+
 			System.out.println(isblock);
 			cellData.add(cell);
 		}
-		
-		
-	
+
+
+
 	}
-	
+
 	private int getSumSold(int id_club) {
 		// TODO Auto-generated method stub
 		return dao.getSumSold(id_club);
@@ -51,15 +51,15 @@ public class HomeAuthorityFacade {
 	public Boolean changeState(int idClub){
 		return dao.changeState(idClub);
 	}
-	
+
 	public Boolean isBlock(int idClub){
 		return dao.isBlock(idClub);
 	}
-	
+
 	public void updateClub(String logo, String name, String city, String country, String championship){
 		dao.updateClub(null, logo, name, city, country);
 	}
-	
+
 	public ArrayList<Club> getAllClub() {
 		return dao.getAllClub();
 	}
@@ -67,7 +67,7 @@ public class HomeAuthorityFacade {
 	public ObservableList<ClubCell> getCellData(){
 		return cellData;
 	}
-	
+
 	public ClubDAO getDao() {
 		return dao;
 	}

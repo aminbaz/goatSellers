@@ -7,8 +7,8 @@ import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-	
-	
+
+
 public class ClubCell {
 	private final StringProperty name;
 	private final StringProperty logo;
@@ -17,11 +17,11 @@ public class ClubCell {
 	private final ReadOnlyObjectWrapper<Integer> sumPurchases;
 	private final ReadOnlyObjectWrapper<Integer> sumSold;
 	private final ReadOnlyObjectWrapper<Integer> diff;
-	
+
 	public ClubCell() {
 		this(null,null,null,0, 0,0,0);
 	}
-	
+
 	public ClubCell(String logo, String name,Boolean state, int diff,int idclub, int sumPurchases, int sumSold) {
 		this.name = new SimpleStringProperty(name);
 		this.logo = new SimpleStringProperty(logo);
@@ -31,18 +31,18 @@ public class ClubCell {
 		this.sumSold = new ReadOnlyObjectWrapper<Integer>(sumSold);
 		this.diff = new ReadOnlyObjectWrapper<Integer>(diff);
 	}
-	
+
 	public String getLogo() {
 		return logo.get();
 	}
-	
+
 	public String getName() {
 		return name.get();
 	}
 	public boolean getState() {
 		return state.get();
 	}
-	
+
 	public int getIdClub() {
 		return idclub.get();
 	}
@@ -52,38 +52,38 @@ public class ClubCell {
 	public int getSumSold() {
 		return sumSold.get();
 	}
-	
+
 	public int getDiff() {
 		return (sumSold.get()-sumPurchases.get());
 	}
-	
+
 	public void SetLogo(String logo) {
 		this.logo.set(logo);
 	}
 	public void SetState(boolean state) {
 		this.state.set(state);
 	}
-	
+
 	public void SetSumPurchases(int sum) {
 		this.sumPurchases.set(sum);
 	}
-	
+
 	public void SetSumSold(int sum) {
 		this.sumSold.set(sum);
 	}
-	
+
 	public void SetName(String name) {
 		this.name.set(name);
 	}
-	
+
 	public StringProperty logoProperty() {
 		return logo;
 	}
-	
+
 	public StringProperty nameProperty() {
 		return name;
 	}	
-	
+
 	public IntegerProperty idclubProperty() {
 		// TODO Auto-generated method stub
 		return idclub;
@@ -96,12 +96,12 @@ public class ClubCell {
 		// TODO Auto-generated method stub
 		return sumPurchases;
 	}
-	
+
 	public ReadOnlyObjectWrapper<Integer> sumSoldProperty() {
 		// TODO Auto-generated method stub
 		return sumSold;
 	}
-	
+
 	public ReadOnlyObjectWrapper<Integer> diffProperty() {
 		// TODO Auto-generated method stub
 		return diff;

@@ -6,7 +6,7 @@ import data_access.UserDAO;
 public class LoginFacade {
 
 	private UserDAO dao;
-	
+
 	public LoginFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
@@ -24,5 +24,5 @@ public class LoginFacade {
 	public void setDao(UserDAO dao) {
 		this.dao = dao;
 	}
-	
+
 }

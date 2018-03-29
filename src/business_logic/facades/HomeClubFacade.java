@@ -21,21 +21,21 @@ public class HomeClubFacade {
 	private ClubDAO dao;
 	private ObservableList<OnSaleCell> cellData = FXCollections.observableArrayList();
 	private ObservableList<OfferCell> offerCellData = FXCollections.observableArrayList();
-	
+
 	public HomeClubFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
 	}
-	
+
 	public ObservableList<OnSaleCell> getCellData(){
 		return cellData;
 	}
-	
+
 	public ObservableList<OfferCell> getOfferCellData(){
 		return offerCellData;
 	}
-	
+
 	public ObservableList<OnSaleCell> getAllUpToSales() {
 		Club user = (Club) ClientUI.getMyUser();
 		ResultSet result = dao.getAllUpToSales(user.getRole());
@@ -51,7 +51,7 @@ public class HomeClubFacade {
 		}
 		return getCellData();
 	}
-	
+
 	public ObservableList<OfferCell> getAllClubOffers() {
 		Club myClub = (Club)ClientUI.getMyUser();
 		ResultSet result = dao.getAllClubOffers(myClub.getId_club());
@@ -74,11 +74,11 @@ public class HomeClubFacade {
 	public void ClubDao(ClubDAO dao) {
 		this.dao = dao;
 	}
-	
+
 	public void updateUpToSale(int id, int price) {
 		dao.updateUpToSale(id, price);
 	}
-	
+
 	public void makeAnOffer(int id_uptosale, int id_club, int price) {
 		dao.makeAnOffer(id_club,id_uptosale,price);
 	}

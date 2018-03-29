@@ -12,26 +12,26 @@ public class ClientUI extends Application{
 
 	private static User myUser=null;
 	private static Stage myStage=null;
-	
+
 	public ClientUI() {
-		
+
 	}
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		myStage=primaryStage;
 		primaryStage.setTitle("Goat Sellers");
 		//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../images/logo_goatSellers.png")));
-		
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(ClientUI.class.getResource("login.fxml"));
-        Parent root=loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(ClientUI.class.getResource("login.fxml"));
+		Parent root=loader.load();
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.show();
 	}
-	
+
 	public static User getMyUser() {
 		return myUser;
 	}

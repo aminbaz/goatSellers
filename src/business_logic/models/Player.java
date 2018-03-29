@@ -3,14 +3,14 @@ package business_logic.models;
 import java.util.Date;
 
 public class Player {
-	
+
 	private int id_player;
 	private String firstname;
 	private String lastname;
 	private Date birthdate;
 	private String position;
 	private Date contract;
-	
+
 	public Player(int id_player, String firstname, String lastname, Date birthdate, String position, Date contract) {
 		this.id_player = id_player;
 		this.firstname = firstname;
@@ -19,7 +19,7 @@ public class Player {
 		this.position = position;
 		this.contract = contract;
 	}
-	
+
 	public Player(String firstname, String lastname, Date birthdate, String position, Date contract) {
 		this.firstname = firstname;
 		this.lastname = lastname;
@@ -27,7 +27,7 @@ public class Player {
 		this.position = position;
 		this.contract = contract;
 	}
-	
+
 	public int getId_player() {
 		return id_player;
 	}
@@ -64,5 +64,5 @@ public class Player {
 	public void setContract(Date contract) {
 		this.contract = contract;
 	}
-	
+
 }

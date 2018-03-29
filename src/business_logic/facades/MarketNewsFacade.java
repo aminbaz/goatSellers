@@ -19,16 +19,16 @@ public class MarketNewsFacade {
 	private ClubDAO daoC;
 	private PlayerDAO daoP;
 	private ObservableList<NewsCell> cellData = FXCollections.observableArrayList();
-	
+
 	public MarketNewsFacade(){
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		daoS = fact.getSaleDAO();
 		daoC = fact.getClubDAO();
 		daoP = fact.getPlayerDAO();
-		
+
 	}
-	
+
 	public ObservableList<NewsCell> getAllSales() throws SQLException{
 		ResultSet result = daoS.getAllSales();
 		while(result.next()){
@@ -73,6 +73,6 @@ public class MarketNewsFacade {
 	public void setCellData(ObservableList<NewsCell> cellData) {
 		this.cellData = cellData;
 	}
-	
-	
+
+
 }

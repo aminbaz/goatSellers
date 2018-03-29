@@ -8,18 +8,18 @@ import data_access.UserDAO;
 import data_access.UserDAOPostgres;
 
 public abstract class DAOFactory {
-	
+
 	protected static DAOFactory myFactory = null;
-	
+
 	public DAOFactory() {
-		
+
 	}
-	
+
 	public abstract UserDAO getUserDAO();
 	public abstract PlayerDAO getPlayerDAO();
 	public abstract ClubDAO getClubDAO();
 	public abstract SaleDAO getSaleDAO();
-	
+
 	public static DAOFactory getInstance() {
 		return myFactory;
 	}

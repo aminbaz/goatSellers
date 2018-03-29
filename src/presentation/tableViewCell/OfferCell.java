@@ -4,16 +4,16 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 public class OfferCell {
-	
+
 	private final StringProperty firstname;
 	private final StringProperty lastname;
 	private final StringProperty price;
 	private final StringProperty status;
-	
+
 	public OfferCell() {
 		this(null,null,0,null);
 	}
-	
+
 	public OfferCell(String firstname, String lastname, int price, String status) {
 		this.firstname = new SimpleStringProperty(firstname);
 		this.lastname = new SimpleStringProperty(lastname);
@@ -21,7 +21,7 @@ public class OfferCell {
 		this.price = new SimpleStringProperty(Float.toString(amount)+" M€");
 		this.status = new SimpleStringProperty(status);
 	}
-	
+
 	public String getFirstname() {
 		return firstname.get();
 	}
@@ -34,7 +34,7 @@ public class OfferCell {
 	public String getStatus() {
 		return status.get();
 	}
-	
+
 	public void setFirstname(String firstname) {
 		this.firstname.set(firstname);
 	}

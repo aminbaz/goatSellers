@@ -12,11 +12,11 @@ public class PlayerOfferCell {
 	private final StringProperty clubname;
 	private final StringProperty price;
 	private final IntegerProperty idOffer;
-	
+
 	public PlayerOfferCell() {
 		this(0,0,null,0,0);
 	}
-	
+
 	public PlayerOfferCell(int idClub, int idPlayer, String clubname, int price, int idOffer) {
 		this.idClub = new SimpleIntegerProperty(idClub);
 		this.idPlayer = new SimpleIntegerProperty(idPlayer);
@@ -25,7 +25,7 @@ public class PlayerOfferCell {
 		this.price = new SimpleStringProperty(Float.toString(amount)+" M€");
 		this.idOffer = new SimpleIntegerProperty(idOffer);		
 	}
-	
+
 	public int getIdClub() {
 		return idClub.get();
 	}
@@ -41,7 +41,7 @@ public class PlayerOfferCell {
 	public int getIdOffer() {
 		return idOffer.get();
 	}
-	
+
 	public void setIdClub(int id) {
 		this.idClub.set(id);
 	}
@@ -57,7 +57,7 @@ public class PlayerOfferCell {
 	public void setIdOffer(int id) {
 		this.idOffer.set(id);
 	}
-	
+
 	public IntegerProperty idClubProperty() {
 		return idClub;
 	}

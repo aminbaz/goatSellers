@@ -26,5 +26,5 @@ public abstract class ClubDAO {
 	public abstract ArrayList<Player> getAllPlayer(int idClub);
 	public abstract int getSumPurchases(int idclub);
 	public abstract int getSumSold(int idclub);
-	
+
 }
