@@ -7,6 +7,7 @@ import business_logic.facades.ManageTeamClubFacade;
 import business_logic.models.Club;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -50,6 +51,14 @@ public class PopUpSaleController {
 		this.btn=btn;
 	}
 	
+	public TableView<PlayerOfferCell> getOffersTable() {
+		return OffersTable;
+	}
+
+	public void setOffersTable(TableView<PlayerOfferCell> offersTable) {
+		OffersTable = offersTable;
+	}
+
 	@FXML public void initialize() {
 		Image myImage = null;
 		Club myUser = (Club) ClientUI.getMyUser();
@@ -128,8 +137,12 @@ public class PopUpSaleController {
  
                 @Override
                 public void handle(ActionEvent t) {
- 
-                }
+                    final PlayerOfferCell item = (PlayerOfferCell) getTableRow().getItem();
+                    Club myClub = (Club) ClientUI.getMyUser();
+                    myFacade.AcceptOffer(item.getIdOffer(), item.getIdClub(), item.getIdPlayer());
+                    getOffersTable().setItems(null);
+                    getOffersTable().refresh();
+                }	
             });
         }
         
@@ -151,7 +164,12 @@ public class PopUpSaleController {
  
                 @Override
                 public void handle(ActionEvent t) {
- 
+                    final PlayerOfferCell item = (PlayerOfferCell) getTableRow().getItem();
+                    myFacade.DeclineOffer(item.getIdOffer());
+                    ObservableList<PlayerOfferCell> list = getOffersTable().getItems();
+                    list.remove(item);
+                    getOffersTable().setItems(list);
+                    getOffersTable().refresh();
                 }
             });
         }

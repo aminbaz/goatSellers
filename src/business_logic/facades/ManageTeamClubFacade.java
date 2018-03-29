@@ -90,7 +90,7 @@ public class ManageTeamClubFacade {
 		try {
 			while(result.next()) {
 				System.out.println("boucle");
-				PlayerOfferCell cell = new PlayerOfferCell(user.getId_club(),idplayer,result.getString("name"),result.getInt("amount"),result.getInt("id_offer"));
+				PlayerOfferCell cell = new PlayerOfferCell(result.getInt("club"),idplayer,result.getString("name"),result.getInt("amount"),result.getInt("id_offer"));
 				cellDataOffer.add(cell);
 			}
 		} catch (SQLException e) {
@@ -98,6 +98,14 @@ public class ManageTeamClubFacade {
 			e.printStackTrace();
 		}
 		return cellDataOffer;
+	}
+	
+	public void DeclineOffer(int id) {
+		daoS.declineOffer(id);
+	}
+	
+	public void AcceptOffer(int id, int buyer, int player) {
+		daoS.AcceptOffer(id, buyer, player);
 	}
 
 	public ClubDAO getDao() {

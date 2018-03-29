@@ -191,7 +191,6 @@ public class HomeClubController {
                 @Override
                 public void handle(ActionEvent t) {
                     final OnSaleCell item = (OnSaleCell) getTableRow().getItem();
-                    System.out.println(item.getId());
             		Stage popupwindow=new Stage();     
             		popupwindow.initModality(Modality.APPLICATION_MODAL);
             		popupwindow.setTitle("Up To Sale"); 

@@ -246,7 +246,7 @@ public class ClubDAOPostgres extends ClubDAO{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		String query="INSERT INTO public.\"Offer\" VALUES ("+id+","+price+",current_date,'en cours',"+id_uptosale+","+id_club+")";
+		String query="INSERT INTO public.\"Offer\" VALUES ("+id+","+price+",current_date,'in progress',"+id_uptosale+","+id_club+")";
 		db.makeQueryUpdate(query);
 	}
 	
