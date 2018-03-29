@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -194,30 +195,80 @@ public class ManageTeamClubController {
 	    });
 		
 	    
-		TableColumn col_upToSaleaction = new TableColumn<>("");
-		col_upToSaleaction.setSortable(false);
-		col_upToSaleaction.setPrefWidth(100.0);
-		col_upToSaleaction.setStyle("-fx-alignment: CENTER;");
-		
-		col_upToSaleaction.setCellValueFactory(
-	            new Callback<TableColumn.CellDataFeatures<PlayerCell, Boolean>, 
-	            ObservableValue<Boolean>>() {
+	      TableColumn col_upToSaleaction = new TableColumn("");
+	      col_upToSaleaction.setPrefWidth(100);
+	      col_upToSaleaction.setCellValueFactory(new PropertyValueFactory<>("uptosale"));
 
-	        @Override
-	        public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<PlayerCell, Boolean> p) {
-	        	return new SimpleBooleanProperty(p.getValue() != null);
-	        }
-	    });
-		
-	    col_upToSaleaction.setCellFactory(
-	            new Callback<TableColumn<PlayerCell, Boolean>, TableCell<PlayerCell, Boolean>>() {
+	        Callback<TableColumn<PlayerCell, String>, TableCell<PlayerCell, String>> cellFactory
+	                = //
+	                new Callback<TableColumn<PlayerCell, String>, TableCell<PlayerCell, String>>() {
+	            @Override
+	            public TableCell call(final TableColumn<PlayerCell, String> param) {
+	                final TableCell<PlayerCell, String> cell = new TableCell<PlayerCell, String>() {
 
-			@Override
-			public TableCell<PlayerCell, Boolean> call(TableColumn<PlayerCell, Boolean> p) {
-				return new ButtonUpToSaleCell();
-			}
-	     
-	    });
+	                    final Button btn = new Button("");
+
+	                    @Override
+	                    public void updateItem(String item, boolean empty) {
+	                        super.updateItem(item, empty);
+	                        if (empty) {
+	                            setGraphic(null);
+	                            setText(null);
+	                        } else {
+	                        	if(getTableRow().getItem()!=null) {
+	                        	PlayerCell player = (PlayerCell) getTableRow().getItem();
+	                        	if(myFacade.isOnSale(player.getIdPlayer())) {
+	                        		btn.setText("On Sale");
+	                        	}else {
+	                        		btn.setText("Sell");
+	                        	}
+	                        	btn.setOnAction(event -> {
+		       	            		Stage popupwindow=new Stage();     
+		       	            		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		       	            		popupwindow.setTitle("Up To Sale"); 
+		       	               		FXMLLoader loader = new FXMLLoader();        
+	                            	if(btn.getText().equals("On Sale")) {
+			       		          		loader.setController(new PopUpSaleController(this,btn,player,getManageTeamClubController()));
+			       	            		loader.setLocation(ClientUI.class.getResource("Popup_PlayerOnSale.fxml"));
+			       	            		AnchorPane page = null;
+			       						try {
+			       							page = (AnchorPane) loader.load();
+			       						} catch (IOException e) {
+			       							// TODO Auto-generated catch block
+			       							e.printStackTrace();
+			       						}
+			       						
+			       						Scene scene1= new Scene(page, 600, 400);
+			       						popupwindow.setScene(scene1); 	
+	                            	}else {
+			       		          		loader.setController(new PopUpToSaleController(this,btn,player,getManageTeamClubController()));
+			       	            		loader.setLocation(ClientUI.class.getResource("popUpToSale.fxml"));
+			       	            		AnchorPane page = null;
+			       						try {
+			       							page = (AnchorPane) loader.load();
+			       						} catch (IOException e) {
+			       							// TODO Auto-generated catch block
+			       							e.printStackTrace();
+			       						}
+			       						
+			       						Scene scene1= new Scene(page, 393, 209);
+			       						popupwindow.setScene(scene1); 	                            		
+	                            	}  
+		       						popupwindow.showAndWait(); 
+	                            	setGraphic(btn);
+	                            	clubTable.refresh();
+	                            });
+                      		setGraphic(btn);
+	                        }
+	                        }
+	                    }
+	                };
+	                return cell;
+	            }
+	        };
+
+	        col_upToSaleaction.setCellFactory(cellFactory);
+
 	    
 	    
         clubTable.getColumns().add(col_action);
@@ -268,28 +319,6 @@ public class ManageTeamClubController {
 
 	    }
 	  
-	  private class ButtonUpToSaleCell extends TableCell<PlayerCell, Boolean> {
-	        final Button cellButton = new Button("Sale");
-	        
-	        ButtonUpToSaleCell(){
-	        	
-	            cellButton.setOnAction(new EventHandler<ActionEvent>(){
-	 
-	                @Override
-	                public void handle(ActionEvent t) {
-	                	System.out.println("OK");
-	                }
-	            });
-	        }
-	        
-	        protected void updateItem(Boolean t, boolean empty) {
-	            super.updateItem(t, empty);
-	            if(!empty){
-	                setGraphic(cellButton);
-	            }
-	        }
-
-	    }
 
 	public TableView<PlayerCell> getClubTable() {
 		return clubTable;

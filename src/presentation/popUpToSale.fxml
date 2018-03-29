@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="209.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="147.0" layoutY="139.0" mnemonicParsing="false" text="Validate">
+      <Button fx:id="validateButton" layoutX="147.0" layoutY="139.0" onAction="#ActionValidate" mnemonicParsing="false" text="Validate">
          <font>
             <Font size="20.0" />
          </font>
@@ -19,12 +19,12 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <TextField layoutX="153.0" layoutY="83.0">
+      <TextField fx:id="minPrice" layoutX="153.0" layoutY="83.0">
          <font>
             <Font size="15.0" />
          </font>
       </TextField>
-      <Label layoutX="53.0" layoutY="32.0" prefHeight="30.0" prefWidth="287.0" text="Player name" textAlignment="CENTER">
+      <Label fx:id="playerName" style="-fx-alignment: CENTER;" layoutX="53.0" layoutY="32.0" prefHeight="30.0" prefWidth="287.0" text="Player name" textAlignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>

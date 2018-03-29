@@ -10,4 +10,5 @@ public abstract class PlayerDAO {
 	public abstract void addPlayer(Player player, int club);
 	public abstract void updatePlayer(Integer id_player, String firstName, String lastName, Date birthDate, String position, Date contrat);
 	public abstract int maxId();
+	public abstract boolean isOnSale(int id);
 }

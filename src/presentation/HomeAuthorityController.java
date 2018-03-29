@@ -54,118 +54,64 @@ public class HomeAuthorityController {
 	
 	@FXML public void initialize() {
 
-		Authority auth = (Authority) ClientUI.getMyUser();
-		nameAuthority.setText(auth.getName());
-		
-		name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-		state.setCellValueFactory(cellData ->cellData.getValue().stateProperty());
-		sumPurchases.setCellValueFactory(cellData ->cellData.getValue().sumPurchasesProperty());
-		sumSold.setCellValueFactory(cellData ->cellData.getValue().sumSoldProperty());
-		
-/*		TableColumn col_action = new TableColumn<>("");
-		col_action.setSortable(false);
-		col_action.setPrefWidth(133.0);
-		col_action.setStyle("-fx-alignment: CENTER;");
-		
-        col_action.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<ClubCell, Boolean>, 
-                ObservableValue<Boolean>>() {
- 
+	Authority auth = (Authority) ClientUI.getMyUser();
+	nameAuthority.setText(auth.getName());
+	
+	name.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+	state.setCellValueFactory(cellData ->cellData.getValue().stateProperty());
+	sumPurchases.setCellValueFactory(cellData ->cellData.getValue().sumPurchasesProperty());
+	sumSold.setCellValueFactory(cellData ->cellData.getValue().sumSoldProperty());
+	
+	
+      TableColumn actionCol = new TableColumn("");
+        actionCol.setCellValueFactory(new PropertyValueFactory<>("block"));
+
+        Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>> cellFactory
+                = //
+                new Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>>() {
             @Override
-            public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<ClubCell, Boolean> p) {
-            	return new SimpleBooleanProperty(p.getValue() != null);
+            public TableCell call(final TableColumn<ClubCell, String> param) {
+                final TableCell<ClubCell, String> cell = new TableCell<ClubCell, String>() {
+
+                    final Button btn = new Button("");
+
+                    @Override
+                    public void updateItem(String item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                            setText(null);
+                        } else {
+	                        ClubCell club = (ClubCell) getTableRow().getItem();
+                        	if(club.getState()) {
+                        		btn.setText("Unblock");
+                        	}else {
+                        		btn.setText("Block");
+                        	}
+                        	btn.setOnAction(event -> {
+                            	Boolean change = myFacade.changeState(club.getIdClub());
+                            	club.SetState(change);
+                            	if(club.getState()) {
+                            		btn.setText("Unblock");
+                            	}else {
+                            		btn.setText("Block");
+                            	}
+                            	setGraphic(btn);
+                            	getAuthorityTable().refresh();
+                            	System.out.println(change);
+                            });
+                    		setGraphic(btn);
+                        }
+                    }
+                };
+                return cell;
             }
-        });
-		
-        col_action.setCellFactory(
-                new Callback<TableColumn<ClubCell, Boolean>, TableCell<ClubCell, Boolean>>() {
+        };
 
-			@Override
-			public TableCell<ClubCell, Boolean> call(TableColumn<ClubCell, Boolean> p) {
-				return new ButtonCell();
-			}
-         
-        });*/
-		
-	      TableColumn actionCol = new TableColumn("");
-	        actionCol.setCellValueFactory(new PropertyValueFactory<>("block"));
-
-	        Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>> cellFactory
-	                = //
-	                new Callback<TableColumn<ClubCell, String>, TableCell<ClubCell, String>>() {
-	            @Override
-	            public TableCell call(final TableColumn<ClubCell, String> param) {
-	                final TableCell<ClubCell, String> cell = new TableCell<ClubCell, String>() {
-
-	                    final Button btn = new Button("");
-
-	                    @Override
-	                    public void updateItem(String item, boolean empty) {
-	                        super.updateItem(item, empty);
-	                        if (empty) {
-	                            setGraphic(null);
-	                            setText(null);
-	                        } else {
-		                        ClubCell club = (ClubCell) getTableRow().getItem();
-	                        	if(club.getState()) {
-	                        		btn.setText("Unblock");
-	                        	}else {
-	                        		btn.setText("Block");
-	                        	}
-	                        	btn.setOnAction(event -> {
-	                            	Boolean change = myFacade.changeState(club.getIdClub());
-	                            	club.SetState(change);
-	                            	if(club.getState()) {
-	                            		btn.setText("Unblock");
-	                            	}else {
-	                            		btn.setText("Block");
-	                            	}
-	                            	setGraphic(btn);
-	                            	getAuthorityTable().refresh();
-	                            	System.out.println(change);
-	                            });
-                        		setGraphic(btn);
-	                        }
-	                    }
-	                };
-	                return cell;
-	            }
-	        };
-
-	        actionCol.setCellFactory(cellFactory);
+        actionCol.setCellFactory(cellFactory);
 		
         authorityTable.getColumns().add(actionCol);
 		authorityTable.setItems(myFacade.getCellData());
-	}
-	
-	private class ButtonCell extends TableCell<ClubCell, Boolean> {
-        Button cellButton = new Button("Unblock");
-        ButtonCell(){
-        	
-        	cellButton.setOnAction(new EventHandler<ActionEvent>(){
- 
-                @Override
-                public void handle(ActionEvent t) {
-                	final ClubCell item = (ClubCell) getTableRow().getItem();
-                	Boolean change = myFacade.changeState(item.getIdClub());
-                	item.SetState(change);
-                	cellButton = new Button("Block");
-                	System.out.println(cellButton.getText());
-                	setGraphic(cellButton);
-                	getAuthorityTable().refresh();
-                	System.out.println(change);
-                }
-            });
-        	
-        }
-        
-    	protected void updateItem(Boolean t, boolean empty) {
-    		super.updateItem(t, empty);
-    		
-    		if(!empty){
-    				setGraphic(cellButton);		
-    		}
-    	}
 	}
 	
 	@FXML protected void handleLogOut(ActionEvent event) {

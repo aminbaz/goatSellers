@@ -14,22 +14,27 @@ import business_logic.models.Club;
 import business_logic.models.Player;
 import data_access.ClubDAO;
 import data_access.PlayerDAO;
+import data_access.SaleDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import presentation.ClientUI;
 import presentation.tableViewCell.PlayerCell;
+import presentation.tableViewCell.PlayerOfferCell;
 
 public class ManageTeamClubFacade {
 	
 	private ClubDAO dao;
 	private PlayerDAO daoP;
+	private SaleDAO daoS;
 	private ObservableList<PlayerCell> cellData = FXCollections.observableArrayList();
+	private ObservableList<PlayerOfferCell> cellDataOffer = FXCollections.observableArrayList();
 	
 	public ManageTeamClubFacade() {
 		DAOFacade fac = new DAOFacade();
 		DAOFactory fact = fac.getDAOFactory();
 		dao = fact.getClubDAO();
 		daoP = fact.getPlayerDAO();
+		daoS = fact.getSaleDAO();
 	}
 	
 	public ObservableList<PlayerCell> getCellData(){
@@ -62,6 +67,37 @@ public class ManageTeamClubFacade {
 		Date newBirthdate = Date.from(birthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		Date newContract = Date.from(contrat.atStartOfDay(ZoneId.systemDefault()).toInstant());
 		daoP.updatePlayer(id_player, firstName, lastName, newBirthdate, position, newContract);
+	}
+	
+	public boolean isOnSale(int id) {
+		return daoP.isOnSale(id);
+	}
+	
+	public void addUpToSale(int minprice, int idPlayer) {
+		Club myClub = (Club) ClientUI.getMyUser();
+		daoS.addUpToSale(minprice, myClub.getId_club(), idPlayer);
+	}
+	
+	public void deleteUpToSale(int idPlayer) {
+		Club myClub = (Club) ClientUI.getMyUser();
+		daoS.deleteUpToSale(myClub.getId_club(), idPlayer);
+	}
+	
+	public ObservableList<PlayerOfferCell> getAllPlayerOffers(int idplayer){
+
+		Club user = (Club) ClientUI.getMyUser();
+		ResultSet result = daoS.getAllOffersPlayer(user.getId_club(), idplayer);
+		try {
+			while(result.next()) {
+				System.out.println("boucle");
+				PlayerOfferCell cell = new PlayerOfferCell(user.getId_club(),idplayer,result.getString("name"),result.getInt("amount"),result.getInt("id_offer"));
+				cellDataOffer.add(cell);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cellDataOffer;
 	}
 
 	public ClubDAO getDao() {
