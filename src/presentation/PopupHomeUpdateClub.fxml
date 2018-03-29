@@ -12,7 +12,7 @@
       <Label layoutX="60.0" layoutY="36.0" text="Logo :" />
       <Label layoutX="62.0" layoutY="107.0" text="Mail :" />
       <Label layoutX="47.0" layoutY="142.0" text="Password :" />
-      <Button layoutX="138.0" layoutY="183.0" mnemonicParsing="false" onAction="#updateClub" text="UPDATE" />
+      <Button layoutX="138.0" layoutY="183.0" mnemonicParsing="false" onAction="#updateClub" text="Update" />
       <TextField fx:id="logoTf" layoutX="127.0" layoutY="32.0" />
       <TextField fx:id="nameTf" layoutX="127.0" layoutY="66.0" />
       <TextField fx:id="mailTf" layoutX="127.0" layoutY="103.0" />

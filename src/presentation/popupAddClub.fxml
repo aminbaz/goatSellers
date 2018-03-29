@@ -12,9 +12,9 @@
       <Label layoutX="55.0" layoutY="155.0" text="Mail" />
       <Label layoutX="42.0" layoutY="206.0" text="Password" />
       <TextField fx:id="logoTf" layoutX="115.0" layoutY="50.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="passwordTf" layoutX="115.0" layoutY="202.0" prefHeight="25.0" prefWidth="181.0" />
-      <TextField fx:id="mailTf" layoutX="115.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
       <TextField fx:id="nameTf" layoutX="115.0" layoutY="100.0" prefHeight="25.0" prefWidth="181.0" />
-      <Button layoutX="138.0" layoutY="250.0" mnemonicParsing="false" onAction="#addClub" text="ADD CLUB" />
+      <TextField fx:id="mailTf" layoutX="115.0" layoutY="151.0" prefHeight="25.0" prefWidth="181.0" />
+      <TextField fx:id="passwordTf" layoutX="115.0" layoutY="202.0" prefHeight="25.0" prefWidth="181.0" />
+      <Button layoutX="138.0" layoutY="250.0" mnemonicParsing="false" onAction="#addClub" text="Add club" />
    </children>
 </AnchorPane>

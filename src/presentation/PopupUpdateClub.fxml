@@ -13,8 +13,8 @@
       <TextField fx:id="logoTf" layoutX="156.0" layoutY="38.0" />
       <TextField fx:id="nameTf" layoutX="156.0" layoutY="81.0" />
       <TextField fx:id="mailTf" layoutX="156.0" layoutY="124.0" />
-      <Button layoutX="156.0" layoutY="215.0" mnemonicParsing="false" onAction="#updateClub" text="UPDATE" />
       <TextField fx:id="passwordTf" layoutX="156.0" layoutY="166.0" />
+      <Button layoutX="156.0" layoutY="215.0" mnemonicParsing="false" onAction="#updateClub" text="Update" />
       <Label layoutX="84.0" layoutY="128.0" text="Mail" />
    </children>
 </AnchorPane>
