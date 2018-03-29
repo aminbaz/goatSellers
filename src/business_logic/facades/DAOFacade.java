@@ -7,8 +7,9 @@ import data_access.PlayerDAO;
 import data_access.SaleDAO;
 import data_access.UserDAO;
 
-public class DAOFacade {
 
+public class DAOFacade {
+	
 	public DAOFactory getDAOFactory() {
 		return PostgresDAOFactory.getInstance();
 	}

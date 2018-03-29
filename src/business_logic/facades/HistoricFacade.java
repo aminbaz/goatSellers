@@ -58,6 +58,7 @@ public class HistoricFacade {
 	}
 
 	public ArrayList<Sale> getAllSales() {
+		
 		Club user = (Club) ClientUI.getMyUser();
 		return dao.getAllSales(user.getId_club());
 	}
